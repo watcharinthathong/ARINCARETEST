@@ -1,0 +1,8 @@
+node_modules/
+.env
+playwright-report/
+test-results/
+screenshots/
+*.log
+.claude/
+temp_hdr.txt

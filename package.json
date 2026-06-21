@@ -1,0 +1,26 @@
+{
+  "name": "arincare-customer-tests",
+  "version": "1.0.0",
+  "description": "Playwright E2E tests - เพิ่มรายชื่อลูกค้าใหม่ (Arincare Pharmacy)",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test -g @smoke",
+    "test:positive": "playwright test customer-create.positive",
+    "test:validation": "playwright test customer-create.validation",
+    "test:e2e": "playwright test customer-create.e2e",
+    "test:pos": "playwright test pos-register",
+    "test:pos-bugs": "playwright test pos-member-edit-mobile",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen https://app-stg.arincare.com/login"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^20.14.0",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

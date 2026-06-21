@@ -1,0 +1,828 @@
+[
+  {
+    "screen": "Login Page",
+    "element": "ช่องกรอก Username / Email",
+    "selector": "input[name=\"email\"]",
+    "elementType": "input[type=email]",
+    "remark": ""
+  },
+  {
+    "screen": "Login Page",
+    "element": "ช่องกรอก Password",
+    "selector": "input[type=\"password\"]",
+    "elementType": "input[type=password]",
+    "remark": ""
+  },
+  {
+    "screen": "Login Page",
+    "element": "ปุ่ม Login / เข้าสู่ระบบ",
+    "selector": "button:has-text(\"เข้าสู่ระบบ\")",
+    "elementType": "button",
+    "remark": ""
+  },
+  {
+    "screen": "Company/Branch Setup",
+    "element": "Dropdown เลือกบริษัท",
+    "selector": "select[name=\"companyId\"]",
+    "elementType": "select",
+    "remark": ""
+  },
+  {
+    "screen": "Company/Branch Setup",
+    "element": "Dropdown เลือกสาขา",
+    "selector": "select[name=\"branchId\"]",
+    "elementType": "select",
+    "remark": ""
+  },
+  {
+    "screen": "Company/Branch Setup",
+    "element": "ปุ่มบันทึกการเปลี่ยนแปลง",
+    "selector": "button:has-text(\"บันทึกการเปลี่ยนแปลง\")",
+    "elementType": "button",
+    "remark": ""
+  },
+  {
+    "screen": "Setup Complete",
+    "element": "ปุ่มเสร็จสิ้น",
+    "selector": "button:has-text(\"เสร็จสิ้น\")",
+    "elementType": "button",
+    "remark": ""
+  },
+  {
+    "screen": "Employee Login",
+    "element": "ช่องรหัสประจำตัวพนักงาน",
+    "selector": "input[name=\"username\"]",
+    "elementType": "input",
+    "remark": ""
+  },
+  {
+    "screen": "Employee Login",
+    "element": "ช่องรหัสผ่านพนักงาน",
+    "selector": "input[type=\"password\"]",
+    "elementType": "input[type=password]",
+    "remark": ""
+  },
+  {
+    "screen": "Employee Login",
+    "element": "ปุ่มเข้าสู่ระบบ",
+    "selector": "button:has-text(\"เข้าสู่ระบบ\")",
+    "elementType": "button",
+    "remark": ""
+  },
+  {
+    "screen": "Popup / Modal",
+    "element": "ปุ่มปิด Popup \"ปิด\"",
+    "selector": "button:has-text(\"ปิด\")",
+    "elementType": "button",
+    "remark": ""
+  },
+  {
+    "screen": "Main Page",
+    "element": "ปุ่มสมัครสมาชิกใหม่",
+    "selector": "button:has-text(\"สมัครสมาชิกใหม่\")",
+    "elementType": "button/link",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "!",
+    "selector": "button:has-text(\"!\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "แก้ไข",
+    "selector": "button:has-text(\"แก้ไข\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "ค้นหาสินค้า (ctrl + Q)",
+    "selector": "[placeholder=\"ค้นหาสินค้า (ctrl + Q)\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "รายการบิล",
+    "selector": "button:has-text(\"รายการบิล\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "บริการอื่นๆ |",
+    "selector": "button:has-text(\"บริการอื่นๆ |\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "🌡 บันทึกอุณหภูมิ & ความชื้น⚠️",
+    "selector": "button:has-text(\"🌡 บันทึกอุณหภูมิ & ความชื้น⚠️\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "บริการจัดส่ง",
+    "selector": "button:has-text(\"บริการจัดส่ง\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "ประวัติการทำรายการ",
+    "selector": "button:has-text(\"ประวัติการทำรายการ\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "ค้นหาลูกค้าสมาชิก (ctrl + M)",
+    "selector": "[placeholder=\"ค้นหาลูกค้าสมาชิก (ctrl + M)\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "สมัครสมาชิกใหม่",
+    "selector": "button:has-text(\"สมัครสมาชิกใหม่\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "Coupon",
+    "selector": "button:has-text(\"Coupon\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "ชำระเงิน",
+    "selector": "button:has-text(\"ชำระเงิน\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "Close",
+    "selector": "[aria-label=\"Close\"]",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "* ชื่อ:",
+    "selector": "input[name=\"first_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "* นามสกุล:",
+    "selector": "input[name=\"last_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "* เบอร์โทรศัพท์มือถือ:",
+    "selector": "input[name=\"mobile_number\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "อีเมล:",
+    "selector": "input[name=\"email\"]",
+    "elementType": "input:email",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "วว/ดด/ปปปป",
+    "selector": "[placeholder=\"วว/ดด/ปปปป\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "* เพศ:",
+    "selector": "select[name=\"sex\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "สัญชาติ:",
+    "selector": "select[name=\"nationality\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "บัตรประชาชน / Passport:",
+    "selector": "input[name=\"citizen_id\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "อาชีพ:",
+    "selector": "input[name=\"occupation\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "หมู่เลือด:",
+    "selector": "select[name=\"blood_type\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "ระดับราคา:",
+    "selector": "select[name=\"price_level\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "บันทึกข้อมูลเพิ่มเติม...",
+    "selector": "textarea[name=\"note\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "ยกเลิก",
+    "selector": "button:has-text(\"ยกเลิก\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลทั่วไป",
+    "element": "บันทึก",
+    "selector": "button:has-text(\"บันทึก\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Form Tab",
+    "element": "Tab \"ข้อมูลใบกำกับภาษี\"",
+    "selector": "li:has-text(\"ข้อมูลใบกำกับภาษี\")",
+    "elementType": "tab/link",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "!",
+    "selector": "button:has-text(\"!\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "แก้ไข",
+    "selector": "button:has-text(\"แก้ไข\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ค้นหาสินค้า (ctrl + Q)",
+    "selector": "[placeholder=\"ค้นหาสินค้า (ctrl + Q)\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "รายการบิล",
+    "selector": "button:has-text(\"รายการบิล\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "บริการอื่นๆ |",
+    "selector": "button:has-text(\"บริการอื่นๆ |\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "🌡 บันทึกอุณหภูมิ & ความชื้น⚠️",
+    "selector": "button:has-text(\"🌡 บันทึกอุณหภูมิ & ความชื้น⚠️\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "บริการจัดส่ง",
+    "selector": "button:has-text(\"บริการจัดส่ง\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ประวัติการทำรายการ",
+    "selector": "button:has-text(\"ประวัติการทำรายการ\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ค้นหาลูกค้าสมาชิก (ctrl + M)",
+    "selector": "[placeholder=\"ค้นหาลูกค้าสมาชิก (ctrl + M)\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "สมัครสมาชิกใหม่",
+    "selector": "button:has-text(\"สมัครสมาชิกใหม่\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "Coupon",
+    "selector": "button:has-text(\"Coupon\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ชำระเงิน",
+    "selector": "button:has-text(\"ชำระเงิน\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "Close",
+    "selector": "[aria-label=\"Close\"]",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "* ชื่อ:",
+    "selector": "input[name=\"first_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "* นามสกุล:",
+    "selector": "input[name=\"last_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "* เบอร์โทรศัพท์มือถือ:",
+    "selector": "input[name=\"mobile_number\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "อีเมล:",
+    "selector": "input[name=\"email\"]",
+    "elementType": "input:email",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "วว/ดด/ปปปป",
+    "selector": "[placeholder=\"วว/ดด/ปปปป\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "* เพศ:",
+    "selector": "select[name=\"sex\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "สัญชาติ:",
+    "selector": "select[name=\"nationality\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "บัตรประชาชน / Passport:",
+    "selector": "input[name=\"citizen_id\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "อาชีพ:",
+    "selector": "input[name=\"occupation\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "หมู่เลือด:",
+    "selector": "select[name=\"blood_type\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ระดับราคา:",
+    "selector": "select[name=\"price_level\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ชื่อบริษัท:",
+    "selector": "input[name=\"company_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "เลขประจำตัวผู้เสียภาษี:",
+    "selector": "input[name=\"tax_id\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ผู้ติดต่อ:",
+    "selector": "input[name=\"contact_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "เบอร์ติดต่อ:",
+    "selector": "input[name=\"phone_number\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ชื่อสถานที่:",
+    "selector": "input[name=\"location_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "จังหวัด:",
+    "selector": "select[name=\"province_id\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ที่อยู่ 1:",
+    "selector": "textarea[name=\"address1\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "อำเภอ/เขต:",
+    "selector": "select[name=\"city_id\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ที่อยู่ 2:",
+    "selector": "textarea[name=\"address2\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ตำบล/แขวง:",
+    "selector": "select[name=\"district_id\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "รหัสไปรษณีย์:",
+    "selector": "input[name=\"zipcode\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "บันทึกข้อมูลเพิ่มเติม...",
+    "selector": "textarea[name=\"note\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ยกเลิก",
+    "selector": "button:has-text(\"ยกเลิก\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "บันทึก",
+    "selector": "button:has-text(\"บันทึก\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: ข้อมูลใบกำกับภาษี",
+    "element": "ปิด",
+    "selector": "button:has-text(\"ปิด\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "!",
+    "selector": "button:has-text(\"!\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "แก้ไข",
+    "selector": "button:has-text(\"แก้ไข\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ค้นหาสินค้า (ctrl + Q)",
+    "selector": "[placeholder=\"ค้นหาสินค้า (ctrl + Q)\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "รายการบิล",
+    "selector": "button:has-text(\"รายการบิล\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "บริการอื่นๆ |",
+    "selector": "button:has-text(\"บริการอื่นๆ |\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "🌡 บันทึกอุณหภูมิ & ความชื้น⚠️",
+    "selector": "button:has-text(\"🌡 บันทึกอุณหภูมิ & ความชื้น⚠️\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "บริการจัดส่ง",
+    "selector": "button:has-text(\"บริการจัดส่ง\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ประวัติการทำรายการ",
+    "selector": "button:has-text(\"ประวัติการทำรายการ\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ค้นหาลูกค้าสมาชิก (ctrl + M)",
+    "selector": "[placeholder=\"ค้นหาลูกค้าสมาชิก (ctrl + M)\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "สมัครสมาชิกใหม่",
+    "selector": "button:has-text(\"สมัครสมาชิกใหม่\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "Coupon",
+    "selector": "button:has-text(\"Coupon\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ชำระเงิน",
+    "selector": "button:has-text(\"ชำระเงิน\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "Close",
+    "selector": "[aria-label=\"Close\"]",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "* ชื่อ:",
+    "selector": "input[name=\"first_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "* นามสกุล:",
+    "selector": "input[name=\"last_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "* เบอร์โทรศัพท์มือถือ:",
+    "selector": "input[name=\"mobile_number\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "อีเมล:",
+    "selector": "input[name=\"email\"]",
+    "elementType": "input:email",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "วว/ดด/ปปปป",
+    "selector": "[placeholder=\"วว/ดด/ปปปป\"]",
+    "elementType": "input:text",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "* เพศ:",
+    "selector": "select[name=\"sex\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "สัญชาติ:",
+    "selector": "select[name=\"nationality\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "บัตรประชาชน / Passport:",
+    "selector": "input[name=\"citizen_id\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "อาชีพ:",
+    "selector": "input[name=\"occupation\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "หมู่เลือด:",
+    "selector": "select[name=\"blood_type\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ระดับราคา:",
+    "selector": "select[name=\"price_level\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ชื่อบริษัท:",
+    "selector": "input[name=\"company_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "เลขประจำตัวผู้เสียภาษี:",
+    "selector": "input[name=\"tax_id\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ผู้ติดต่อ:",
+    "selector": "input[name=\"contact_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "เบอร์ติดต่อ:",
+    "selector": "input[name=\"phone_number\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ชื่อสถานที่:",
+    "selector": "input[name=\"location_name\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "จังหวัด:",
+    "selector": "select[name=\"province_id\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ที่อยู่ 1:",
+    "selector": "textarea[name=\"address1\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "อำเภอ/เขต:",
+    "selector": "select[name=\"city_id\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ที่อยู่ 2:",
+    "selector": "textarea[name=\"address2\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ตำบล/แขวง:",
+    "selector": "select[name=\"district_id\"]",
+    "elementType": "select:select-one",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "รหัสไปรษณีย์:",
+    "selector": "input[name=\"zipcode\"]",
+    "elementType": "input:text",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "บันทึกข้อมูลเพิ่มเติม...",
+    "selector": "textarea[name=\"note\"]",
+    "elementType": "textarea:textarea",
+    "remark": ""
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ยกเลิก",
+    "selector": "button:has-text(\"ยกเลิก\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "บันทึก",
+    "selector": "button:has-text(\"บันทึก\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  },
+  {
+    "screen": "Tab: หมายเหตุและการแพ้ยา",
+    "element": "ปิด",
+    "selector": "button:has-text(\"ปิด\")",
+    "elementType": "button:button",
+    "remark": "ต้องตรวจสอบด้วย DevTools เพิ่มเติม"
+  }
+]

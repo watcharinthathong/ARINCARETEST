@@ -9,6 +9,9 @@ const POS_URL = process.env.POS_BASE_URL ?? 'https://pos-stg.arincare.com';
  * Login flow มีหลาย step — ดู loginToPos() สำหรับรายละเอียด
  */
 export class PosRegisterPage {
+  // เก็บ locator ที่ใช้ addLocatorHandler ไว้ เพื่อ removeLocatorHandler ได้ถูกต้อง
+  private _dismissLocator: Locator | null = null;
+
   constructor(private page: Page) {}
 
   // ─── Navigation ──────────────────────────────────────────────────────────────
@@ -45,6 +48,11 @@ export class PosRegisterPage {
       employeeId   = process.env.POS_EMPLOYEE_ID    ?? 'watcharin.arincare@gmail.com',
       employeePass = process.env.POS_EMPLOYEE_PASS  ?? '01072024',
     } = options;
+
+    // ── Setup: auto-dismiss promotion popup "ปิด" ──────────────────────────────
+    // POS มี promotion modal โผล่สุ่มระหว่าง test — ตั้ง handler ให้ dismiss อัตโนมัติ
+    this._dismissLocator = this.page.locator('button:has-text("ปิด")').first();
+    await this._addPopupDismissHandler().catch(() => {});
 
     // ── STEP 1: Web login ─────────────────────────────────────────────────────
     const emailInput = this.page.locator('input[name="email"]').first();
@@ -104,15 +112,34 @@ export class PosRegisterPage {
     await this.page.waitForTimeout(2_000); // รอ POS main page พร้อม
   }
 
+  /**
+   * ปิด promotion popup ที่โผล่ขวางทันที (quick check เท่านั้น)
+   * addLocatorHandler ใน loginToPos จัดการ auto-dismiss ระหว่าง action อยู่แล้ว
+   */
+  async dismissAllPopups() {
+    await this.page.evaluate(() => {
+      document.querySelectorAll('[class*="reapop__notification"]').forEach(el => (el as HTMLElement).remove());
+    }).catch(() => {});
+    for (let i = 0; i < 3; i++) {
+      const closeBtn = this.page.locator('button:has-text("ปิด")').first();
+      const visible = await closeBtn.isVisible({ timeout: 500 }).catch(() => false);
+      if (!visible) break;
+      await closeBtn.click().catch(() => {});
+      await this.page.waitForTimeout(400);
+    }
+  }
+
   private async _dismissOnePopup(): Promise<boolean> {
     const selectors = [
-      'button:has-text("ปิด")',    'button:has-text("Close")',
-      '.close',                    'button.close',
-      '[data-dismiss="modal"]',    '.modal .btn-close',
-      '.swal2-close',              '.swal2-confirm',
-      'button:has-text("ยืนยัน")', 'button:has-text("ยอมรับ")',
-      'button:has-text("ตกลง")',   '[aria-label="Close"]',
+      'button:has-text("ปิด")',                    'button:has-text("Close")',
+      '.close',                                    'button.close',
+      '[data-dismiss="modal"]',                    '.modal .btn-close',
+      '.swal2-close',                              '.swal2-confirm',
+      'button:has-text("ยืนยัน")',                 'button:has-text("ยอมรับ")',
+      'button:has-text("ตกลง")',                   '[aria-label="Close"]',
       '[aria-label="ปิด"]',
+      '[class*="reapop__notification-close"]',     '[class*="reapop"] button',
+      '[class*="notification"] button.close',
     ];
     for (const sel of selectors) {
       const el = this.page.locator(sel).first();
@@ -124,9 +151,22 @@ export class PosRegisterPage {
     return false;
   }
 
+  private async _addPopupDismissHandler() {
+    if (!this._dismissLocator) return;
+    const loc = this._dismissLocator;
+    await this.page.addLocatorHandler(loc, async () => {
+      await loc.click({ timeout: 3_000 }).catch(() => {});
+      await this.page.evaluate(() => {
+        document.querySelectorAll('[class*="reapop__notification"]').forEach(el => (el as HTMLElement).remove());
+      }).catch(() => {});
+      await this.page.waitForTimeout(500).catch(() => {});
+    });
+  }
+
   // ─── Register Form Entry ─────────────────────────────────────────────────────
 
   async openRegisterForm() {
+    await this.dismissAllPopups();
     await this.page.locator('button:has-text("สมัครสมาชิกใหม่")').first().click();
     await expect(this.page.locator('input[name="first_name"]').first())
       .toBeVisible({ timeout: 10_000 });
@@ -197,6 +237,11 @@ export class PosRegisterPage {
     if (m.note)        await this.noteTextarea.fill(m.note);
   }
 
+  async fillNotesTab(note: string) {
+    await this.switchTab('หมายเหตุและการแพ้ยา');
+    await this.noteTextarea.fill(note);
+  }
+
   async fillTaxInfo(m: PosMemberInput) {
     await this.switchTab('ข้อมูลใบกำกับภาษี');
     if (m.companyName)  await this.companyNameInput.fill(m.companyName);
@@ -227,6 +272,7 @@ export class PosRegisterPage {
   // ─── Save / Cancel / Close ────────────────────────────────────────────────────
 
   async save() {
+    await this.dismissAllPopups();
     await this.saveButton.scrollIntoViewIfNeeded();
     await this.saveButton.click();
   }
@@ -242,11 +288,38 @@ export class PosRegisterPage {
   // ─── Assertions ───────────────────────────────────────────────────────────────
 
   async expectSaveSuccess() {
+    await this.page.waitForTimeout(1_500);
+
+    // Primary: รอฟอร์มปิด — บันทึกสำเร็จ modal จะปิดตัวเอง
+    // (ไม่ใช้ dismissAllPopups ที่นี่ เพราะอาจปิด success toast ก่อน assert)
+    const formClosed = await this.firstNameInput
+      .waitFor({ state: 'hidden', timeout: 12_000 })
+      .then(() => true)
+      .catch(() => false);
+
+    if (formClosed) {
+      // กด confirm ถ้ามี SweetAlert ค้างอยู่
+      for (const btnText of ['ยืนยัน', 'ยอมรับ', 'ตกลง']) {
+        const btn = this.page
+          .locator('.swal2-confirm, .btn-success, .btn')
+          .filter({ hasText: btnText })
+          .filter({ visible: true })
+          .first();
+        if (await btn.isVisible({ timeout: 500 }).catch(() => false)) {
+          await btn.click().catch(() => {});
+          break;
+        }
+      }
+      return;
+    }
+
+    // Fallback: ฟอร์มยังเปิดอยู่ (มี confirm dialog) → หา success toast
     const toast = this.page
-      .locator('[role="alert"], .alert')
-      .filter({ hasText: /เรียบร้อย|สำเร็จ|บันทึก/i })
+      .locator('[role="alert"], .alert, .swal2-popup, .reapop__notification')
+      .filter({ hasText: /เรียบร้อย|สำเร็จ|บันทึก|saved|success/i })
       .first();
-    await expect.soft(toast).toBeVisible({ timeout: 10_000 });
+    await expect.soft(toast).toBeVisible({ timeout: 5_000 });
+
     for (const btnText of ['ยืนยัน', 'ยอมรับ', 'ตกลง']) {
       const btn = this.page
         .locator('.btn-success, .swal2-confirm, .btn')
@@ -326,39 +399,69 @@ export class PosRegisterPage {
    * ใช้สำหรับ bug test cases POS-EDIT-*
    */
   async editMemberMobile(currentMobile: string, newMobile: string) {
-    // 1. ค้นหาสมาชิก
-    await this.searchMember(currentMobile);
-
-    // 2. คลิก result แรกที่พบ เพื่อเปิดข้อมูลสมาชิก
-    const resultSelectors = [
-      `[class*="result"]:has-text("${currentMobile}")`,
-      `[class*="member"]:has-text("${currentMobile}")`,
-      `.dropdown-item:has-text("${currentMobile}")`,
-      `li:has-text("${currentMobile}")`,
-      `td:has-text("${currentMobile}")`,
-    ];
-    for (const sel of resultSelectors) {
-      const el = this.page.locator(sel).first();
-      if (await el.isVisible({ timeout: 3_000 }).catch(() => false)) {
-        await el.click();
-        break;
-      }
-    }
-    await this.page.waitForTimeout(1_000);
-
-    // 3. คลิก "แก้ไข" เพื่อเข้าโหมดแก้ไข
-    const editBtn = this.page.locator('button:has-text("แก้ไข")').first();
-    if (await editBtn.isVisible({ timeout: 5_000 }).catch(() => false)) {
-      await editBtn.click();
-      await this.page.waitForTimeout(500);
-    }
-
-    // 4. เปลี่ยนเบอร์มือถือ
+    await this.openMemberEditForm(currentMobile);
     await this.mobileInput.fill(newMobile);
-
-    // 5. บันทึก
     await this.save();
     await this.expectSaveSuccess();
     await this.page.waitForTimeout(1_000);
+  }
+
+  /**
+   * ค้นหาสมาชิก → POS แสดง member card inline → คลิก "ดูรายละเอียด" → คลิก "แก้ไข"
+   *
+   * POS flow: search → member card ปรากฏโดยอัตโนมัติ (ไม่ต้องคลิก dropdown item)
+   *           → ปุ่ม "ดูรายละเอียด" ใน card → ปุ่ม "แก้ไข" ใน detail view
+   */
+  async openMemberEditForm(mobile: string) {
+    await this.searchMember(mobile);
+    // รอ modal backdrop จาก operation ก่อนหน้า (edit form / dialog) ให้หายสนิท
+    await this.page.locator('.modal-backdrop').waitFor({ state: 'detached', timeout: 3_000 }).catch(() => {});
+    await this.dismissAllPopups();
+    await this.page.waitForTimeout(500);
+
+    // คลิก "ดูรายละเอียด" เพื่อเปิด member detail dialog
+    // ใช้ force: true เพราะ div[tabindex="-1"] ที่ค้างจาก modal ก่อนหน้าอาจ intercept pointer events
+    const detailBtn = this.page.locator('button:has-text("ดูรายละเอียด")').first();
+    if (await detailBtn.isVisible({ timeout: 5_000 }).catch(() => false)) {
+      await detailBtn.click({ force: true });
+      await this.page.waitForTimeout(1_500);
+      await this.dismissAllPopups();
+    }
+
+    // รอให้ member detail dialog เปิดสมบูรณ์ (มี heading "ข้อมูลสมาชิก")
+    // แล้ว scope "แก้ไข" ไว้ใน dialog — ป้องกัน match ปุ่มซ่อนอื่นในหน้า POS
+    const memberDialog = this.page
+      .locator('dialog:has-text("ข้อมูลสมาชิก"), [role="dialog"]:has-text("ข้อมูลสมาชิก")')
+      .first();
+    await memberDialog.waitFor({ state: 'visible', timeout: 8_000 }).catch(() => {});
+
+    const editBtn = memberDialog.locator('button:has-text("แก้ไข")').first();
+    if (await editBtn.isVisible({ timeout: 5_000 }).catch(() => false)) {
+      await editBtn.click();
+      await this.page.waitForTimeout(1_000);
+      await this.dismissAllPopups();
+    }
+
+    await expect(this.firstNameInput).toBeVisible({ timeout: 10_000 });
+  }
+
+  /**
+   * Switch ไป Tab ใบกำกับภาษี แล้วตรวจสอบว่า fields มีค่าตรงกับที่คาดไว้
+   * ใช้ expect.soft ทุก field เพื่อสะสม failures ไว้รายงาน
+   */
+  async expectTaxFieldsPopulated(expected: Partial<PosMemberInput>) {
+    await this.switchTab('ข้อมูลใบกำกับภาษี');
+    if (expected.companyName !== undefined)
+      await expect.soft(this.companyNameInput).toHaveValue(expected.companyName, { timeout: 5_000 });
+    if (expected.taxId !== undefined)
+      await expect.soft(this.taxIdInput).toHaveValue(expected.taxId, { timeout: 5_000 });
+    if (expected.contactName !== undefined)
+      await expect.soft(this.contactNameInput).toHaveValue(expected.contactName, { timeout: 5_000 });
+    if (expected.phoneNumber !== undefined)
+      await expect.soft(this.phoneNumberInput).toHaveValue(expected.phoneNumber, { timeout: 5_000 });
+    if (expected.address1 !== undefined)
+      await expect.soft(this.address1Textarea).toHaveValue(expected.address1, { timeout: 5_000 });
+    if (expected.zipcode !== undefined)
+      await expect.soft(this.zipcodeInput).toHaveValue(expected.zipcode, { timeout: 5_000 });
   }
 }

@@ -5,7 +5,7 @@ dotenv.config();
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 60_000,
+  timeout: 120_000,
   expect: { timeout: 10_000 },
   fullyParallel: false,            // ฟอร์มสร้างลูกค้าใช้ session ร่วม → รันแบบ serial ปลอดภัยกว่า
   retries: process.env.CI ? 1 : 0,

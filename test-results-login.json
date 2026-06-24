@@ -1,0 +1,43 @@
+[
+  {
+    "id": "TC-AUTH-011",
+    "scenario": "Pharmacist → Home directly",
+    "status": "FAIL",
+    "actualResult": "Login ไม่สำเร็จ - ยังอยู่หน้า login",
+    "remark": "อาจเป็นเพราะ credential ต่างจาก test file",
+    "screenshots": [
+      "AUTH-011_01_after-pharmacist-login.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-012",
+    "scenario": "Operator → must select supervisor",
+    "status": "FAIL",
+    "actualResult": "Operator เข้า Home โดยตรงโดยไม่เลือก supervisor - URL: https://telepharmacy-cms.vercel.app/select-store",
+    "remark": "Compliance Issue: ไม่บังคับเลือก Supervising Pharmacist",
+    "screenshots": [
+      "AUTH-012_01_operator-after-login.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-018",
+    "scenario": "SQL Injection in Email",
+    "status": "PASS",
+    "actualResult": "SQL Injection ถูกบล็อก ยังอยู่หน้า Login ไม่เปิดเผย DB info",
+    "remark": "ระบบรองรับ SQL Injection ได้ถูกต้อง",
+    "screenshots": [
+      "AUTH-018_01_sql-injection.png",
+      "AUTH-018_02_sql-injection-result.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-019",
+    "scenario": "Brute-force Rate Limit",
+    "status": "FAIL",
+    "actualResult": "ไม่พบ Rate Limit หลังจาก 5 ครั้ง",
+    "remark": "ไม่มี brute-force protection / Rate limiting",
+    "screenshots": [
+      "AUTH-019_01_brute-force-result.png"
+    ]
+  }
+]

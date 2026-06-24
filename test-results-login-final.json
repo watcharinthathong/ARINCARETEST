@@ -1,0 +1,128 @@
+[
+  {
+    "id": "TC-AUTH-001",
+    "scenario": "Login เภสัชกร (Happy Path)",
+    "status": "PASS",
+    "actualResult": "Login สำเร็จ → https://telepharmacy-cms.vercel.app/home",
+    "remark": "เภสัชกร login และเข้าสู่ระบบสำเร็จ",
+    "screenshots": [
+      "AUTH-001_01_login-page.png",
+      "AUTH-001_02_filled.png",
+      "AUTH-001_03_after-login.png",
+      "AUTH-001_store-selected.png",
+      "AUTH-001_after-store.png",
+      "AUTH-001_branch-selected.png",
+      "AUTH-001_after-branch.png",
+      "AUTH-001_final.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-002",
+    "scenario": "Login Operator",
+    "status": "PASS",
+    "actualResult": "Operator login สำเร็จ → https://telepharmacy-cms.vercel.app/select-supervisor",
+    "remark": "Login ผ่าน เดิน flow select-store → select-branch สำเร็จ",
+    "screenshots": [
+      "AUTH-002_01_login-page.png",
+      "AUTH-002_02_filled.png",
+      "AUTH-002_03_after-login.png",
+      "AUTH-002_store-selected.png",
+      "AUTH-002_after-store.png",
+      "AUTH-002_branch-selected.png",
+      "AUTH-002_after-branch.png",
+      "AUTH-002_final.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-003",
+    "scenario": "Login ด้วยรหัสผ่านผิด",
+    "status": "PASS",
+    "actualResult": "ยังอยู่หน้า Login, error: \"Invalid username or password.\"",
+    "remark": "ระบบแสดง error message ถูกต้อง",
+    "screenshots": [
+      "AUTH-003_01_wrong-password.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-004",
+    "scenario": "Login email ไม่มีในระบบ",
+    "status": "PASS",
+    "actualResult": "ยังอยู่หน้า Login: \"Invalid username or password.\"",
+    "remark": "ระบบไม่เปิดเผย email enumeration ถูกต้อง",
+    "screenshots": [
+      "AUTH-004_01_nonexist.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-005",
+    "scenario": "Validation ช่อง email/password ว่าง",
+    "status": "PASS",
+    "actualResult": "ยังอยู่หน้า Login หลัง click submit ช่องว่าง",
+    "remark": "HTML5 validation ทำงาน",
+    "screenshots": [
+      "AUTH-005_01_empty-form.png",
+      "AUTH-005_02_after-click.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-006",
+    "scenario": "ปุ่ม Show/Hide Password",
+    "status": "PASS",
+    "actualResult": "Show → type=\"text\", Hide → type=\"password\"",
+    "remark": "Toggle ทำงานถูกต้อง",
+    "screenshots": [
+      "AUTH-006_01_password-hidden.png",
+      "AUTH-006_02_password-shown.png",
+      "AUTH-006_03_password-hidden-again.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-011",
+    "scenario": "Pharmacist เข้า Home โดยตรง",
+    "status": "PASS",
+    "actualResult": "URL: https://telepharmacy-cms.vercel.app/home",
+    "remark": "เภสัชกรเข้า Home โดยตรง ถูกต้อง",
+    "screenshots": [
+      "AUTH-011_store-selected.png",
+      "AUTH-011_after-store.png",
+      "AUTH-011_branch-selected.png",
+      "AUTH-011_after-branch.png",
+      "AUTH-011_final.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-012",
+    "scenario": "Operator ต้องเลือก Supervising Pharmacist",
+    "status": "PASS",
+    "actualResult": "URL: https://telepharmacy-cms.vercel.app/select-supervisor – พบหน้าเลือก Supervising Pharmacist",
+    "remark": "ระบบบังคับ Operator เลือก Supervising Pharmacist ถูกต้อง (FR-L02B)",
+    "screenshots": [
+      "AUTH-012_01_after-login.png",
+      "AUTH-012_store-selected.png",
+      "AUTH-012_after-store.png",
+      "AUTH-012_branch-selected.png",
+      "AUTH-012_after-branch.png",
+      "AUTH-012_final.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-018",
+    "scenario": "SQL Injection ในช่อง username",
+    "status": "PASS",
+    "actualResult": "SQL Injection ถูกบล็อก ยังอยู่หน้า Login",
+    "remark": "ระบบป้องกัน SQL Injection ได้ถูกต้อง",
+    "screenshots": [
+      "AUTH-018_01_sql-result.png"
+    ]
+  },
+  {
+    "id": "TC-AUTH-019",
+    "scenario": "Brute-force / Rate Limit",
+    "status": "FAIL",
+    "actualResult": "ไม่พบ Rate Limit หลังพยายาม 5 ครั้ง",
+    "remark": "BUG: ไม่มี Rate Limiting / Brute-force Protection – Security Risk",
+    "screenshots": [
+      "AUTH-019_01_brute-result.png"
+    ]
+  }
+]

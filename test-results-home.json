@@ -1,0 +1,154 @@
+[
+  {
+    "id": "TC-HOME-001",
+    "scenario": "Home Page เข้าถึงได้หลัง Operator login ครบ flow",
+    "status": "PASS",
+    "actualResult": "URL: https://telepharmacy-cms.vercel.app/home",
+    "remark": "Operator login → store → branch → supervisor → home สำเร็จ",
+    "screenshots": [
+      "HOME-001_01_login.png",
+      "HOME-001_02_after-login.png",
+      "HOME-001_store-selected.png",
+      "HOME-001_branch-selected.png",
+      "HOME-001_03_after-branch.png",
+      "HOME-001_supervisor-page.png",
+      "HOME-001_supervisor-selected.png",
+      "HOME-001_after-supervisor.png",
+      "HOME-001_04_final.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-002",
+    "scenario": "Home Page มี Heading แสดงผล",
+    "status": "PASS",
+    "actualResult": "h1: \"Patient Queue\n(คิวผู้ป่วย)\" | h2: \"\"",
+    "remark": "พบ heading: \"Patient Queue\n(คิวผู้ป่วย)\"",
+    "screenshots": [
+      "HOME-002_01_login.png",
+      "HOME-002_02_after-login.png",
+      "HOME-002_store-selected.png",
+      "HOME-002_branch-selected.png",
+      "HOME-002_03_after-branch.png",
+      "HOME-002_supervisor-page.png",
+      "HOME-002_supervisor-selected.png",
+      "HOME-002_after-supervisor.png",
+      "HOME-002_04_final.png",
+      "HOME-002_heading.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-003",
+    "scenario": "Home Page มี Navigation Menu / Sidebar",
+    "status": "PASS",
+    "actualResult": "พบ sidebar items — 3 items (div[class*=\"cursor-pointer\"][class*=\"rounded-xl\"])",
+    "remark": "Sidebar navigation มีอยู่บน Home page",
+    "screenshots": [
+      "HOME-003_01_login.png",
+      "HOME-003_02_after-login.png",
+      "HOME-003_store-selected.png",
+      "HOME-003_branch-selected.png",
+      "HOME-003_03_after-branch.png",
+      "HOME-003_supervisor-page.png",
+      "HOME-003_supervisor-selected.png",
+      "HOME-003_after-supervisor.png",
+      "HOME-003_04_final.png",
+      "HOME-003_nav.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-004",
+    "scenario": "Home Page แสดงข้อมูลผู้ใช้ / Role",
+    "status": "PASS",
+    "actualResult": "showsRole=true, roleLabel=\"WAITING\n·\n14:42\"",
+    "remark": "หน้า Home แสดง role: \"WAITING\n·\n14:42\"",
+    "screenshots": [
+      "HOME-004_01_login.png",
+      "HOME-004_02_after-login.png",
+      "HOME-004_store-selected.png",
+      "HOME-004_branch-selected.png",
+      "HOME-004_03_after-branch.png",
+      "HOME-004_supervisor-page.png",
+      "HOME-004_supervisor-selected.png",
+      "HOME-004_after-supervisor.png",
+      "HOME-004_04_final.png",
+      "HOME-004_user.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-005",
+    "scenario": "Home Page แสดงข้อมูล Supervising Pharmacist ที่เลือก",
+    "status": "PASS",
+    "actualResult": "showsSupervisor=true",
+    "remark": "Home แสดงข้อมูล supervisor ที่เลือกไว้",
+    "screenshots": [
+      "HOME-005_01_login.png",
+      "HOME-005_02_after-login.png",
+      "HOME-005_store-selected.png",
+      "HOME-005_branch-selected.png",
+      "HOME-005_03_after-branch.png",
+      "HOME-005_supervisor-page.png",
+      "HOME-005_supervisor-selected.png",
+      "HOME-005_after-supervisor.png",
+      "HOME-005_04_final.png",
+      "HOME-005_supervisor-info.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-006",
+    "scenario": "Home Page มีปุ่ม Logout",
+    "status": "PASS",
+    "actualResult": "พบปุ่ม Logout ด้วย selector: footer button:has-text(\"Logout\")",
+    "remark": "Logout button ปรากฏถูกต้อง",
+    "screenshots": [
+      "HOME-006_01_login.png",
+      "HOME-006_02_after-login.png",
+      "HOME-006_store-selected.png",
+      "HOME-006_branch-selected.png",
+      "HOME-006_03_after-branch.png",
+      "HOME-006_supervisor-page.png",
+      "HOME-006_supervisor-selected.png",
+      "HOME-006_after-supervisor.png",
+      "HOME-006_04_final.png",
+      "HOME-006_logout.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-007",
+    "scenario": "Logout redirect กลับหน้า Login",
+    "status": "PASS",
+    "actualResult": "หลัง Logout URL: https://telepharmacy-cms.vercel.app/login",
+    "remark": "Logout ทำงานถูกต้อง — redirect ไป /login",
+    "screenshots": [
+      "HOME-007_01_login.png",
+      "HOME-007_02_after-login.png",
+      "HOME-007_store-selected.png",
+      "HOME-007_branch-selected.png",
+      "HOME-007_03_after-branch.png",
+      "HOME-007_supervisor-page.png",
+      "HOME-007_supervisor-selected.png",
+      "HOME-007_after-supervisor.png",
+      "HOME-007_04_final.png",
+      "HOME-007_after-logout-click.png",
+      "HOME-007_after-logout.png"
+    ]
+  },
+  {
+    "id": "TC-HOME-008",
+    "scenario": "Home Page Content Discovery (Snapshot)",
+    "status": "PASS",
+    "actualResult": "URL: https://telepharmacy-cms.vercel.app/home | h1:1 h2:0 btn:1 nav:false aside:false",
+    "remark": "body text บันทึกไว้ที่ HOME-008_body-text.txt | รวม 34 บรรทัด",
+    "screenshots": [
+      "HOME-008_01_login.png",
+      "HOME-008_02_after-login.png",
+      "HOME-008_store-selected.png",
+      "HOME-008_branch-selected.png",
+      "HOME-008_03_after-branch.png",
+      "HOME-008_supervisor-page.png",
+      "HOME-008_supervisor-selected.png",
+      "HOME-008_after-supervisor.png",
+      "HOME-008_04_final.png",
+      "HOME-008_full-snapshot.png"
+    ]
+  }
+]

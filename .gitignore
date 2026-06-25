@@ -6,3 +6,4 @@ screenshots/
 *.log
 .claude/
 temp_hdr.txt
+chat-selectors-raw.json

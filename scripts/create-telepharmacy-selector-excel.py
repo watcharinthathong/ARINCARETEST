@@ -802,6 +802,316 @@ ws6.column_dimensions["F"].width = 18
 ws6.column_dimensions["G"].width = 22
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+# Sheet 7: Chat Page — ยืนยัน selector จาก DOM inspection 2026-06-25
+# ══════════════════════════════════════════════════════════════════════════════
+CHAT_FILL   = PatternFill("solid", fgColor="1A237E")   # deep indigo — chat title
+CHAT_ROW_A  = PatternFill("solid", fgColor="E8EAF6")   # light indigo
+CHAT_ROW_B  = PatternFill("solid", fgColor="F3E5F5")   # light purple
+CHAT_ROW_C  = PatternFill("solid", fgColor="E0F2F1")   # light teal (file/attach)
+CHAT_ROW_D  = PatternFill("solid", fgColor="FFF3E0")   # light orange (bubble)
+CHAT_ROW_E  = PatternFill("solid", fgColor="FCE4EC")   # light red (close/danger)
+CHAT_ROW_F  = PatternFill("solid", fgColor="F1F8E9")   # light green (PASS)
+UNVERIFIED  = PatternFill("solid", fgColor="FFF9C4")   # yellow — not yet verified
+
+ws7 = wb.create_sheet("Chat Page")
+
+style_title(ws7, 1, 7, CHAT_FILL,
+    "Telepharmacy CMS — Chat Page Selectors  (ยืนยันจาก DOM inspection 2026-06-25)", 12)
+ws7.merge_cells("A2:G2")
+c = ws7["A2"]
+c.value = ("Chat Zone: /home (split-panel) | Zone 1=Queue List | Zone 2=Chat | "
+           "Zone 3=Patient Info | Zone 4=Prescription | Zone 5=POS")
+c.fill = PatternFill("solid", fgColor="37474F")
+c.font = Font(color="ECEFF1", size=9)
+c.alignment = CENTER
+
+HEADERS_CHAT = ["หมวด", "Element / ฟีเจอร์", "Selector (Playwright / CSS)",
+                "Tag จริง", "Class จริง (ตัดสั้น)", "สถานะ", "หมายเหตุ"]
+style_header(ws7, 3, HEADERS_CHAT)
+
+# (section, element, selector, tag, class_snippet, verified, remark)
+CHAT_DATA = [
+
+    # ── Layout / Navigation ───────────────────────────────────────────────────
+    ("__SECTION__", "LAYOUT  (Grid 5 Columns)", "", "", "", "", ""),
+
+    ("Layout",
+     "Root container",
+     "div[class*='h-screen'][class*='flex-col']",
+     "div", "h-screen flex flex-col bg-slate-100 relative",
+     "✅ ยืนยัน", "wrapper ทั้งหน้า"),
+
+    ("Layout",
+     "Grid 5 cols",
+     "div[class*='grid-cols']",
+     "div", "h-full grid grid-cols-[300px_1fr_1fr_2fr] gap-0",
+     "✅ ยืนยัน", "Zone1=300px, Zone2=1fr, Zone3=1fr, Zone4=2fr"),
+
+    ("Layout",
+     "Zone 1 – Queue List panel",
+     "div[class*='bg-white'][class*='flex-col'][class*='overflow-hidden']:first-child",
+     "div", "border-r border-slate-200 bg-white flex flex-col overflow-hidden",
+     "✅ ยืนยัน", "คอลัมน์ซ้ายสุด — รายการคิวผู้ป่วย"),
+
+    ("Layout",
+     "Zone 2 – Chat panel",
+     "div[class*='bg-slate-50'][class*='flex-col'][class*='overflow-hidden']",
+     "div", "border-r border-slate-200 bg-slate-50 flex flex-col overflow-hidden",
+     "✅ ยืนยัน", "คอลัมน์ chat messages"),
+
+    # ── Queue List (Zone 1) ───────────────────────────────────────────────────
+    ("__SECTION__", "ZONE 1 — QUEUE LIST", "", "", "", "", ""),
+
+    ("Zone 1",
+     "Patient card (clickable row)",
+     "div.flex.items-start.gap-3",
+     "div", "flex items-start gap-3",
+     "✅ ยืนยัน", "คลิกเพื่อเปิด chat ใน Zone 2 — URL ยังอยู่ที่ /home"),
+
+    ("Zone 1",
+     "Queue scrollable list",
+     "div[class*='scrollbar-thin'][class*='space-y-2']",
+     "div", "scrollbar-thin flex-1 space-y-2 overflow-y-auto bg-slate-50/40 p-3",
+     "✅ ยืนยัน", "container ของ patient cards"),
+
+    ("Zone 1",
+     "Status badge — WAITING",
+     "span:has-text('WAITING')",
+     "span", "(dynamic — badge text)",
+     "✅ ยืนยัน", ""),
+
+    ("Zone 1",
+     "Status badge — ACTIVE",
+     "span:has-text('ACTIVE')",
+     "span", "(dynamic — badge text)",
+     "✅ ยืนยัน", ""),
+
+    ("Zone 1",
+     "Status badge — CLOSED",
+     "span:has-text('CLOSED')",
+     "span", "(dynamic — badge text)",
+     "✅ ยืนยัน", "ปรากฏหลัง Close Encounter"),
+
+    ("Zone 1",
+     "Status badge — PAUSED",
+     "span:has-text('PAUSED')",
+     "span", "(dynamic — badge text)",
+     "✅ ยืนยัน", "ปรากฏหลัง Pause"),
+
+    # ── Chat Header (Zone 2 top) ───────────────────────────────────────────────
+    ("__SECTION__", "ZONE 2 — CHAT HEADER", "", "", "", "", ""),
+
+    ("Chat Header",
+     "Encounter ID ('Encounter #47')",
+     "div:has-text('Encounter #')",
+     "div", "(container ที่มีข้อความ 'Encounter #XX')",
+     "✅ ยืนยัน", "ข้อความจริงใน header: 'Encounter #47'"),
+
+    ("Chat Header",
+     "Encounter timestamp (14:42)",
+     "div[class*='text-slate-400'][class*='text-[11px]']",
+     "div", "text-[11px] text-slate-400 (approximate)",
+     "⚠️ ตรวจเพิ่ม", "อาจตรวจด้วย body text regex: /\\d{1,2}:\\d{2}\\s*น\\./"),
+
+    ("Chat Header",
+     "Pause button",
+     "button:has-text('Pause')",
+     "button", "flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg border border-sla…",
+     "✅ ยืนยัน", "ปุ่มซ้าย ใน bottom bar ของ Zone 2"),
+
+    ("Chat Header",
+     "Close Encounter button",
+     "button:has-text('Close Encounter')",
+     "button", "flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg text-xs … (สีแดง)",
+     "✅ ยืนยัน", "ปุ่มขวา — สีแดง"),
+
+    # ── Chat Message Area (Zone 2 middle) ─────────────────────────────────────
+    ("__SECTION__", "ZONE 2 — MESSAGE AREA", "", "", "", "", ""),
+
+    ("Message Area",
+     "Scrollable message container",
+     "div[class*='scrollbar-thin'][class*='space-y-3']",
+     "div", "scrollbar-thin flex-1 space-y-3 overflow-y-auto bg-slate-50 p-4",
+     "✅ ยืนยัน", "container ที่บรรจุ message bubbles"),
+
+    ("Message Area",
+     "Date badge divider",
+     "div[class*='rounded-full'][class*='ring-1']",
+     "div", "rounded-full bg-white px-3 py-1 text-[11px] font-medium text-slate-500 ring-1 ring-slate-200",
+     "✅ ยืนยัน", "แสดงวันที่กั้นกลาง เช่น '25 มิ.ย. 2569'"),
+
+    ("Message Area",
+     "Outbound bubble (operator)",
+     "div[class*='justify-end'] div[class*='bg-brand-600']",
+     "div", "rounded-2xl px-4 py-2.5 shadow-sm bg-brand-600 text-white rounded-br-md",
+     "✅ ยืนยัน", "bubble ฝั่งขวา — พื้นหลังสีน้ำเงิน (brand-600)"),
+
+    ("Message Area",
+     "Outbound container (flex-end wrapper)",
+     "div[class*='justify-end']",
+     "div", "flex justify-end",
+     "✅ ยืนยัน", ""),
+
+    ("Message Area",
+     "Message text content",
+     "div[class*='whitespace-pre-wrap']",
+     "div", "whitespace-pre-wrap text-sm leading-relaxed",
+     "✅ ยืนยัน", ""),
+
+    ("Message Area",
+     "Message timestamp (11:35 น.)",
+     "div[class*='text-[11px]'][class*='text-slate-400']",
+     "div", "mt-1 px-1 text-[11px] text-slate-400 text-right",
+     "✅ ยืนยัน", ""),
+
+    ("Message Area",
+     "Inbound bubble (patient)",
+     "div[class*='justify-start'] div[class*='rounded-2xl']",
+     "div", "(opposite of outbound — justify-start)",
+     "⚠️ อนุมาน", "ยังไม่มี inbound message ในขณะ test — ต้องส่งจาก LIFF"),
+
+    # ── Chat Input Area (Zone 2 bottom) ───────────────────────────────────────
+    ("__SECTION__", "ZONE 2 — INPUT AREA", "", "", "", "", ""),
+
+    ("Input Area",
+     "Chat message input",
+     "input[placeholder*='พิมพ์ข้อความ']",
+     "input", "h-10 flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3.5 text-sm",
+     "✅ ยืนยัน", "⚠️ เป็น input[type=text] ไม่ใช่ textarea!"),
+
+    ("Input Area",
+     "Send button (icon, square)",
+     "button[class*='bg-brand-600'][class*='h-10'][class*='w-10']",
+     "button",
+     "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-600 … disabled:opacity-40",
+     "✅ ยืนยัน",
+     "disabled=true เมื่อ input ว่าง | enabled เมื่อมีข้อความ"),
+
+    ("Input Area",
+     "Attach file (label, not button!)",
+     "label[class*='shrink-0'][class*='cursor-pointer']",
+     "label", "shrink-0 cursor-pointer",
+     "✅ ยืนยัน", "⚠️ เป็น <label> ไม่ใช่ <button>! — triggers file input"),
+
+    ("Input Area",
+     "File input (hidden)",
+     "input[type='file']",
+     "input", "hidden",
+     "✅ ยืนยัน", "display:none — trigger ผ่าน label"),
+
+    ("Input Area",
+     "Mic button",
+     "(ไม่มีใน UI ปัจจุบัน)",
+     "-", "-",
+     "❌ ไม่มี", "ไม่พบ mic button ใน DOM — send disabled/enabled แทน"),
+
+    # ── Close Encounter Dialog ─────────────────────────────────────────────────
+    ("__SECTION__", "CONFIRM DIALOG (Close Encounter)", "", "", "", "", ""),
+
+    ("Dialog",
+     "Dialog container",
+     "[role='dialog']",
+     "div",
+     "relative flex max-h-[90vh] w-full flex-col rounded-2xl bg-white shadow-2xl ring-1 … animate-fade-in max-w-md",
+     "✅ ยืนยัน", "role='dialog' aria-modal='true'"),
+
+    ("Dialog",
+     "Dialog title",
+     "[role='dialog'] h3",
+     "h3", "text-lg font-bold tracking-tight text-slate-900",
+     "✅ ยืนยัน", "ข้อความ: 'ยืนยันการจบ Session'"),
+
+    ("Dialog",
+     "Cancel button",
+     "[role='dialog'] button:has-text('ยกเลิก')",
+     "button", "… bg-white hover:bg-slate-50 … text-slate-700 border-slate-200 … h-9 px-4 text-sm …",
+     "✅ ยืนยัน", ""),
+
+    ("Dialog",
+     "Confirm button (ยืนยันจบ Session)",
+     "[role='dialog'] button:has-text('ยืนยันจบ Session')",
+     "button", "… bg-danger-600 hover:bg-danger-500 … text-white … h-9 px-4 text-sm …",
+     "✅ ยืนยัน", "สีแดง bg-danger-600"),
+
+    # ── After Close ───────────────────────────────────────────────────────────
+    ("__SECTION__", "AFTER CLOSE ENCOUNTER", "", "", "", "", ""),
+
+    ("Post-Close",
+     "Queue card CLOSED badge",
+     "span:has-text('CLOSED')",
+     "span", "(status badge in Zone 1)",
+     "✅ ยืนยัน", "ปรากฏใน Zone 1 หลังปิด encounter"),
+
+    ("Post-Close",
+     "Chat input blocked",
+     "input[placeholder*='พิมพ์ข้อความ'][disabled]",
+     "input", "(disabled attribute)",
+     "⚠️ ตรวจเพิ่ม", "อาจ disabled หรือ hidden ขึ้นกับ implementation"),
+]
+
+# Write sheet
+row = 4
+SECTION_FILLS_CHAT = {
+    "LAYOUT": PatternFill("solid", fgColor="1A237E"),
+    "ZONE 1": PatternFill("solid", fgColor="2E7D32"),
+    "ZONE 2": PatternFill("solid", fgColor="1565C0"),
+    "CONFIRM": PatternFill("solid", fgColor="B71C1C"),
+    "AFTER": PatternFill("solid", fgColor="6A1B9A"),
+}
+
+for record in CHAT_DATA:
+    if record[0] == "__SECTION__":
+        section_text = record[1]
+        sec_fill = next(
+            (f for k, f in SECTION_FILLS_CHAT.items() if k.upper() in section_text.upper()),
+            PatternFill("solid", fgColor="37474F")
+        )
+        add_section_label(ws7, row, 7, f"  {section_text}", sec_fill)
+        row += 1
+        continue
+
+    _, element, selector, tag, cls, verified, remark = record
+    # Section = record[0] used for row fill color
+    section = record[0]
+    if "Input" in section or "Zone 2" in section:
+        row_fill = CHAT_ROW_A
+    elif "Zone 1" in section or "Queue" in section:
+        row_fill = CHAT_ROW_B
+    elif "Dialog" in section:
+        row_fill = CHAT_ROW_E
+    elif "Post" in section or "After" in section:
+        row_fill = CHAT_ROW_F
+    elif "Layout" in section:
+        row_fill = EVEN_FILL
+    else:
+        row_fill = ODD_FILL
+
+    if "⚠️" in verified or "อนุมาน" in verified:
+        row_fill = UNVERIFIED
+    elif "❌" in verified:
+        row_fill = PatternFill("solid", fgColor="FFCCBC")
+
+    values = [section, element, selector, tag, cls, verified, remark]
+    for col, val in enumerate(values, start=1):
+        c = ws7.cell(row=row, column=col, value=val)
+        c.fill = row_fill
+        c.font = BLACK_NORM
+        c.alignment = LEFT
+        c.border = BORDER
+    row += 1
+
+ws7.column_dimensions["A"].width = 14
+ws7.column_dimensions["B"].width = 30
+ws7.column_dimensions["C"].width = 52
+ws7.column_dimensions["D"].width = 8
+ws7.column_dimensions["E"].width = 52
+ws7.column_dimensions["F"].width = 14
+ws7.column_dimensions["G"].width = 40
+
+ws7.freeze_panes = "A4"
+
+
 # ── Save ─────────────────────────────────────────────────────────────────────
 OUTPUT = "telepharmacy-selector-discovery/Telepharmacy_CMS_Selectors.xlsx"
 wb.save(OUTPUT)
@@ -820,3 +1130,4 @@ p(f"   Sheet 'Select Store+Branch' : {len([x for x in STORE_BRANCH_DATA if x[0] 
 p(f"   Sheet 'Supervisor+Home'     : {len([x for x in SUPER_HOME_DATA if x[0] != '__SECTION__'])} rows")
 p(f"   Sheet 'Code Snippets'       : {len(SNIPPETS)} snippets")
 p(f"   Sheet 'Summary'             : {len(SUMMARY_DATA)} selectors total")
+p(f"   Sheet 'Chat Page'           : {len([x for x in CHAT_DATA if x[0] != '__SECTION__'])} rows (verified 2026-06-25)")

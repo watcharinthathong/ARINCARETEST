@@ -1,0 +1,186 @@
+[
+  {
+    "id": "TC-CALL-001",
+    "scenario": "Incoming Voice Call Alert",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-001_cms_01_login.png",
+      "tc-call-001_cms_02_after-login.png",
+      "tc-call-001_cms_store.png",
+      "tc-call-001_cms_branch.png",
+      "tc-call-001_cms_supervisor.png",
+      "tc-call-001_cms_03_queue.png",
+      "tc-call-001_cms_queue.png",
+      "tc-call-001_liff_00_start.png",
+      "tc-call-001_liff_01_email.png",
+      "tc-call-001_liff_02_pass.png",
+      "tc-call-001_liff_03_after-login.png",
+      "tc-call-001_liff_04_after-login.png",
+      "tc-call-001_liff_05_state.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-002",
+    "scenario": "Decline สายเรียกเข้า",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-002_cms_01_login.png",
+      "tc-call-002_cms_02_after-login.png",
+      "tc-call-002_cms_store.png",
+      "tc-call-002_cms_branch.png",
+      "tc-call-002_cms_supervisor.png",
+      "tc-call-002_cms_03_queue.png",
+      "tc-call-002_liff_00_start.png",
+      "tc-call-002_liff_01_email.png",
+      "tc-call-002_liff_02_pass.png",
+      "tc-call-002_liff_03_after-login.png",
+      "tc-call-002_liff_04_after-login.png",
+      "tc-call-002_liff_05_state.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-003",
+    "scenario": "Accept Voice → Active + Timer mm:ss",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-003_cms_01_login.png",
+      "tc-call-003_cms_02_after-login.png",
+      "tc-call-003_cms_store.png",
+      "tc-call-003_cms_branch.png",
+      "tc-call-003_cms_supervisor.png",
+      "tc-call-003_cms_03_queue.png",
+      "tc-call-003_liff_00_start.png",
+      "tc-call-003_liff_01_email.png",
+      "tc-call-003_liff_02_pass.png",
+      "tc-call-003_liff_03_after-login.png",
+      "tc-call-003_liff_04_after-login.png",
+      "tc-call-003_liff_05_state.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-004",
+    "scenario": "Timer เกิน 1 ชม → HH:mm:ss",
+    "status": "SKIP",
+    "actualResult": "ไม่ได้รัน — ต้องสนทนาต่อเนื่อง 60+ นาที",
+    "remark": "SKIP: Boundary test ต้องใช้เวลาจริง 60+ นาที ไม่เหมาะกับ automated E2E",
+    "screenshots": [
+      "tc-call-004_skip.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-005",
+    "scenario": "Incoming VDO Call Alert",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-005_cms_01_login.png",
+      "tc-call-005_cms_02_after-login.png",
+      "tc-call-005_cms_store.png",
+      "tc-call-005_cms_branch.png",
+      "tc-call-005_cms_supervisor.png",
+      "tc-call-005_cms_03_queue.png",
+      "tc-call-005_liff_00_start.png",
+      "tc-call-005_liff_01_email.png",
+      "tc-call-005_liff_02_pass.png",
+      "tc-call-005_liff_03_after-login.png",
+      "tc-call-005_liff_04_after-login.png",
+      "tc-call-005_liff_05_state.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-006",
+    "scenario": "Accept VDO → Full screen + PIP + controls",
+    "status": "SKIP",
+    "actualResult": "CMS login ไม่สำเร็จ",
+    "remark": "SKIP",
+    "screenshots": [
+      "tc-call-006_cms_01_login.png",
+      "tc-call-006_cms_02_after-login.png",
+      "tc-call-006_cms_03_queue.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-007",
+    "scenario": "ห้ามสลับ patient ระหว่าง call",
+    "status": "SKIP",
+    "actualResult": "CMS login ไม่สำเร็จ",
+    "remark": "SKIP",
+    "screenshots": [
+      "tc-call-007_cms_01_login.png",
+      "tc-call-007_cms_02_after-login.png",
+      "tc-call-007_cms_store.png",
+      "tc-call-007_cms_branch.png",
+      "tc-call-007_cms_03_queue.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-008",
+    "scenario": "Call Status Indicator pulse",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-008_cms_01_login.png",
+      "tc-call-008_cms_02_after-login.png",
+      "tc-call-008_cms_store.png",
+      "tc-call-008_cms_branch.png",
+      "tc-call-008_cms_supervisor.png",
+      "tc-call-008_cms_03_queue.png",
+      "tc-call-008_liff_00_start.png",
+      "tc-call-008_liff_01_email.png",
+      "tc-call-008_liff_02_pass.png",
+      "tc-call-008_liff_03_after-login.png",
+      "tc-call-008_liff_04_after-login.png",
+      "tc-call-008_liff_05_state.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-009",
+    "scenario": "Agora SDK init camera/mic",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-009_cms_01_login.png",
+      "tc-call-009_cms_02_after-login.png",
+      "tc-call-009_cms_store.png",
+      "tc-call-009_cms_branch.png",
+      "tc-call-009_cms_supervisor.png",
+      "tc-call-009_cms_03_queue.png",
+      "tc-call-009_liff_00_start.png",
+      "tc-call-009_liff_01_email.png",
+      "tc-call-009_liff_02_pass.png",
+      "tc-call-009_liff_03_after-login.png",
+      "tc-call-009_liff_04_after-login.png",
+      "tc-call-009_liff_05_state.png"
+    ]
+  },
+  {
+    "id": "TC-CALL-010",
+    "scenario": "End call → กลับสถานะปกติ + บันทึก duration",
+    "status": "SKIP",
+    "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+    "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
+    "screenshots": [
+      "tc-call-010_cms_01_login.png",
+      "tc-call-010_cms_02_after-login.png",
+      "tc-call-010_cms_store.png",
+      "tc-call-010_cms_branch.png",
+      "tc-call-010_cms_supervisor.png",
+      "tc-call-010_cms_03_queue.png",
+      "tc-call-010_liff_00_start.png",
+      "tc-call-010_liff_01_email.png",
+      "tc-call-010_liff_02_pass.png",
+      "tc-call-010_liff_03_after-login.png",
+      "tc-call-010_liff_04_after-login.png",
+      "tc-call-010_liff_05_state.png"
+    ]
+  }
+]

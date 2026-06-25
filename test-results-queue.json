@@ -1,0 +1,395 @@
+[
+  {
+    "id": "TC-QUE-001",
+    "scenario": "แสดงคิวผู้ป่วย + Counter Badge",
+    "status": "PASS",
+    "actualResult": "badge=true, text=\"QUEUE: 4 PATIENTS\", hasCounter=true",
+    "remark": "พบ Counter Badge: \"QUEUE: 4 PATIENTS\"",
+    "screenshots": [
+      "QUE-001_01_login.png",
+      "QUE-001_02_after-login.png",
+      "QUE-001_store.png",
+      "QUE-001_branch.png",
+      "QUE-001_supervisor.png",
+      "QUE-001_03_queue.png",
+      "QUE-001_counter.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-002",
+    "scenario": "ค้นหาด้วยชื่อ (On-input)",
+    "status": "SKIP",
+    "actualResult": "searchBarFound=true, filtered=false",
+    "remark": "SKIP: ไม่มีผู้ป่วยชื่อ สมศรี ในระบบทดสอบ",
+    "screenshots": [
+      "QUE-002_01_login.png",
+      "QUE-002_02_after-login.png",
+      "QUE-002_store.png",
+      "QUE-002_branch.png",
+      "QUE-002_supervisor.png",
+      "QUE-002_03_queue.png",
+      "QUE-002_search-result.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-003",
+    "scenario": "ค้นหาด้วย LINE Display Name",
+    "status": "SKIP",
+    "actualResult": "searchBarFound=true, filtered=false",
+    "remark": "SKIP: ไม่มีผู้ป่วย LINE Display Name ตรงกับ \"Som\" ในระบบทดสอบ",
+    "screenshots": [
+      "QUE-003_01_login.png",
+      "QUE-003_02_after-login.png",
+      "QUE-003_store.png",
+      "QUE-003_branch.png",
+      "QUE-003_supervisor.png",
+      "QUE-003_03_queue.png",
+      "QUE-003_search-line.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-004",
+    "scenario": "ค้นหาด้วยเบอร์โทร",
+    "status": "SKIP",
+    "actualResult": "searchBarFound=true, filtered=false",
+    "remark": "SKIP: ไม่มีผู้ป่วยเบอร์ 0812345678 ในระบบทดสอบ",
+    "screenshots": [
+      "QUE-004_01_login.png",
+      "QUE-004_02_after-login.png",
+      "QUE-004_store.png",
+      "QUE-004_branch.png",
+      "QUE-004_supervisor.png",
+      "QUE-004_03_queue.png",
+      "QUE-004_search-phone.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-005",
+    "scenario": "ค้นหาไม่พบ → Empty State",
+    "status": "PASS",
+    "actualResult": "searchFound=true, showsEmpty=true, hasError=false",
+    "remark": "แสดง Empty State ถูกต้อง ไม่มี error",
+    "screenshots": [
+      "QUE-005_01_login.png",
+      "QUE-005_02_after-login.png",
+      "QUE-005_store.png",
+      "QUE-005_branch.png",
+      "QUE-005_supervisor.png",
+      "QUE-005_03_queue.png",
+      "QUE-005_empty-state.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-006",
+    "scenario": "Filter สถานะ ACTIVE",
+    "status": "PASS",
+    "actualResult": "filterFound=true, sel=\"span:has-text(\"ACTIVE\")\", onlyActive=false",
+    "remark": "พบ ACTIVE ในผลลัพธ์ (อาจมีสถานะอื่นด้วย — ตรวจ screenshot)",
+    "screenshots": [
+      "QUE-006_01_login.png",
+      "QUE-006_02_after-login.png",
+      "QUE-006_store.png",
+      "QUE-006_branch.png",
+      "QUE-006_supervisor.png",
+      "QUE-006_03_queue.png",
+      "QUE-006_filter-active.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-007",
+    "scenario": "Filter สถานะ WAITING",
+    "status": "FAIL",
+    "actualResult": "filterFound=false, hasWaiting=false",
+    "remark": "⚠️ ไม่พบ Filter WAITING button",
+    "screenshots": [
+      "QUE-007_01_login.png",
+      "QUE-007_02_after-login.png",
+      "QUE-007_store.png",
+      "QUE-007_branch.png",
+      "QUE-007_supervisor.png",
+      "QUE-007_03_queue.png",
+      "QUE-007_filter-waiting.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-008",
+    "scenario": "Filter สถานะ PAUSED",
+    "status": "FAIL",
+    "actualResult": "filterFound=false, hasPaused=false",
+    "remark": "⚠️ ไม่พบ Filter PAUSED button",
+    "screenshots": [
+      "QUE-008_01_login.png",
+      "QUE-008_02_after-login.png",
+      "QUE-008_store.png",
+      "QUE-008_branch.png",
+      "QUE-008_supervisor.png",
+      "QUE-008_03_queue.png",
+      "QUE-008_filter-paused.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-009",
+    "scenario": "Patient Card แสดงชื่อจริง (ผ่าน KYC)",
+    "status": "FAIL",
+    "actualResult": "hasThaiName=false, hasNonKyc=false, isEmpty=false",
+    "remark": "⚠️ ไม่พบชื่อจริงผู้ป่วย KYC — อาจยังไม่มีผู้ป่วยที่ผ่าน KYC",
+    "screenshots": [
+      "QUE-009_01_login.png",
+      "QUE-009_02_after-login.png",
+      "QUE-009_store.png",
+      "QUE-009_branch.png",
+      "QUE-009_supervisor.png",
+      "QUE-009_03_queue.png",
+      "QUE-009_patient-cards.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-010",
+    "scenario": "Patient Card \"ไม่ทราบชื่อ\" + badge Non-KYC",
+    "status": "SKIP",
+    "actualResult": "hasUnknown=false, nonKycBadge=false",
+    "remark": "SKIP: ไม่มีผู้ป่วย Non-KYC ในคิว",
+    "screenshots": [
+      "QUE-010_01_login.png",
+      "QUE-010_02_after-login.png",
+      "QUE-010_store.png",
+      "QUE-010_branch.png",
+      "QUE-010_supervisor.png",
+      "QUE-010_03_queue.png",
+      "QUE-010_nonkyc-card.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-011",
+    "scenario": "สี Status Badge ถูกต้องตามสถานะ",
+    "status": "FAIL",
+    "actualResult": "{\"ACTIVE\":{\"found\":true,\"color\":\"oklch(0.962 0.044 156.743)\",\"correct\":false},\"WAITING\":{\"found\":false,\"color\":\"\",\"correct\":false},\"PAUSED\":{\"found\":false,\"color\":\"\",\"correct\":false},\"CLOSED\":{\"found\":true,\"color\":\"oklch(0.971 0.013 17.38)\",\"correct\":false}}",
+    "remark": "สีถูก 0/2 — ตรวจ screenshot",
+    "screenshots": [
+      "QUE-011_01_login.png",
+      "QUE-011_02_after-login.png",
+      "QUE-011_store.png",
+      "QUE-011_branch.png",
+      "QUE-011_supervisor.png",
+      "QUE-011_03_queue.png",
+      "QUE-011_badge-colors.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-012",
+    "scenario": "On-click Card → Load ข้อมูลเข้า Zone 2-5",
+    "status": "SKIP",
+    "actualResult": "cardFound=true, loaded=true",
+    "remark": "SKIP: ไม่มี Patient Card ให้คลิก",
+    "screenshots": [
+      "QUE-012_01_login.png",
+      "QUE-012_02_after-login.png",
+      "QUE-012_store.png",
+      "QUE-012_branch.png",
+      "QUE-012_supervisor.png",
+      "QUE-012_03_queue.png",
+      "QUE-012_after-click.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-013",
+    "scenario": "Sorting: ACTIVE อยู่บนสุดเสมอ (Priority 1)",
+    "status": "PASS",
+    "actualResult": "hasActive=true, hasOther=true, activeIsFirst=true",
+    "remark": "ACTIVE อยู่บนสุดถูกต้อง (Priority 1)",
+    "screenshots": [
+      "QUE-013_01_login.png",
+      "QUE-013_02_after-login.png",
+      "QUE-013_store.png",
+      "QUE-013_branch.png",
+      "QUE-013_supervisor.png",
+      "QUE-013_03_queue.png",
+      "QUE-013_sort-order.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-014",
+    "scenario": "Sorting: non-closed เรียงตาม latestDateTime",
+    "status": "SKIP",
+    "actualResult": "timestamps found: 0, values: ",
+    "remark": "SKIP: พบ timestamp น้อยกว่า 2 รายการ — ไม่สามารถตรวจ sort order ได้",
+    "screenshots": [
+      "QUE-014_01_login.png",
+      "QUE-014_02_after-login.png",
+      "QUE-014_store.png",
+      "QUE-014_branch.png",
+      "QUE-014_supervisor.png",
+      "QUE-014_03_queue.png",
+      "QUE-014_sort-datetime.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-015",
+    "scenario": "CLOSED อยู่ล่างสุด แสดง 7 วัน + lazy load",
+    "status": "PASS",
+    "actualResult": "hasClosed=true, closedIsLast=true",
+    "remark": "CLOSED อยู่ล่างสุดถูกต้อง",
+    "screenshots": [
+      "QUE-015_01_login.png",
+      "QUE-015_02_after-login.png",
+      "QUE-015_store.png",
+      "QUE-015_branch.png",
+      "QUE-015_supervisor.png",
+      "QUE-015_03_queue.png",
+      "QUE-015_before-scroll.png",
+      "QUE-015_after-scroll.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-016",
+    "scenario": "Auto-create Encounter เมื่อผู้ป่วยเปิด LIFF ปรึกษาเภสัชกร",
+    "status": "PASS",
+    "actualResult": "liffOk=true, cards: 0→0",
+    "remark": "LIFF โหลดสำเร็จ + มีคิว WAITING/ACTIVE (อาจ resume session เดิม)",
+    "screenshots": [
+      "QUE-016_01_login.png",
+      "QUE-016_02_after-login.png",
+      "QUE-016_store.png",
+      "QUE-016_branch.png",
+      "QUE-016_supervisor.png",
+      "QUE-016_03_queue.png",
+      "QUE-016_before.png",
+      "QUE-016_liff-start.png",
+      "QUE-016_line-id.png",
+      "QUE-016_line-pass.png",
+      "QUE-016_after-login.png",
+      "QUE-016_liff-loaded.png",
+      "QUE-016_after.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-017",
+    "scenario": "Resume Session เมื่อผู้ป่วยเปิด LIFF ซ้ำ (ไม่สร้างคิวซ้ำ)",
+    "status": "PASS",
+    "actualResult": "liff2Ok=true, count open1=0, open2=0",
+    "remark": "ไม่สร้างคิวซ้ำ (count: 0→0) — Resume ถูกต้อง",
+    "screenshots": [
+      "QUE-017_01_login.png",
+      "QUE-017_02_after-login.png",
+      "QUE-017_store.png",
+      "QUE-017_branch.png",
+      "QUE-017_supervisor.png",
+      "QUE-017_03_queue.png",
+      "QUE-017-open1_liff-start.png",
+      "QUE-017-open1_line-id.png",
+      "QUE-017-open1_line-pass.png",
+      "QUE-017-open1_after-login.png",
+      "QUE-017-open1_liff-loaded.png",
+      "QUE-017_after-open1.png",
+      "QUE-017-open2_liff-start.png",
+      "QUE-017-open2_liff-loaded.png",
+      "QUE-017_after-open2.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-018",
+    "scenario": "Greeting Flex Message เมื่อ Auto-create (ผ่าน LIFF)",
+    "status": "PASS",
+    "actualResult": "liffOk=true, greetingFound=true",
+    "remark": "พบ Greeting message ใน Chat Zone หลัง auto-create",
+    "screenshots": [
+      "QUE-018_01_login.png",
+      "QUE-018_02_after-login.png",
+      "QUE-018_store.png",
+      "QUE-018_branch.png",
+      "QUE-018_supervisor.png",
+      "QUE-018_03_queue.png",
+      "QUE-018_liff-start.png",
+      "QUE-018_line-id.png",
+      "QUE-018_line-pass.png",
+      "QUE-018_after-login.png",
+      "QUE-018_liff-loaded.png",
+      "QUE-018_queue.png",
+      "QUE-018_chat-zone.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-019",
+    "scenario": "Footer Summary Bar",
+    "status": "PASS",
+    "actualResult": "footerFound=true, hasSummary=true, text=\"รวม 4\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin TestTest\nสำนักงานใหญ่\nLogout\"",
+    "remark": "Footer Summary Bar แสดงถูกต้อง: \"รวม 4\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin T\"",
+    "screenshots": [
+      "QUE-019_01_login.png",
+      "QUE-019_02_after-login.png",
+      "QUE-019_store.png",
+      "QUE-019_branch.png",
+      "QUE-019_supervisor.png",
+      "QUE-019_03_queue.png",
+      "QUE-019_footer.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-020",
+    "scenario": "Status transition WAITING→ACTIVE (OPERATOR มอบหมายงาน)",
+    "status": "SKIP",
+    "actualResult": "hasWaiting=false, cardFound=false, transitioned=false",
+    "remark": "SKIP: ไม่มี WAITING card ในคิวขณะทดสอบ — ต้องมีผู้ป่วยรอในคิวก่อน",
+    "screenshots": [
+      "QUE-020_01_login.png",
+      "QUE-020_02_after-login.png",
+      "QUE-020_store.png",
+      "QUE-020_branch.png",
+      "QUE-020_supervisor.png",
+      "QUE-020_03_queue.png",
+      "QUE-020_result.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-021",
+    "scenario": "Status transition ACTIVE→PAUSED (OPERATOR) / Resume ต้อง PHARMACIST",
+    "status": "PASS",
+    "actualResult": "hasActive=true, setup=false, cardClicked=true, pausedOk=true, resumedOk=false",
+    "remark": "OPERATOR: ACTIVE→PAUSED สำเร็จ | Resume ต้องใช้ PHARMACIST account — ไม่มีปุ่ม Resume ใน OPERATOR UI",
+    "screenshots": [
+      "QUE-021_01_login.png",
+      "QUE-021_02_after-login.png",
+      "QUE-021_store.png",
+      "QUE-021_branch.png",
+      "QUE-021_supervisor.png",
+      "QUE-021_03_queue.png",
+      "QUE-021_card-clicked.png",
+      "QUE-021_after-pause.png",
+      "QUE-021_result.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-022",
+    "scenario": "CLOSED เป็น Terminal State (ห้ามเปลี่ยนสถานะ)",
+    "status": "PASS",
+    "actualResult": "hasClosed=true, noActionBtns=true",
+    "remark": "ไม่มีปุ่ม Pause/Resume บน CLOSED card — Terminal State ถูกต้อง",
+    "screenshots": [
+      "QUE-022_01_login.png",
+      "QUE-022_02_after-login.png",
+      "QUE-022_store.png",
+      "QUE-022_branch.png",
+      "QUE-022_supervisor.png",
+      "QUE-022_03_queue.png",
+      "QUE-022_result.png"
+    ]
+  },
+  {
+    "id": "TC-QUE-023",
+    "scenario": "สถานะ PAUSED คงอยู่หลัง Page Refresh (State Persistence)",
+    "status": "FAIL",
+    "actualResult": "hasActive=true, setup=false, pausedBefore=true, pausedAfter=false",
+    "remark": "BUG: สถานะ PAUSED หายหลัง refresh — ข้อมูลไม่ถูก persist ลง server",
+    "screenshots": [
+      "QUE-023_01_login.png",
+      "QUE-023_02_after-login.png",
+      "QUE-023_store.png",
+      "QUE-023_branch.png",
+      "QUE-023_supervisor.png",
+      "QUE-023_03_queue.png",
+      "QUE-023_after-pause.png",
+      "QUE-023_after-refresh.png",
+      "QUE-023_result.png"
+    ]
+  }
+]

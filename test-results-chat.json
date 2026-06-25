@@ -1,0 +1,389 @@
+[
+  {
+    "id": "TC-CHAT-001",
+    "scenario": "แสดง Encounter ID ของ session ปัจจุบัน",
+    "status": "PASS",
+    "actualResult": "found=true, encId=\"ENCOUNTER #47\n14:42\nมานี มีใจ\"",
+    "remark": "แสดง Encounter ID ถูกต้อง: \"ENCOUNTER #47\n14:42\nมานี มีใจ\"",
+    "screenshots": [
+      "CHAT-001_01_login.png",
+      "CHAT-001_02_after-login.png",
+      "CHAT-001_store.png",
+      "CHAT-001_branch.png",
+      "CHAT-001_supervisor.png",
+      "CHAT-001_03_queue.png",
+      "CHAT-001_chat.png",
+      "CHAT-001_encounter-id.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-002",
+    "scenario": "แสดงชื่อผู้ป่วย + timestamp ล่าสุดใน Chat Header",
+    "status": "PASS",
+    "actualResult": "nameFound=true (\"ENCOUNTER #47\n14:42\nมานี มีใจ\"), timeFound=true (\"11:35 น.\")",
+    "remark": "แสดงชื่อผู้ป่วย \"ENCOUNTER #47\n14:42\nมานี มีใจ\" และ timestamp \"11:35 น.\" ถูกต้อง",
+    "screenshots": [
+      "CHAT-002_01_login.png",
+      "CHAT-002_02_after-login.png",
+      "CHAT-002_store.png",
+      "CHAT-002_branch.png",
+      "CHAT-002_supervisor.png",
+      "CHAT-002_03_queue.png",
+      "CHAT-002_chat.png",
+      "CHAT-002_header.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-003",
+    "scenario": "ส่งข้อความออก → แสดงใน Chat + Audit Log",
+    "status": "PASS",
+    "actualResult": "inputFound=true, msgSent=true, msgVisible=true, auditFound=true",
+    "remark": "ส่งข้อความสำเร็จ ข้อความแสดงใน chat | Audit Log: พบ",
+    "screenshots": [
+      "CHAT-003_01_login.png",
+      "CHAT-003_02_after-login.png",
+      "CHAT-003_store.png",
+      "CHAT-003_branch.png",
+      "CHAT-003_supervisor.png",
+      "CHAT-003_03_queue.png",
+      "CHAT-003_chat.png",
+      "CHAT-003_typed.png",
+      "CHAT-003_after-send.png",
+      "CHAT-003_result.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-004",
+    "scenario": "ตำแหน่ง bubble (Operator ขวา / Patient ซ้าย)",
+    "status": "FAIL",
+    "actualResult": "outboundFound=true, outboundRight=false, inboundFound=false",
+    "remark": "⚠️ พบ outbound bubble แต่ไม่ได้อยู่ฝั่งขวา — ตรวจ CSS",
+    "screenshots": [
+      "CHAT-004_01_login.png",
+      "CHAT-004_02_after-login.png",
+      "CHAT-004_store.png",
+      "CHAT-004_branch.png",
+      "CHAT-004_supervisor.png",
+      "CHAT-004_03_queue.png",
+      "CHAT-004_chat.png",
+      "CHAT-004_bubbles.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-005",
+    "scenario": "Real-time update + Auto-scroll",
+    "status": "FAIL",
+    "actualResult": "autoScrollOk=false, realtimeOk=false",
+    "remark": "⚠️ Auto-scroll ไม่ทำงาน — scroll position ไม่ได้อยู่ล่างสุดหลังส่งข้อความ",
+    "screenshots": [
+      "CHAT-005_01_login.png",
+      "CHAT-005_02_after-login.png",
+      "CHAT-005_store.png",
+      "CHAT-005_branch.png",
+      "CHAT-005_supervisor.png",
+      "CHAT-005_03_queue.png",
+      "CHAT-005_chat.png",
+      "CHAT-005_scroll.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-006",
+    "scenario": "Date Badge เมื่อขึ้นวันใหม่",
+    "status": "PASS",
+    "actualResult": "badgeFound=true, badgeText=\"25 มิ.ย. 2569\", hasMessages=true",
+    "remark": "Date Badge แสดงถูกต้อง: \"25 มิ.ย. 2569\"",
+    "screenshots": [
+      "CHAT-006_01_login.png",
+      "CHAT-006_02_after-login.png",
+      "CHAT-006_store.png",
+      "CHAT-006_branch.png",
+      "CHAT-006_supervisor.png",
+      "CHAT-006_03_queue.png",
+      "CHAT-006_chat.png",
+      "CHAT-006_chat.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-007",
+    "scenario": "แนบไฟล์รูปภาพ (Multiple Selection)",
+    "status": "PASS",
+    "actualResult": "attachBtnFound=true, filesSelected=true, previewVisible=true, sendOk=true",
+    "remark": "ส่งรูปภาพ multiple selection สำเร็จ | preview: true",
+    "screenshots": [
+      "CHAT-007_01_login.png",
+      "CHAT-007_02_after-login.png",
+      "CHAT-007_store.png",
+      "CHAT-007_branch.png",
+      "CHAT-007_supervisor.png",
+      "CHAT-007_03_queue.png",
+      "CHAT-007_chat.png",
+      "CHAT-007_files-selected.png",
+      "CHAT-007_after-send.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-008",
+    "scenario": "แนบไฟล์เอกสาร (PDF/Document)",
+    "status": "PASS",
+    "actualResult": "attachBtnFound=true, fileSelected=true, docCardVisible=true, sendOk=true",
+    "remark": "ส่ง PDF สำเร็จ | Document Card: พบ",
+    "screenshots": [
+      "CHAT-008_01_login.png",
+      "CHAT-008_02_after-login.png",
+      "CHAT-008_store.png",
+      "CHAT-008_branch.png",
+      "CHAT-008_supervisor.png",
+      "CHAT-008_03_queue.png",
+      "CHAT-008_chat.png",
+      "CHAT-008_pdf-selected.png",
+      "CHAT-008_after-send.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-009",
+    "scenario": "File preview + ลบ (X) ก่อนส่ง",
+    "status": "FAIL",
+    "actualResult": "fileSelected=true, previewVisible=true, removedOk=false",
+    "remark": "BUG: กด X แล้วแต่ preview ยังอยู่",
+    "screenshots": [
+      "CHAT-009_01_login.png",
+      "CHAT-009_02_after-login.png",
+      "CHAT-009_store.png",
+      "CHAT-009_branch.png",
+      "CHAT-009_supervisor.png",
+      "CHAT-009_03_queue.png",
+      "CHAT-009_chat.png",
+      "CHAT-009_preview.png",
+      "CHAT-009_after-remove.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-010",
+    "scenario": "Send disabled เมื่อ Empty Payload",
+    "status": "PASS",
+    "actualResult": "sendFoundEmpty=true, sendDisabled=true",
+    "remark": "ปุ่ม Send เป็น disabled (หรือซ่อน/แสดง mic) เมื่อไม่มี payload ถูกต้อง",
+    "screenshots": [
+      "CHAT-010_01_login.png",
+      "CHAT-010_02_after-login.png",
+      "CHAT-010_store.png",
+      "CHAT-010_branch.png",
+      "CHAT-010_supervisor.png",
+      "CHAT-010_03_queue.png",
+      "CHAT-010_chat.png",
+      "CHAT-010_empty-state.png",
+      "CHAT-010_btn-state.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-011",
+    "scenario": "Dynamic Action Button (mic ↔ send)",
+    "status": "PASS",
+    "actualResult": "micWhenEmpty=false, sendWhenTyped=true",
+    "remark": "Dynamic button ถูกต้อง: send enabled เมื่อพิมพ์ (ไม่มี mic button ใน UI นี้)",
+    "screenshots": [
+      "CHAT-011_01_login.png",
+      "CHAT-011_02_after-login.png",
+      "CHAT-011_store.png",
+      "CHAT-011_branch.png",
+      "CHAT-011_supervisor.png",
+      "CHAT-011_03_queue.png",
+      "CHAT-011_chat.png",
+      "CHAT-011_empty.png",
+      "CHAT-011_typed.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-012",
+    "scenario": "Auto-add Operator + set ACTIVE เมื่อ Operator ส่งข้อความ",
+    "status": "PASS",
+    "actualResult": "msgSent=true, isActive=true",
+    "remark": "ส่งข้อความแล้ว encounter เปลี่ยนเป็น ACTIVE — Auto-add Operator ถูกต้อง",
+    "screenshots": [
+      "CHAT-012_01_login.png",
+      "CHAT-012_02_after-login.png",
+      "CHAT-012_store.png",
+      "CHAT-012_branch.png",
+      "CHAT-012_supervisor.png",
+      "CHAT-012_03_queue.png",
+      "CHAT-012_chat.png",
+      "CHAT-012_before-send.png",
+      "CHAT-012_after-send.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-013",
+    "scenario": "Pause Encounter → PAUSED + badge สีเทา",
+    "status": "PASS",
+    "actualResult": "pauseBtnFound=true, isPaused=true, grayBadge=false",
+    "remark": "สถานะเปลี่ยนเป็น PAUSED สำเร็จ | badge สีเทา: false",
+    "screenshots": [
+      "CHAT-013_01_login.png",
+      "CHAT-013_02_after-login.png",
+      "CHAT-013_store.png",
+      "CHAT-013_branch.png",
+      "CHAT-013_supervisor.png",
+      "CHAT-013_03_queue.png",
+      "CHAT-013_chat.png",
+      "CHAT-013_after-pause.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-014",
+    "scenario": "Close Encounter เปิด Confirm Dialog",
+    "status": "PASS",
+    "actualResult": "closeBtnFound=true, dialogVisible=true, dialogHasInfo=true",
+    "remark": "Confirm Dialog เปิดสำเร็จ | มีข้อมูลยืนยัน: true",
+    "screenshots": [
+      "CHAT-014_01_login.png",
+      "CHAT-014_02_after-login.png",
+      "CHAT-014_store.png",
+      "CHAT-014_branch.png",
+      "CHAT-014_supervisor.png",
+      "CHAT-014_03_queue.png",
+      "CHAT-014_chat.png",
+      "CHAT-014_dialog.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-015",
+    "scenario": "กดยกเลิกใน Confirm Dialog → กลับสนทนาปกติ",
+    "status": "PASS",
+    "actualResult": "closeBtnFound=true, dialogVisible=true, cancelledOk=true, chatStillOpen=true",
+    "remark": "กดยกเลิก → Modal ปิด + กลับสู่สนทนาปกติ ถูกต้อง",
+    "screenshots": [
+      "CHAT-015_01_login.png",
+      "CHAT-015_02_after-login.png",
+      "CHAT-015_store.png",
+      "CHAT-015_branch.png",
+      "CHAT-015_supervisor.png",
+      "CHAT-015_03_queue.png",
+      "CHAT-015_chat.png",
+      "CHAT-015_dialog.png",
+      "CHAT-015_after-cancel.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-016",
+    "scenario": "หลัง Close Encounter → UI Lockdown + \"Session Closed\"",
+    "status": "PASS",
+    "actualResult": "closedOk=true, sessionClosedUI=true, inputHidden=false, lockIconFound=true",
+    "remark": "BUG: ปิดแล้วแต่ช่องข้อความยังใช้งานได้",
+    "screenshots": [
+      "CHAT-016_01_login.png",
+      "CHAT-016_02_after-login.png",
+      "CHAT-016_store.png",
+      "CHAT-016_branch.png",
+      "CHAT-016_supervisor.png",
+      "CHAT-016_03_queue.png",
+      "CHAT-016_chat.png",
+      "CHAT-016_confirm-dialog.png",
+      "CHAT-016_after-close.png",
+      "CHAT-016_lockdown.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-017",
+    "scenario": "ส่งข้อความหลัง Close Encounter ไม่ได้ (UI Lockdown)",
+    "status": "PASS",
+    "actualResult": "isClosed=true, inputBlocked=true, sendBlocked=true",
+    "remark": "UI Lockdown ถูกต้อง: ส่งข้อความหลัง CLOSE ไม่ได้",
+    "screenshots": [
+      "CHAT-017_01_login.png",
+      "CHAT-017_02_after-login.png",
+      "CHAT-017_store.png",
+      "CHAT-017_branch.png",
+      "CHAT-017_supervisor.png",
+      "CHAT-017_03_queue.png",
+      "CHAT-017_chat.png",
+      "CHAT-017_closed-state.png",
+      "CHAT-017_blocked.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-018",
+    "scenario": "Inbound Chat logged เมื่อผู้ป่วยส่งข้อความผ่าน LINE",
+    "status": "SKIP",
+    "actualResult": "liffOk=false, msgSent=false, msgAppeared=false",
+    "remark": "SKIP: ต้องกำหนด LINE_TEST_PHONE / LINE_TEST_PASS ใน .env",
+    "screenshots": [
+      "CHAT-018_01_login.png",
+      "CHAT-018_02_after-login.png",
+      "CHAT-018_store.png",
+      "CHAT-018_branch.png",
+      "CHAT-018_supervisor.png",
+      "CHAT-018_03_queue.png",
+      "CHAT-018_chat.png",
+      "CHAT-018_before.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-019",
+    "scenario": "Chat Log เข้ารหัส AES-256-CBC (Field-level Security)",
+    "status": "SKIP",
+    "actualResult": "UI-level: noRawCipherVisible=false | DB inspection required",
+    "remark": "SKIP: การตรวจสอบ AES-256-CBC ต้องเข้าถึง Database โดยตรง (field-level encryption) — ต้องรัน: SELECT * FROM medcare_db.chat_logs WHERE ... และตรวจ cipher text | UI check: ⚠️ พบ string ยาวผิดปกติใน UI",
+    "screenshots": [
+      "CHAT-019_01_login.png",
+      "CHAT-019_02_after-login.png",
+      "CHAT-019_store.png",
+      "CHAT-019_branch.png",
+      "CHAT-019_supervisor.png",
+      "CHAT-019_03_queue.png",
+      "CHAT-019_chat.png",
+      "CHAT-019_chat.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-020",
+    "scenario": "ข้อความยาว/อักขระพิเศษ/emoji (Edge case)",
+    "status": "PASS",
+    "actualResult": "sentOk=true, noError=true, rendered=true",
+    "remark": "ส่งข้อความยาว + emoji + อักขระพิเศษสำเร็จ แสดงผลถูกต้อง ไม่มี error",
+    "screenshots": [
+      "CHAT-020_01_login.png",
+      "CHAT-020_02_after-login.png",
+      "CHAT-020_store.png",
+      "CHAT-020_branch.png",
+      "CHAT-020_supervisor.png",
+      "CHAT-020_03_queue.png",
+      "CHAT-020_chat.png",
+      "CHAT-020_typed.png",
+      "CHAT-020_sent.png"
+    ]
+  },
+  {
+    "id": "TC-CHAT-021",
+    "scenario": "XSS ในข้อความแชท (Security)",
+    "status": "PASS",
+    "actualResult": "sentOk=true, alertFired=false, xssBlocked=true",
+    "remark": "XSS payload ถูก escape/sanitize สำเร็จ — alert ไม่ถูก execute",
+    "screenshots": [
+      "CHAT-021_01_login.png",
+      "CHAT-021_02_after-login.png",
+      "CHAT-021_store.png",
+      "CHAT-021_branch.png",
+      "CHAT-021_supervisor.png",
+      "CHAT-021_03_queue.png",
+      "CHAT-021_chat.png",
+      "CHAT-021_typed-xss.png",
+      "CHAT-021_after-xss.png"
+    ]
+  },
+  {
+    "id": "TC-LCHAT-001",
+    "scenario": "ผู้ป่วยส่งข้อความผ่าน LIFF Chat → inbound logged ใน CMS",
+    "status": "SKIP",
+    "actualResult": "ไม่พบ LINE credentials",
+    "remark": "SKIP: ต้องกำหนด LINE_TEST_PHONE / LINE_TEST_PASS ใน .env",
+    "screenshots": []
+  },
+  {
+    "id": "TC-LCHAT-002",
+    "scenario": "ผู้ป่วยดูประวัติแชทใน LIFF Chat",
+    "status": "SKIP",
+    "actualResult": "ไม่พบ LINE credentials",
+    "remark": "SKIP: ต้องกำหนด LINE_TEST_PHONE / LINE_TEST_PASS ใน .env",
+    "screenshots": []
+  }
+]

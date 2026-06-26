@@ -27,5 +27,24 @@ export default defineConfig({
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    {
+      name: 'mobile-liff',
+      use: {
+        browserName: 'chromium',
+        ...devices['iPhone 13'],
+        locale: 'th-TH',
+        timezoneId: 'Asia/Bangkok',
+        permissions: ['camera', 'geolocation'],
+        launchOptions: {
+          // ใช้ fake camera device แทน webcam จริง
+          // → Chromium แสดง test pattern video ให้ KYC step ถ่ายรูปได้โดยไม่ต้องมีกล้องจริง
+          args: [
+            '--use-fake-device-for-media-stream',
+            '--use-fake-ui-for-media-stream',
+          ],
+        },
+      },
+      testMatch: ['**/liff-patient.spec.ts', '**/liff-ekyc.spec.ts'],
+    },
   ],
 });

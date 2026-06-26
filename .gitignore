@@ -7,3 +7,7 @@ screenshots/
 .claude/
 temp_hdr.txt
 chat-selectors-raw.json
+
+# Security: credentials & session tokens — DO NOT COMMIT
+arincare-test-108540e51ee3.json
+liff-session.json

@@ -391,14 +391,29 @@ async function openLiffAndSendMessage(
     const idInput = liffPage.locator('input[name="tid"], input[type="tel"], input[type="email"]').first();
     if (await idInput.isVisible({ timeout: 8_000 }).catch(() => false)) {
       await idInput.fill(LINE_TEST_PHONE);
-      await liffPage.locator('button:has-text("Continue"), button:has-text("ถัดไป"), button[type="submit"]').first().click();
-      await liffPage.waitForTimeout(2000);
+      await liffPage.waitForTimeout(500);
+      // check if password already on same page (LINE single-page form)
+      const samePagePass = liffPage.locator('input[name="tpasswd"], input[type="password"]').first();
+      const isSamePage = await samePagePass.isVisible({ timeout: 1500 }).catch(() => false);
+      if (!isSamePage) {
+        // multi-step form: click Next only when enabled
+        const nextBtn = liffPage.locator('button:has-text("Continue"):not([disabled]), button:has-text("ถัดไป"):not([disabled])').first();
+        if (await nextBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+          await nextBtn.click();
+          await liffPage.waitForTimeout(2000);
+        }
+      }
     }
     const passInput = liffPage.locator('input[name="tpasswd"], input[type="password"]').first();
     if (await passInput.isVisible({ timeout: 8_000 }).catch(() => false)) {
       await passInput.fill(LINE_TEST_PASS);
-      await liffPage.locator('button:has-text("Log in"), button:has-text("เข้าสู่ระบบ"), button[type="submit"]').first().click();
-      await liffPage.waitForTimeout(5000);
+      await liffPage.waitForTimeout(800);
+      // wait for submit to become enabled (single-page form requires both fields)
+      const submitBtn = liffPage.locator('button[type="submit"]:not([disabled])').first();
+      if (await submitBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
+        await submitBtn.click();
+        await liffPage.waitForTimeout(5000);
+      }
     }
     shots.push(await ss(liffPage, `${prefix}_after-login`));
   }
@@ -1791,14 +1806,26 @@ test('TC-LCHAT-002 – ผู้ป่วยดูประวัติแชท
     const idInput = liffPage.locator('input[name="tid"], input[type="tel"], input[type="email"]').first();
     if (await idInput.isVisible({ timeout: 8_000 }).catch(() => false)) {
       await idInput.fill(LINE_TEST_PHONE);
-      await liffPage.locator('button:has-text("Continue"), button:has-text("ถัดไป"), button[type="submit"]').first().click();
-      await liffPage.waitForTimeout(2000);
+      await liffPage.waitForTimeout(500);
+      const samePagePass = liffPage.locator('input[name="tpasswd"], input[type="password"]').first();
+      const isSamePage = await samePagePass.isVisible({ timeout: 1500 }).catch(() => false);
+      if (!isSamePage) {
+        const nextBtn = liffPage.locator('button:has-text("Continue"):not([disabled]), button:has-text("ถัดไป"):not([disabled])').first();
+        if (await nextBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+          await nextBtn.click();
+          await liffPage.waitForTimeout(2000);
+        }
+      }
     }
     const passInput = liffPage.locator('input[name="tpasswd"], input[type="password"]').first();
     if (await passInput.isVisible({ timeout: 8_000 }).catch(() => false)) {
       await passInput.fill(LINE_TEST_PASS);
-      await liffPage.locator('button:has-text("Log in"), button:has-text("เข้าสู่ระบบ"), button[type="submit"]').first().click();
-      await liffPage.waitForTimeout(5000);
+      await liffPage.waitForTimeout(800);
+      const submitBtn = liffPage.locator('button[type="submit"]:not([disabled])').first();
+      if (await submitBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
+        await submitBtn.click();
+        await liffPage.waitForTimeout(5000);
+      }
     }
   }
 

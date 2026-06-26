@@ -1,0 +1,37 @@
+{
+  "TC-EKYC-001": {
+    "status": "PASS",
+    "actual": "LIFF profile โหลดสำเร็จ — มานี มีใจ ยืนยัน OTP แล้ว ข้อมูล วันเกิด 13 พฤษภาคม 2540 เพศ",
+    "note": "URL: https://telepharmacy-liff.vercel.app/profile?provider_code=rms1aidkll_btch00001"
+  },
+  "TC-EKYC-002": {
+    "status": "PASS",
+    "actual": "ไม่พบ KYC badge | ปุ่ม e-KYC: แสดง ✅",
+    "note": ""
+  },
+  "TC-EKYC-003": {
+    "status": "PASS",
+    "actual": "หน้า e-KYC intro โหลดสำเร็จ | ปุ่ม \"เริ่มต้น\": ✅",
+    "note": "ปุ่ม \"เริ่มต้นยืนยันตัวตน\" พบแล้ว พร้อมไปขั้นตอนถัดไป"
+  },
+  "TC-EKYC-004": {
+    "status": "PASS",
+    "actual": "หน้าถ่ายบัตรประชาชนแสดงสำเร็จ | กล้อง: ✅ | ปุ่มถ่าย: ✅",
+    "note": "WebRTC stream เริ่มต้นได้ (fake camera)"
+  },
+  "TC-EKYC-005": {
+    "status": "PASS",
+    "actual": "ถ่ายบัตรสำเร็จ → หน้า OCR review | ปุ่ม \"ใช้รูปนี้\": ✅",
+    "note": "Fake camera สามารถถ่ายภาพได้สำเร็จ"
+  },
+  "TC-EKYC-006": {
+    "status": "PASS",
+    "actual": "OCR confirm ✅ → หน้าเซลฟี่ ✅ | capture: ✅ | review: -",
+    "note": ""
+  },
+  "TC-EKYC-007": {
+    "status": "PASS",
+    "actual": "ส่ง e-KYC สำเร็จ → \"ยืนยันตัวตนสำเร็จ  ส่งข้อมูลการยืนยันตัวตนเรียบร้อยแล้ว  ส่ง\"",
+    "note": "รอเภสัชกร approve ใน TC-PINFO-011~014"
+  }
+}

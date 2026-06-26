@@ -40,7 +40,7 @@
     "id": "TC-HOME-003",
     "scenario": "Home Page มี Navigation Menu / Sidebar",
     "status": "PASS",
-    "actualResult": "พบ sidebar items — 3 items (div[class*=\"cursor-pointer\"][class*=\"rounded-xl\"])",
+    "actualResult": "พบ sidebar items — 7 items (div[class*=\"cursor-pointer\"][class*=\"rounded-xl\"])",
     "remark": "Sidebar navigation มีอยู่บน Home page",
     "screenshots": [
       "HOME-003_01_login.png",
@@ -59,8 +59,8 @@
     "id": "TC-HOME-004",
     "scenario": "Home Page แสดงข้อมูลผู้ใช้ / Role",
     "status": "PASS",
-    "actualResult": "showsRole=true, roleLabel=\"WAITING\n·\n14:42\"",
-    "remark": "หน้า Home แสดง role: \"WAITING\n·\n14:42\"",
+    "actualResult": "showsRole=true, roleLabel=\"WAITING\n·\n17:13\"",
+    "remark": "หน้า Home แสดง role: \"WAITING\n·\n17:13\"",
     "screenshots": [
       "HOME-004_01_login.png",
       "HOME-004_02_after-login.png",
@@ -137,7 +137,7 @@
     "scenario": "Home Page Content Discovery (Snapshot)",
     "status": "PASS",
     "actualResult": "URL: https://telepharmacy-cms.vercel.app/home | h1:1 h2:0 btn:1 nav:false aside:false",
-    "remark": "body text บันทึกไว้ที่ HOME-008_body-text.txt | รวม 34 บรรทัด",
+    "remark": "body text บันทึกไว้ที่ HOME-008_body-text.txt | รวม 62 บรรทัด",
     "screenshots": [
       "HOME-008_01_login.png",
       "HOME-008_02_after-login.png",

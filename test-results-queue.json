@@ -3,8 +3,8 @@
     "id": "TC-QUE-001",
     "scenario": "แสดงคิวผู้ป่วย + Counter Badge",
     "status": "PASS",
-    "actualResult": "badge=true, text=\"QUEUE: 4 PATIENTS\", hasCounter=true",
-    "remark": "พบ Counter Badge: \"QUEUE: 4 PATIENTS\"",
+    "actualResult": "badge=true, text=\"QUEUE: 6 PATIENTS\", hasCounter=true",
+    "remark": "พบ Counter Badge: \"QUEUE: 6 PATIENTS\"",
     "screenshots": [
       "QUE-001_01_login.png",
       "QUE-001_02_after-login.png",
@@ -312,8 +312,8 @@
     "id": "TC-QUE-019",
     "scenario": "Footer Summary Bar",
     "status": "PASS",
-    "actualResult": "footerFound=true, hasSummary=true, text=\"รวม 4\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin TestTest\nสำนักงานใหญ่\nLogout\"",
-    "remark": "Footer Summary Bar แสดงถูกต้อง: \"รวม 4\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin T\"",
+    "actualResult": "footerFound=true, hasSummary=true, text=\"รวม 6\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin TestTest\nสำนักงานใหญ่\nLogout\"",
+    "remark": "Footer Summary Bar แสดงถูกต้อง: \"รวม 6\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin T\"",
     "screenshots": [
       "QUE-019_01_login.png",
       "QUE-019_02_after-login.png",

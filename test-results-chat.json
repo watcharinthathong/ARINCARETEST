@@ -3,8 +3,8 @@
     "id": "TC-CHAT-001",
     "scenario": "แสดง Encounter ID ของ session ปัจจุบัน",
     "status": "PASS",
-    "actualResult": "found=true, encId=\"ENCOUNTER #47\n14:42\nมานี มีใจ\"",
-    "remark": "แสดง Encounter ID ถูกต้อง: \"ENCOUNTER #47\n14:42\nมานี มีใจ\"",
+    "actualResult": "found=true, encId=\"ENCOUNTER #68\n11:54\nมานี มีใจ\"",
+    "remark": "แสดง Encounter ID ถูกต้อง: \"ENCOUNTER #68\n11:54\nมานี มีใจ\"",
     "screenshots": [
       "CHAT-001_01_login.png",
       "CHAT-001_02_after-login.png",
@@ -20,8 +20,8 @@
     "id": "TC-CHAT-002",
     "scenario": "แสดงชื่อผู้ป่วย + timestamp ล่าสุดใน Chat Header",
     "status": "PASS",
-    "actualResult": "nameFound=true (\"ENCOUNTER #47\n14:42\nมานี มีใจ\"), timeFound=true (\"11:35 น.\")",
-    "remark": "แสดงชื่อผู้ป่วย \"ENCOUNTER #47\n14:42\nมานี มีใจ\" และ timestamp \"11:35 น.\" ถูกต้อง",
+    "actualResult": "nameFound=true (\"ENCOUNTER #68\n11:54\nมานี มีใจ\"), timeFound=true (\"12:20 น.\")",
+    "remark": "แสดงชื่อผู้ป่วย \"ENCOUNTER #68\n11:54\nมานี มีใจ\" และ timestamp \"12:20 น.\" ถูกต้อง",
     "screenshots": [
       "CHAT-002_01_login.png",
       "CHAT-002_02_after-login.png",
@@ -56,7 +56,7 @@
     "id": "TC-CHAT-004",
     "scenario": "ตำแหน่ง bubble (Operator ขวา / Patient ซ้าย)",
     "status": "FAIL",
-    "actualResult": "outboundFound=true, outboundRight=false, inboundFound=false",
+    "actualResult": "outboundFound=true, outboundRight=false, inboundFound=true",
     "remark": "⚠️ พบ outbound bubble แต่ไม่ได้อยู่ฝั่งขวา — ตรวจ CSS",
     "screenshots": [
       "CHAT-004_01_login.png",
@@ -83,15 +83,18 @@
       "CHAT-005_supervisor.png",
       "CHAT-005_03_queue.png",
       "CHAT-005_chat.png",
-      "CHAT-005_scroll.png"
+      "CHAT-005_scroll.png",
+      "CHAT-005_liff-start.png",
+      "CHAT-005_after-login.png",
+      "CHAT-005_liff-loaded.png"
     ]
   },
   {
     "id": "TC-CHAT-006",
     "scenario": "Date Badge เมื่อขึ้นวันใหม่",
     "status": "PASS",
-    "actualResult": "badgeFound=true, badgeText=\"25 มิ.ย. 2569\", hasMessages=true",
-    "remark": "Date Badge แสดงถูกต้อง: \"25 มิ.ย. 2569\"",
+    "actualResult": "badgeFound=true, badgeText=\"26 มิ.ย. 2569\", hasMessages=true",
+    "remark": "Date Badge แสดงถูกต้อง: \"26 มิ.ย. 2569\"",
     "screenshots": [
       "CHAT-006_01_login.png",
       "CHAT-006_02_after-login.png",
@@ -267,8 +270,8 @@
     "id": "TC-CHAT-016",
     "scenario": "หลัง Close Encounter → UI Lockdown + \"Session Closed\"",
     "status": "PASS",
-    "actualResult": "closedOk=true, sessionClosedUI=true, inputHidden=false, lockIconFound=true",
-    "remark": "BUG: ปิดแล้วแต่ช่องข้อความยังใช้งานได้",
+    "actualResult": "closedOk=true, sessionClosedUI=true, inputHidden=true, lockIconFound=false",
+    "remark": "UI Lockdown ถูกต้อง: Session Closed แสดง + input ซ่อน/disabled | lock icon: false",
     "screenshots": [
       "CHAT-016_01_login.png",
       "CHAT-016_02_after-login.png",
@@ -303,9 +306,9 @@
   {
     "id": "TC-CHAT-018",
     "scenario": "Inbound Chat logged เมื่อผู้ป่วยส่งข้อความผ่าน LINE",
-    "status": "SKIP",
-    "actualResult": "liffOk=false, msgSent=false, msgAppeared=false",
-    "remark": "SKIP: ต้องกำหนด LINE_TEST_PHONE / LINE_TEST_PASS ใน .env",
+    "status": "FAIL",
+    "actualResult": "liffOk=true, msgSent=false, msgAppeared=false",
+    "remark": "⚠️ ส่งจาก LIFF แล้วแต่ไม่แสดงใน CMS — ตรวจ webhook / real-time",
     "screenshots": [
       "CHAT-018_01_login.png",
       "CHAT-018_02_after-login.png",
@@ -314,15 +317,18 @@
       "CHAT-018_supervisor.png",
       "CHAT-018_03_queue.png",
       "CHAT-018_chat.png",
-      "CHAT-018_before.png"
+      "CHAT-018_before.png",
+      "CHAT-018_liff-start.png",
+      "CHAT-018_after-login.png",
+      "CHAT-018_liff-loaded.png"
     ]
   },
   {
     "id": "TC-CHAT-019",
     "scenario": "Chat Log เข้ารหัส AES-256-CBC (Field-level Security)",
     "status": "SKIP",
-    "actualResult": "UI-level: noRawCipherVisible=false | DB inspection required",
-    "remark": "SKIP: การตรวจสอบ AES-256-CBC ต้องเข้าถึง Database โดยตรง (field-level encryption) — ต้องรัน: SELECT * FROM medcare_db.chat_logs WHERE ... และตรวจ cipher text | UI check: ⚠️ พบ string ยาวผิดปกติใน UI",
+    "actualResult": "UI-level: noRawCipherVisible=true | DB inspection required",
+    "remark": "SKIP: การตรวจสอบ AES-256-CBC ต้องเข้าถึง Database โดยตรง (field-level encryption) — ต้องรัน: SELECT * FROM medcare_db.chat_logs WHERE ... และตรวจ cipher text | UI check: ไม่พบ raw cipher text ใน UI",
     "screenshots": [
       "CHAT-019_01_login.png",
       "CHAT-019_02_after-login.png",
@@ -337,9 +343,9 @@
   {
     "id": "TC-CHAT-020",
     "scenario": "ข้อความยาว/อักขระพิเศษ/emoji (Edge case)",
-    "status": "PASS",
-    "actualResult": "sentOk=true, noError=true, rendered=true",
-    "remark": "ส่งข้อความยาว + emoji + อักขระพิเศษสำเร็จ แสดงผลถูกต้อง ไม่มี error",
+    "status": "FAIL",
+    "actualResult": "sentOk=false, noError=false, rendered=false",
+    "remark": "⚠️ ไม่พบช่องข้อความหรือปุ่ม Send",
     "screenshots": [
       "CHAT-020_01_login.png",
       "CHAT-020_02_after-login.png",
@@ -347,17 +353,15 @@
       "CHAT-020_branch.png",
       "CHAT-020_supervisor.png",
       "CHAT-020_03_queue.png",
-      "CHAT-020_chat.png",
-      "CHAT-020_typed.png",
-      "CHAT-020_sent.png"
+      "CHAT-020_chat.png"
     ]
   },
   {
     "id": "TC-CHAT-021",
     "scenario": "XSS ในข้อความแชท (Security)",
-    "status": "PASS",
-    "actualResult": "sentOk=true, alertFired=false, xssBlocked=true",
-    "remark": "XSS payload ถูก escape/sanitize สำเร็จ — alert ไม่ถูก execute",
+    "status": "FAIL",
+    "actualResult": "sentOk=false, alertFired=false, xssBlocked=false",
+    "remark": "⚠️ ไม่พบช่องข้อความ",
     "screenshots": [
       "CHAT-021_01_login.png",
       "CHAT-021_02_after-login.png",
@@ -365,25 +369,38 @@
       "CHAT-021_branch.png",
       "CHAT-021_supervisor.png",
       "CHAT-021_03_queue.png",
-      "CHAT-021_chat.png",
-      "CHAT-021_typed-xss.png",
-      "CHAT-021_after-xss.png"
+      "CHAT-021_chat.png"
     ]
   },
   {
     "id": "TC-LCHAT-001",
     "scenario": "ผู้ป่วยส่งข้อความผ่าน LIFF Chat → inbound logged ใน CMS",
-    "status": "SKIP",
-    "actualResult": "ไม่พบ LINE credentials",
-    "remark": "SKIP: ต้องกำหนด LINE_TEST_PHONE / LINE_TEST_PASS ใน .env",
-    "screenshots": []
+    "status": "FAIL",
+    "actualResult": "liffOk=true, msgSent=false, msgAppeared=false",
+    "remark": "⚠️ LIFF โหลดสำเร็จแต่ส่งข้อความไม่ได้ — ตรวจ LIFF chat input selector",
+    "screenshots": [
+      "LCHAT-001_01_login.png",
+      "LCHAT-001_02_after-login.png",
+      "LCHAT-001_store.png",
+      "LCHAT-001_branch.png",
+      "LCHAT-001_supervisor.png",
+      "LCHAT-001_03_queue.png",
+      "LCHAT-001_chat.png",
+      "LCHAT-001_liff-start.png",
+      "LCHAT-001_after-login.png",
+      "LCHAT-001_liff-loaded.png"
+    ]
   },
   {
     "id": "TC-LCHAT-002",
     "scenario": "ผู้ป่วยดูประวัติแชทใน LIFF Chat",
-    "status": "SKIP",
-    "actualResult": "ไม่พบ LINE credentials",
-    "remark": "SKIP: ต้องกำหนด LINE_TEST_PHONE / LINE_TEST_PASS ใน .env",
-    "screenshots": []
+    "status": "PASS",
+    "actualResult": "liffLoaded=true, historyVisible=true | URL: https://telepharmacy-liff.vercel.app/otp/request | bodyLen: 225 | msgCount: 0",
+    "remark": "ผู้ป่วยเห็นประวัติแชทใน LIFF สำเร็จ",
+    "screenshots": [
+      "LCHAT-002_liff-start.png",
+      "LCHAT-002_liff-loaded.png",
+      "LCHAT-002_history.png"
+    ]
   }
 ]

@@ -1,0 +1,284 @@
+[
+  {
+    "id": "TC-PINFO-001",
+    "scenario": "รับเคส (Assign Pharmacist) → WAITING→ACTIVE + Flex msg",
+    "status": "FAIL",
+    "actualResult": "onQ=true, hasWaiting=true, assignFound=true, statusActive=false",
+    "remark": "BUG: กดรับเคสแล้วสถานะไม่เปลี่ยนเป็น ACTIVE",
+    "screenshots": [
+      "PINFO-001_01_login.png",
+      "PINFO-001_02_after-login.png",
+      "PINFO-001_store.png",
+      "PINFO-001_branch.png",
+      "PINFO-001_03_queue.png",
+      "PINFO-001_waiting-detail.png",
+      "PINFO-001_after-assign.png",
+      "PINFO-001_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-002",
+    "scenario": "Operator assign มี supervising → auto assign",
+    "status": "SKIP",
+    "actualResult": "onQ=true, hasWaiting=false, assignFound=false, modalOpened=false, autoAssigned=false",
+    "remark": "SKIP: ไม่มีคิว WAITING",
+    "screenshots": [
+      "PINFO-002_01_login.png",
+      "PINFO-002_02_after-login.png",
+      "PINFO-002_store.png",
+      "PINFO-002_branch.png",
+      "PINFO-002_supervisor.png",
+      "PINFO-002_03_queue.png",
+      "PINFO-002_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-003",
+    "scenario": "Operator assign ไม่มี supervising → Selection Modal",
+    "status": "SKIP",
+    "actualResult": "onQ=true, hasWaiting=false, assignFound=false, modalFound=false, hasPharmacistList=false",
+    "remark": "SKIP: ไม่มีคิว WAITING",
+    "screenshots": [
+      "PINFO-003_01_login.png",
+      "PINFO-003_02_after-login.png",
+      "PINFO-003_store.png",
+      "PINFO-003_branch.png",
+      "PINFO-003_supervisor.png",
+      "PINFO-003_03_queue.png",
+      "PINFO-003_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-004",
+    "scenario": "Change Pharmacist → Modal + Audit Log",
+    "status": "SKIP",
+    "actualResult": "onQ=true, cardClicked=true, changeFound=false, modalFound=false, changeSuccess=false",
+    "remark": "SKIP: ไม่พบปุ่ม Change (เคสนี้อาจยังไม่มีเภสัชกร หรือ CLOSED)",
+    "screenshots": [
+      "PINFO-004_01_login.png",
+      "PINFO-004_02_after-login.png",
+      "PINFO-004_store.png",
+      "PINFO-004_branch.png",
+      "PINFO-004_03_queue.png",
+      "PINFO-004_patient-detail-active.png",
+      "PINFO-004_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-005",
+    "scenario": "เภสัช offline → modal เปลี่ยนเภสัช ปิดไม่ได้ถ้าไม่มี online",
+    "status": "SKIP",
+    "actualResult": "ต้องควบคุมสถานะ online/offline ของเภสัชกรในระบบจริง",
+    "remark": "SKIP: ต้องทดสอบ manual — บังคับให้เภสัชกรเดิม offline แล้วตรวจว่า modal บังคับเปลี่ยน",
+    "screenshots": [
+      "PINFO-005_skip.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-006",
+    "scenario": "Assign button disabled เมื่อ CLOSED",
+    "status": "PASS",
+    "actualResult": "onQ=true, closedCardFound=true, assignFound=false, assignDisabled=true",
+    "remark": "UI ซ่อนปุ่ม Assign ใน CLOSED state (ถูกต้อง)",
+    "screenshots": [
+      "PINFO-006_01_login.png",
+      "PINFO-006_02_after-login.png",
+      "PINFO-006_store.png",
+      "PINFO-006_branch.png",
+      "PINFO-006_03_queue.png",
+      "PINFO-006_patient-detail-closed.png",
+      "PINFO-006_closed-detail.png",
+      "PINFO-006_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-007",
+    "scenario": "KYC Read-only (แก้ไขไม่ได้)",
+    "status": "PASS",
+    "actualResult": "onQ=true, cardClicked=true, kycFound=true, isReadOnly=true",
+    "remark": "KYC fields เป็น Read-only ถูกต้อง ไม่สามารถแก้ไขได้",
+    "screenshots": [
+      "PINFO-007_01_login.png",
+      "PINFO-007_02_after-login.png",
+      "PINFO-007_store.png",
+      "PINFO-007_branch.png",
+      "PINFO-007_03_queue.png",
+      "PINFO-007_patient-detail.png",
+      "PINFO-007_kyc-section.png",
+      "PINFO-007_kyc-inputs.png",
+      "PINFO-007_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-008",
+    "scenario": "Status Badge KYC",
+    "status": "FAIL",
+    "actualResult": "onQ=true, cardClicked=true, badgeFound=false, badgeText=\"\"",
+    "remark": "BUG: ไม่พบ KYC Status Badge — ตรวจ screenshot และ selector",
+    "screenshots": [
+      "PINFO-008_01_login.png",
+      "PINFO-008_02_after-login.png",
+      "PINFO-008_store.png",
+      "PINFO-008_branch.png",
+      "PINFO-008_03_queue.png",
+      "PINFO-008_patient-detail.png",
+      "PINFO-008_kyc-badge.png",
+      "PINFO-008_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-009",
+    "scenario": "ปุ่มส่งลิงก์ e-KYC แสดงเฉพาะ KYC ไม่สมบูรณ์",
+    "status": "SKIP",
+    "actualResult": "onQ=true, cardClicked=true, kycStatus=unknown, ekycBtnFound=true",
+    "remark": "SKIP: ไม่สามารถระบุ KYC status จาก UI — ตรวจ screenshot",
+    "screenshots": [
+      "PINFO-009_01_login.png",
+      "PINFO-009_02_after-login.png",
+      "PINFO-009_store.png",
+      "PINFO-009_branch.png",
+      "PINFO-009_03_queue.png",
+      "PINFO-009_patient-detail.png",
+      "PINFO-009_ekyc-btn.png",
+      "PINFO-009_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-010",
+    "scenario": "e-KYC Trigger → Flex message ในแชท",
+    "status": "FAIL",
+    "actualResult": "onQ=true, cardClicked=true, ekycBtnFound=true, sentSuccess=false",
+    "remark": "⚠️ กดปุ่ม e-KYC แล้วแต่ไม่พบ success message — ตรวจ screenshot และ LINE chat",
+    "screenshots": [
+      "PINFO-010_01_login.png",
+      "PINFO-010_02_after-login.png",
+      "PINFO-010_store.png",
+      "PINFO-010_branch.png",
+      "PINFO-010_03_queue.png",
+      "PINFO-010_patient-detail.png",
+      "PINFO-010_after-ekyc-click.png",
+      "PINFO-010_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-011",
+    "scenario": "KYC Pending Review Notification",
+    "status": "SKIP",
+    "actualResult": "onQ=true, pendingNotifFound=false, reviewBtnFound=false",
+    "remark": "SKIP: ไม่มี KYC pending review ในระบบขณะทดสอบ — ต้องให้ผู้ป่วย submit eKYC ก่อน",
+    "screenshots": [
+      "PINFO-011_01_login.png",
+      "PINFO-011_02_after-login.png",
+      "PINFO-011_store.png",
+      "PINFO-011_branch.png",
+      "PINFO-011_03_queue.png",
+      "PINFO-011_queue-view.png",
+      "PINFO-011_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-012",
+    "scenario": "KYC Review Modal เปรียบเทียบ Selfie กับ ID Card",
+    "status": "PASS",
+    "actualResult": "onQ=true, cardClicked=true, reviewBtnFound=true, modalFound=true, selfie=true, idCard=true",
+    "remark": "KYC Review Modal แสดง Selfie และรูปบัตรประชาชนครบถ้วน",
+    "screenshots": [
+      "PINFO-012_01_login.png",
+      "PINFO-012_02_after-login.png",
+      "PINFO-012_store.png",
+      "PINFO-012_branch.png",
+      "PINFO-012_03_queue.png",
+      "PINFO-012_patient-detail.png",
+      "PINFO-012_kyc-review-modal.png",
+      "PINFO-012_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-013",
+    "scenario": "Approve KYC → approved + reviewed_by/at",
+    "status": "PASS",
+    "actualResult": "onQ=true, reviewBtnFound=true, approveBtnFound=true, approveSuccess=true",
+    "remark": "Approve KYC สำเร็จ สถานะเปลี่ยนเป็น approved",
+    "screenshots": [
+      "PINFO-013_01_login.png",
+      "PINFO-013_02_after-login.png",
+      "PINFO-013_store.png",
+      "PINFO-013_branch.png",
+      "PINFO-013_03_queue.png",
+      "PINFO-013_patient-detail.png",
+      "PINFO-013_review-modal.png",
+      "PINFO-013_after-approve.png",
+      "PINFO-013_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-014",
+    "scenario": "Reject KYC → none + เหตุผล + Push msg",
+    "status": "SKIP",
+    "actualResult": "onQ=true, reviewBtnFound=false, rejectBtnFound=false, rejectSuccess=false",
+    "remark": "SKIP: ไม่มี KYC pending review ในระบบ",
+    "screenshots": [
+      "PINFO-014_01_login.png",
+      "PINFO-014_02_after-login.png",
+      "PINFO-014_store.png",
+      "PINFO-014_branch.png",
+      "PINFO-014_03_queue.png",
+      "PINFO-014_patient-detail.png",
+      "PINFO-014_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-015",
+    "scenario": "eKYC Submit ข้อมูลไม่ตรง → 422",
+    "status": "SKIP",
+    "actualResult": "ต้องทดสอบจากฝั่ง LIFF (LINE App) — patient submit eKYC ด้วยข้อมูลผิด",
+    "remark": "SKIP: ต้องทดสอบ manual จาก LIFF — กรอกชื่อ-นามสกุลไม่ตรงบัตรประชาชนแล้วตรวจ HTTP 422 response",
+    "screenshots": [
+      "PINFO-015_skip.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-016",
+    "scenario": "แก้ไขข้อมูลสุขภาพ (Editable) + Auto-save",
+    "status": "FAIL",
+    "actualResult": "onQ=true, cardClicked=true, healthFound=true, editSuccess=false, autoSave=false",
+    "remark": "FAIL: ไม่มี editable field ในส่วนสุขภาพ",
+    "screenshots": [
+      "PINFO-016_01_login.png",
+      "PINFO-016_02_after-login.png",
+      "PINFO-016_store.png",
+      "PINFO-016_branch.png",
+      "PINFO-016_03_queue.png",
+      "PINFO-016_patient-detail.png",
+      "PINFO-016_health-section.png",
+      "PINFO-016_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-017",
+    "scenario": "บันทึก Chief Complaint",
+    "status": "FAIL",
+    "actualResult": "onQ=true, cardClicked=true, chiefInputFound=false, saveSuccess=false",
+    "remark": "FAIL: ไม่พบ Chief Complaint input field — ตรวจ selector",
+    "screenshots": [
+      "PINFO-017_01_login.png",
+      "PINFO-017_02_after-login.png",
+      "PINFO-017_store.png",
+      "PINFO-017_branch.png",
+      "PINFO-017_03_queue.png",
+      "PINFO-017_patient-detail.png",
+      "PINFO-017_chief-input.png",
+      "PINFO-017_result.png"
+    ]
+  },
+  {
+    "id": "TC-PINFO-018",
+    "scenario": "ข้อมูลสุขภาพเข้ารหัส AES-256-CBC (Field-level)",
+    "status": "SKIP",
+    "actualResult": "UI level: ไม่สามารถตรวจสอบ field-level encryption จาก browser ได้",
+    "remark": "SKIP: ต้อง inspect DB โดยตรง — SELECT * FROM health_records และตรวจว่า sensitive fields เป็น ciphertext AES-256-CBC",
+    "screenshots": [
+      "PINFO-018_skip.png"
+    ]
+  }
+]

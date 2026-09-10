@@ -1,14 +1,15 @@
 import { test, expect } from '@playwright/test';
 import * as path from 'path';
-import * as fs from 'fs';
 import { fileURLToPath } from 'url';
+import {
+  BASE, OPERATOR, Result,
+  makeScreenshotter, goLogin, fillCreds, clickSignIn, findFirst, writeResultsJson,
+} from './helpers.js';
+import { TELEPHARMACY_SEL } from '../../pages/TelepharmacyLoginPage.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
-const SS_DIR     = path.join(__dirname, '../screenshots/queue');
-
-const BASE     = 'https://telepharmacy-cms.vercel.app';
-const OPERATOR = { email: 'operator@medcare.com', pass: 'Oper@1234' };
+const SS_DIR     = path.join(__dirname, '../../screenshots/telepharmacy/queue');
 
 // ─── LINE LIFF (เปิดคิวผ่านปุ่ม ปรึกษาเภสัชกร ใน LINE OA) ──────────────────────
 const LIFF_URL      = 'https://liff.line.me/2010469964-fi8ZhQ7k/chat?provider_code=rms1aidkll_btch00001';
@@ -90,19 +91,7 @@ async function openLiffAndCreateQueue(
 
 // ─── Selectors ─────────────────────────────────────────────────────────────────
 const SEL = {
-  // Login
-  username: 'input[type="text"]',
-  password: 'input[type="password"]',
-  signIn:   'button[type="submit"]',
-
-  // Flow navigation
-  storeCard:  'text=Watcharin TestTest',
-  branchCard: 'text=สำนักงานใหญ่',
-  nextBtn:    'button:has-text("ถัดไป"):not([disabled])',
-  confirmBtn: 'button:has-text("ยืนยันและเข้าสู่ระบบ"):not([disabled])',
-
-  // Supervisor (Operator only)
-  supervisorCard: 'button[class*="overflow-hidden"][class*="rounded-2xl"]',
+  ...TELEPHARMACY_SEL,
 
   // Sidebar navigation
   sidebarItem: 'div[class*="cursor-pointer"][class*="rounded-xl"]',
@@ -177,40 +166,11 @@ const SEL = {
   ],
 } as const;
 
-if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
+const ss = makeScreenshotter(SS_DIR);
 
-interface Result {
-  id: string;
-  scenario: string;
-  status: 'PASS' | 'FAIL' | 'SKIP';
-  actualResult: string;
-  remark: string;
-  screenshots: string[];
-}
 const RESULTS: Result[] = [];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-async function ss(page: any, name: string): Promise<string> {
-  const file = `${name}.png`;
-  await page.screenshot({ path: path.join(SS_DIR, file), fullPage: true });
-  return file;
-}
-
-async function goLogin(page: any) {
-  await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(1200);
-}
-
-async function fillCreds(page: any, email: string, pass: string) {
-  await page.locator(SEL.username).fill(email);
-  await page.locator(SEL.password).fill(pass);
-}
-
-async function clickSignIn(page: any) {
-  await page.locator(SEL.signIn).click();
-  await page.waitForTimeout(4000);
-}
-
 async function doStoreFlow(page: any, shots: string[], prefix: string) {
   if (page.url().includes('select-store')) {
     await page.locator(SEL.storeCard).first().click();
@@ -257,20 +217,6 @@ async function fullFlow(page: any, shots: string[], prefix: string, user = OPERA
 
 function isOnQueue(url: string): boolean {
   return url.includes('/home') || url.includes('/queue');
-}
-
-async function findFirst(page: any, selectors: readonly string[]): Promise<{ found: boolean; sel: string; text: string }> {
-  for (const sel of selectors) {
-    try {
-      const el = page.locator(sel).first();
-      const visible = await el.isVisible({ timeout: 2000 }).catch(() => false);
-      if (visible) {
-        const text = await el.innerText().catch(() => '');
-        return { found: true, sel, text };
-      }
-    } catch { /* try next */ }
-  }
-  return { found: false, sel: '', text: '' };
 }
 
 async function typeInSearch(page: any, text: string): Promise<boolean> {
@@ -1344,8 +1290,7 @@ test('TC-QUE-023 – สถานะ PAUSED คงอยู่หลัง Page 
 
 // ─── Save JSON summary ─────────────────────────────────────────────────────────
 test.afterAll(async () => {
-  const out = path.join(__dirname, '../test-results-queue.json');
-  fs.writeFileSync(out, JSON.stringify(RESULTS, null, 2), 'utf-8');
+  writeResultsJson('test-results-queue.json', RESULTS);
   console.log('\n════ QUEUE TEST SUMMARY ════');
   for (const r of RESULTS)
     console.log(`${r.id}: ${r.status} – ${r.scenario}`);

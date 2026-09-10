@@ -2,14 +2,15 @@ import { test, expect } from '@playwright/test';
 import * as path from 'path';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
+import {
+  OPERATOR, PHARMA as PHARMACIST, Result,
+  makeScreenshotter, goLogin, fillCreds, clickSignIn, findFirst, writeResultsJson,
+} from './helpers.js';
+import { TELEPHARMACY_SEL } from '../../pages/TelepharmacyLoginPage.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
-const SS_DIR     = path.join(__dirname, '../screenshots/pinfo');
-
-const BASE       = 'https://telepharmacy-cms.vercel.app';
-const PHARMACIST = { email: 'pharma@medcare.com', pass: 'Pharm@1234' };
-const OPERATOR   = { email: 'operator@medcare.com',   pass: 'Oper@1234' };
+const SS_DIR     = path.join(__dirname, '../../screenshots/telepharmacy/pinfo');
 
 // ─── LINE LIFF (สร้างคิวผ่านปุ่มปรึกษาเภสัชกรใน LINE OA) ────────────────────
 import * as dotenv from 'dotenv';
@@ -20,15 +21,7 @@ const LINE_TEST_PASS  = process.env.LINE_TEST_PASS  || '';
 
 // ─── Selectors ────────────────────────────────────────────────────────────────
 const SEL = {
-  username: 'input[type="text"]',
-  password: 'input[type="password"]',
-  signIn:   'button[type="submit"]',
-
-  storeCard:  'text=Watcharin TestTest',
-  branchCard: 'text=สำนักงานใหญ่',
-  nextBtn:    'button:has-text("ถัดไป"):not([disabled])',
-  confirmBtn: 'button:has-text("ยืนยันและเข้าสู่ระบบ"):not([disabled])',
-  supervisorCard: 'button[class*="overflow-hidden"][class*="rounded-2xl"]',
+  ...TELEPHARMACY_SEL,
 
   // Patient card in queue list
   patientCard: [
@@ -139,40 +132,11 @@ const SEL = {
   ],
 } as const;
 
-if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
+const ss = makeScreenshotter(SS_DIR);
 
-interface Result {
-  id: string;
-  scenario: string;
-  status: 'PASS' | 'FAIL' | 'SKIP';
-  actualResult: string;
-  remark: string;
-  screenshots: string[];
-}
 const RESULTS: Result[] = [];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-async function ss(page: any, name: string): Promise<string> {
-  const file = `${name}.png`;
-  await page.screenshot({ path: path.join(SS_DIR, file), fullPage: true });
-  return file;
-}
-
-async function goLogin(page: any) {
-  await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(1200);
-}
-
-async function fillCreds(page: any, email: string, pass: string) {
-  await page.locator(SEL.username).fill(email);
-  await page.locator(SEL.password).fill(pass);
-}
-
-async function clickSignIn(page: any) {
-  await page.locator(SEL.signIn).click();
-  await page.waitForTimeout(4000);
-}
-
 async function doStoreFlow(page: any, shots: string[], prefix: string) {
   if (page.url().includes('select-store')) {
     await page.locator(SEL.storeCard).first().click();
@@ -221,20 +185,6 @@ function isOnQueue(url: string): boolean {
   return url.includes('/home') || url.includes('/queue');
 }
 
-async function findFirst(page: any, selectors: readonly string[]): Promise<{ found: boolean; sel: string; text: string }> {
-  for (const sel of selectors) {
-    try {
-      const el = page.locator(sel).first();
-      const visible = await el.isVisible({ timeout: 2000 }).catch(() => false);
-      if (visible) {
-        const text = await el.innerText().catch(() => '');
-        return { found: true, sel, text };
-      }
-    } catch { /* try next */ }
-  }
-  return { found: false, sel: '', text: '' };
-}
-
 /** คลิก Patient Card ตัวแรกในคิว แล้วรอ detail panel โหลด */
 async function clickFirstPatientCard(page: any, shots: string[], prefix: string): Promise<boolean> {
   for (const sel of SEL.patientCard) {
@@ -262,7 +212,7 @@ async function clickCardWithStatus(page: any, status: string, shots: string[], p
 }
 
 // ─── Setup: เปิด LIFF สร้าง WAITING queue ก่อนรัน tests ─────────────────────
-const LIFF_SESSION_FILE = path.join(__dirname, '../liff-session.json');
+const LIFF_SESSION_FILE = path.join(__dirname, '../../liff-session.json');
 
 async function doLineOAuth(liffPage: any): Promise<void> {
   const url = liffPage.url();
@@ -1434,8 +1384,7 @@ test('TC-PINFO-018 – ข้อมูลสุขภาพเข้ารหั
 
 // ─── Save JSON summary ─────────────────────────────────────────────────────────
 test.afterAll(async () => {
-  const out = path.join(__dirname, '../test-results-pinfo.json');
-  fs.writeFileSync(out, JSON.stringify(RESULTS, null, 2), 'utf-8');
+  writeResultsJson('test-results-pinfo.json', RESULTS);
   console.log('\n════ PINFO TEST SUMMARY ════');
   for (const r of RESULTS)
     console.log(`${r.id}: ${r.status} – ${r.scenario}`);

@@ -1,72 +1,28 @@
 import { test } from '@playwright/test';
 import * as path from 'path';
-import * as fs from 'fs';
 import { fileURLToPath } from 'url';
+import {
+  OPERATOR, PHARMA, Result,
+  makeScreenshotter, goLogin, fillCreds, clickSignIn, getBodyText, writeResultsJson,
+} from './helpers.js';
+import { TELEPHARMACY_SEL } from '../../pages/TelepharmacyLoginPage.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
-const SS_DIR     = path.join(__dirname, '../screenshots/login');
-
-const BASE     = 'https://telepharmacy-cms.vercel.app';
-const OPERATOR = { email: 'operator@medcare.com',    pass: 'Oper@1234'  };
-const PHARMA   = { email: 'pharma@medcare.com',      pass: 'Pharm@1234' };
+const SS_DIR     = path.join(__dirname, '../../screenshots/telepharmacy/login');
 
 // ─── Selectors (Telepharmacy_CMS_Selectors.xlsx) ──────────────────────────────
 const SEL = {
-  // Login Page (/login)
-  username:   'input[type="text"]',
-  password:   'input[type="password"]',
-  signIn:     'button[type="submit"]',
-  showHide:   'button[type="button"]',        // first button = eye icon toggle
-
-  // Select Store (/select-store)
-  storeCard:  'text=Watcharin TestTest',
-  nextBtn:    'button:has-text("ถัดไป"):not([disabled])',
-
-  // Select Branch (/select-branch)
-  branchCard: 'text=สำนักงานใหญ่',
-  backBtn:    'button:has-text("ย้อนกลับ")',
-
-  // Select Supervisor (/select-supervisor)
-  supervisorHeading: 'text=เลือกเภสัชกรผู้ควบคุม',
+  ...TELEPHARMACY_SEL,
+  showHide: 'button[type="button"]',        // first button = eye icon toggle
 } as const;
 
 // ─── Error pattern ────────────────────────────────────────────────────────────
 const ERR_PATTERN = /invalid|ไม่ถูกต้อง/i;
 
-if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
+const ss = makeScreenshotter(SS_DIR);
 
-interface Result {
-  id: string;
-  scenario: string;
-  status: 'PASS' | 'FAIL' | 'SKIP';
-  actualResult: string;
-  remark: string;
-  screenshots: string[];
-}
 const RESULTS: Result[] = [];
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-async function ss(page: any, name: string): Promise<string> {
-  const file = `${name}.png`;
-  await page.screenshot({ path: path.join(SS_DIR, file), fullPage: true });
-  return file;
-}
-
-async function goLogin(page: any) {
-  await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(1200);
-}
-
-async function fillCreds(page: any, email: string, pass: string) {
-  await page.locator(SEL.username).fill(email);
-  await page.locator(SEL.password).fill(pass);
-}
-
-async function clickSignIn(page: any) {
-  await page.locator(SEL.signIn).click();
-  await page.waitForTimeout(4000);
-}
 
 /** Login → select-store → select-branch จนถึงหน้าถัดไป */
 async function completeStoreFlow(page: any, shots: string[], idPrefix: string) {
@@ -86,10 +42,6 @@ async function completeStoreFlow(page: any, shots: string[], idPrefix: string) {
     await page.waitForTimeout(3000);
     shots.push(await ss(page, `${idPrefix}_after-branch`));
   }
-}
-
-async function getBodyText(page: any) {
-  return page.locator('body').innerText().catch(() => '');
 }
 
 // ─── TC-AUTH-001 : Login เภสัชกร ──────────────────────────────────────────────
@@ -410,8 +362,7 @@ test('TC-AUTH-019 – Brute-force / Rate Limit', async ({ page }) => {
 
 // ─── Save JSON ─────────────────────────────────────────────────────────────────
 test.afterAll(async () => {
-  const out = path.join(__dirname, '../test-results-login-final.json');
-  fs.writeFileSync(out, JSON.stringify(RESULTS, null, 2), 'utf-8');
+  writeResultsJson('test-results-login-final.json', RESULTS);
   console.log('\n════ SUMMARY ════');
   for (const r of RESULTS)
     console.log(`${r.id}: ${r.status} – ${r.scenario}`);

@@ -2,13 +2,15 @@ import { test, expect } from '@playwright/test';
 import * as path from 'path';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
+import {
+  OPERATOR, Result,
+  makeScreenshotter, goLogin, fillCreds, clickSignIn, findFirst, writeResultsJson,
+} from './helpers.js';
+import { TELEPHARMACY_SEL } from '../../pages/TelepharmacyLoginPage.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
-const SS_DIR     = path.join(__dirname, '../screenshots/chat');
-
-const BASE     = 'https://telepharmacy-cms.vercel.app';
-const OPERATOR = { email: 'operator@medcare.com', pass: 'Oper@1234' };
+const SS_DIR     = path.join(__dirname, '../../screenshots/telepharmacy/chat');
 
 const LIFF_URL        = 'https://liff.line.me/2010469964-fi8ZhQ7k/chat?provider_code=rms1aidkll_btch00001';
 const LINE_TEST_PHONE = process.env.LINE_TEST_PHONE || '';
@@ -63,26 +65,11 @@ function ensureFixtures() {
 }
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-interface Result {
-  id: string;
-  scenario: string;
-  status: 'PASS' | 'FAIL' | 'SKIP';
-  actualResult: string;
-  remark: string;
-  screenshots: string[];
-}
 const RESULTS: Result[] = [];
 
 // ─── Navigation selectors ─────────────────────────────────────────────────────
 const SEL = {
-  username:       'input[type="text"]',
-  password:       'input[type="password"]',
-  signIn:         'button[type="submit"]',
-  storeCard:      'text=Watcharin TestTest',
-  branchCard:     'text=สำนักงานใหญ่',
-  nextBtn:        'button:has-text("ถัดไป"):not([disabled])',
-  confirmBtn:     'button:has-text("ยืนยันและเข้าสู่ระบบ"):not([disabled])',
-  supervisorCard: 'button[class*="overflow-hidden"][class*="rounded-2xl"]',
+  ...TELEPHARMACY_SEL,
   patientCard: [
     '[class*="card"]',
     '[class*="patient"]',
@@ -233,11 +220,7 @@ const CHAT = {
 } as const;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-async function ss(page: any, name: string): Promise<string> {
-  const file = `${name}.png`;
-  await page.screenshot({ path: path.join(SS_DIR, file), fullPage: true });
-  return file;
-}
+const ss = makeScreenshotter(SS_DIR);
 
 async function doStoreFlow(page: any, shots: string[], prefix: string) {
   if (page.url().includes('select-store')) {
@@ -278,33 +261,16 @@ async function doSupervisorStep(page: any, shots: string[], prefix: string): Pro
 
 /** Returns url, or null if supervisor step blocked (no pharmacist online/licensed) */
 async function fullFlow(page: any, shots: string[], prefix: string): Promise<string | null> {
-  await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(1200);
+  await goLogin(page);
   shots.push(await ss(page, `${prefix}_01_login`));
-  await page.locator(SEL.username).fill(OPERATOR.email);
-  await page.locator(SEL.password).fill(OPERATOR.pass);
-  await page.locator(SEL.signIn).click();
-  await page.waitForTimeout(4000);
+  await fillCreds(page, OPERATOR.email, OPERATOR.pass);
+  await clickSignIn(page);
   shots.push(await ss(page, `${prefix}_02_after-login`));
   await doStoreFlow(page, shots, prefix);
   const supervisorOk = await doSupervisorStep(page, shots, prefix);
   if (!supervisorOk) return null; // no pharmacist online or missing license
   shots.push(await ss(page, `${prefix}_03_queue`));
   return page.url();
-}
-
-async function findFirst(page: any, selectors: readonly string[]): Promise<{ found: boolean; sel: string; text: string }> {
-  for (const sel of selectors) {
-    try {
-      const el = page.locator(sel).first();
-      const visible = await el.isVisible({ timeout: 2000 }).catch(() => false);
-      if (visible) {
-        const text = await el.innerText().catch(() => '');
-        return { found: true, sel, text };
-      }
-    } catch { /* try next */ }
-  }
-  return { found: false, sel: '', text: '' };
 }
 
 /** Login → Queue → click patient card to open chat zone (Zone 2).
@@ -1870,8 +1836,7 @@ test('TC-LCHAT-002 – ผู้ป่วยดูประวัติแชท
 
 // ─── Save JSON summary ─────────────────────────────────────────────────────────
 test.afterAll(async () => {
-  const out = path.join(__dirname, '../test-results-chat.json');
-  fs.writeFileSync(out, JSON.stringify(RESULTS, null, 2), 'utf-8');
+  writeResultsJson('test-results-chat.json', RESULTS);
   console.log('\n════ CHAT TEST SUMMARY ════');
   for (const r of RESULTS)
     console.log(`${r.id}: ${r.status} – ${r.scenario}`);

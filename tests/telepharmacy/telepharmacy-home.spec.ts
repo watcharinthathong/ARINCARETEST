@@ -2,33 +2,19 @@ import { test, expect } from '@playwright/test';
 import * as path from 'path';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
+import {
+  OPERATOR, Result,
+  makeScreenshotter, goLogin, fillCreds, clickSignIn, getBodyText, writeResultsJson,
+} from './helpers.js';
+import { TELEPHARMACY_SEL } from '../../pages/TelepharmacyLoginPage.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
-const SS_DIR     = path.join(__dirname, '../screenshots/home');
-
-const BASE     = 'https://telepharmacy-cms.vercel.app';
-const OPERATOR = { email: 'operator@medcare.com', pass: 'Oper@1234' };
-const PHARMA   = { email: 'pharma@medcare.com',   pass: 'Pharm@1234' };
+const SS_DIR     = path.join(__dirname, '../../screenshots/telepharmacy/home');
 
 // ─── Selectors ─────────────────────────────────────────────────────────────────
 const SEL = {
-  // Login
-  username: 'input[type="text"]',
-  password: 'input[type="password"]',
-  signIn:   'button[type="submit"]',
-
-  // Flow navigation
-  storeCard:  'text=Watcharin TestTest',
-  branchCard: 'text=สำนักงานใหญ่',
-  nextBtn:    'button:has-text("ถัดไป"):not([disabled])',
-  backBtn:    'button:has-text("ย้อนกลับ")',
-
-  // Supervisor page (operator only) — verified from button debug output
-  supervisorHeading: 'text=เลือกเภสัชกรผู้ควบคุม',
-  supervisorCard:    'button[class*="overflow-hidden"][class*="rounded-2xl"]',  // pharmacist card = button
-  supervisorLicense: 'text=เลขใบประกอบฯ',
-  confirmBtn:        'button:has-text("ยืนยันและเข้าสู่ระบบ"):not([disabled])', // confirm (ไม่ใช่ ถัดไป)
+  ...TELEPHARMACY_SEL,
 
   // Home page — verified from TC-HOME-008 discovery run
   homeUrl:      '/home',
@@ -38,40 +24,11 @@ const SEL = {
   logoutBtn:    'footer button:has-text("Logout")',            // Logout inside sidebar footer
 } as const;
 
-if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
+const ss = makeScreenshotter(SS_DIR);
 
-interface Result {
-  id: string;
-  scenario: string;
-  status: 'PASS' | 'FAIL' | 'SKIP';
-  actualResult: string;
-  remark: string;
-  screenshots: string[];
-}
 const RESULTS: Result[] = [];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-async function ss(page: any, name: string): Promise<string> {
-  const file = `${name}.png`;
-  await page.screenshot({ path: path.join(SS_DIR, file), fullPage: true });
-  return file;
-}
-
-async function goLogin(page: any) {
-  await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(1200);
-}
-
-async function fillCreds(page: any, email: string, pass: string) {
-  await page.locator(SEL.username).fill(email);
-  await page.locator(SEL.password).fill(pass);
-}
-
-async function clickSignIn(page: any) {
-  await page.locator(SEL.signIn).click();
-  await page.waitForTimeout(4000);
-}
-
 async function doStoreFlow(page: any, shots: string[], prefix: string) {
   if (page.url().includes('select-store')) {
     await page.locator(SEL.storeCard).first().click();
@@ -140,10 +97,6 @@ async function fullFlow(page: any, shots: string[], prefix: string) {
   shots.push(await ss(page, `${prefix}_04_final`));
 
   return page.url();
-}
-
-async function getBodyText(page: any): Promise<string> {
-  return page.locator('body').innerText().catch(() => '');
 }
 
 // ─── TC-HOME-001 : Home page loads after full operator flow ───────────────────
@@ -429,7 +382,7 @@ test('TC-HOME-008 – Home Page Content Discovery (Snapshot)', async ({ page }) 
   const lines = body.split('\n').map((l: string) => l.trim()).filter((l: string) => l.length > 0);
 
   // บันทึก body text ลงไฟล์เพื่อ discover selectors
-  const snapPath = path.join(__dirname, '../screenshots/home/HOME-008_body-text.txt');
+  const snapPath = path.join(__dirname, '../../screenshots/telepharmacy/home/HOME-008_body-text.txt');
   fs.writeFileSync(snapPath, lines.join('\n'), 'utf-8');
 
   // สรุป element types ที่มี
@@ -453,8 +406,7 @@ test('TC-HOME-008 – Home Page Content Discovery (Snapshot)', async ({ page }) 
 
 // ─── Save JSON summary ─────────────────────────────────────────────────────────
 test.afterAll(async () => {
-  const out = path.join(__dirname, '../test-results-home.json');
-  fs.writeFileSync(out, JSON.stringify(RESULTS, null, 2), 'utf-8');
+  writeResultsJson('test-results-home.json', RESULTS);
   console.log('\n════ HOME TEST SUMMARY ════');
   for (const r of RESULTS)
     console.log(`${r.id}: ${r.status} – ${r.scenario}`);

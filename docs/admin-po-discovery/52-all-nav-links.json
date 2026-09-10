@@ -1,0 +1,534 @@
+[
+  {
+    "text": "ผู้ใช้งาน",
+    "href": "https://admin-stg.arincare.com/users"
+  },
+  {
+    "text": "ผู้ใช้งาน",
+    "href": "https://admin-stg.arincare.com/users"
+  },
+  {
+    "text": "บริษัท",
+    "href": "https://admin-stg.arincare.com/companies"
+  },
+  {
+    "text": "ประเภทเอกสาร",
+    "href": "https://admin-stg.arincare.com/document-type"
+  },
+  {
+    "text": "Sales Zone",
+    "href": "https://admin-stg.arincare.com/sales-zones"
+  },
+  {
+    "text": "Supplier Offline",
+    "href": "https://admin-stg.arincare.com/supplier-offlines"
+  },
+  {
+    "text": "ADS condition setting",
+    "href": "https://admin-stg.arincare.com/ads-conditions"
+  },
+  {
+    "text": "บล็อกการเข้าถึง (Security / Blocklist)",
+    "href": "https://admin-stg.arincare.com/blocked-access-rules"
+  },
+  {
+    "text": "การแจ้งเตือนป็อปอัพ",
+    "href": "https://admin-stg.arincare.com/popup-notifications"
+  },
+  {
+    "text": "สินค้า",
+    "href": "https://admin-stg.arincare.com/products"
+  },
+  {
+    "text": "สินค้ากลาง",
+    "href": "https://admin-stg.arincare.com/products"
+  },
+  {
+    "text": "แก้ไขสินค้ากลาง",
+    "href": "https://admin-stg.arincare.com/products/edit"
+  },
+  {
+    "text": "แก้ไขสินค้า (TurnKey)",
+    "href": "https://admin-stg.arincare.com/products/turnkey"
+  },
+  {
+    "text": "Request Product",
+    "href": "https://admin-stg.arincare.com/products/request-product"
+  },
+  {
+    "text": "ระดับราคา",
+    "href": "https://admin-stg.arincare.com/price-levels"
+  },
+  {
+    "text": "หน่วยสินค้า",
+    "href": "https://admin-stg.arincare.com/units"
+  },
+  {
+    "text": "ประเภทสินค้า",
+    "href": "https://admin-stg.arincare.com/categories"
+  },
+  {
+    "text": "ประเภทยา",
+    "href": "https://admin-stg.arincare.com/treatment-classes"
+  },
+  {
+    "text": "ผู้ผลิต",
+    "href": "https://admin-stg.arincare.com/manufacturers"
+  },
+  {
+    "text": "หัวข้อข้อมูลยา",
+    "href": "https://admin-stg.arincare.com/medical-info-categories"
+  },
+  {
+    "text": "ส่วนผสม",
+    "href": "https://admin-stg.arincare.com/ingredients"
+  },
+  {
+    "text": "สูตรยา",
+    "href": "https://admin-stg.arincare.com/formulas"
+  },
+  {
+    "text": "แก้ไขหน่วยที่เล็กที่สุด",
+    "href": "https://admin-stg.arincare.com/list-smallest-units"
+  },
+  {
+    "text": "ราคากลาง",
+    "href": "https://admin-stg.arincare.com/prices"
+  },
+  {
+    "text": "เลือกสินค้า",
+    "href": "https://admin-stg.arincare.com/data-sourcing"
+  },
+  {
+    "text": "จับคู่สินค้า PCO",
+    "href": "https://admin-stg.arincare.com/data-merging"
+  },
+  {
+    "text": "เทียบราคาสินค้า",
+    "href": "https://admin-stg.arincare.com/merging-dashboard"
+  },
+  {
+    "text": "โรคประจำตัว",
+    "href": "https://admin-stg.arincare.com/diseases"
+  },
+  {
+    "text": "ข้อมูลจังหวัด",
+    "href": "https://admin-stg.arincare.com/address"
+  },
+  {
+    "text": "สิทธิ์การเข้าถึง",
+    "href": "https://admin-stg.arincare.com/roles"
+  },
+  {
+    "text": "ผู้ใช้งาน",
+    "href": "https://admin-stg.arincare.com/roles"
+  },
+  {
+    "text": "บริษัท",
+    "href": "https://admin-stg.arincare.com/company-roles"
+  },
+  {
+    "text": "สาขา",
+    "href": "https://admin-stg.arincare.com/branch-roles"
+  },
+  {
+    "text": "รายงาน",
+    "href": "https://admin-stg.arincare.com/reports/sale-report"
+  },
+  {
+    "text": "ไม่มียอดขายนานเกินปกติ",
+    "href": "https://admin-stg.arincare.com/reports/sellno-active"
+  },
+  {
+    "text": "สมัครเข้ามาแต่ไม่มียอดขาย",
+    "href": "https://admin-stg.arincare.com/reports/never-use"
+  },
+  {
+    "text": "รายงานการสมัครล่าสุด",
+    "href": "https://admin-stg.arincare.com/reports/last-register"
+  },
+  {
+    "text": "รายงานเซลส์",
+    "href": "https://admin-stg.arincare.com/reports/sale-report"
+  },
+  {
+    "text": "รายงานเการขายแยกตามจังหวัด",
+    "href": "https://admin-stg.arincare.com/reports/sale-report-by-province"
+  },
+  {
+    "text": "สรุปยอดขายประจำวัน (MedEx)",
+    "href": "https://admin-stg.arincare.com/reports/medex-daily-report"
+  },
+  {
+    "text": "Import",
+    "href": "https://admin-stg.arincare.com/data-import"
+  },
+  {
+    "text": "นำเข้าข้อมูลสินค้า",
+    "href": "https://admin-stg.arincare.com/data-import"
+  },
+  {
+    "text": "ย้าย Members มา Customers",
+    "href": "https://admin-stg.arincare.com/customers"
+  },
+  {
+    "text": "Create/Update PCO",
+    "href": "https://admin-stg.arincare.com/import-excel"
+  },
+  {
+    "text": "Import Excel to company",
+    "href": "https://admin-stg.arincare.com/import-excel-company"
+  },
+  {
+    "text": "Import Product",
+    "href": "https://admin-stg.arincare.com/import-excel-product"
+  },
+  {
+    "text": "การเชื่อมต่อภายนอก",
+    "href": "https://admin-stg.arincare.com/integrations/kbank"
+  },
+  {
+    "text": "K PLUS SHOP",
+    "href": "https://admin-stg.arincare.com/integrations/kbank"
+  },
+  {
+    "text": "K PLUS SHOP (Bulk)",
+    "href": "https://admin-stg.arincare.com/integrations/kbank/bulk"
+  },
+  {
+    "text": "K PLUS Merchants",
+    "href": "https://admin-stg.arincare.com/integrations/kbank/merchants"
+  },
+  {
+    "text": "K PLUS QR Payments",
+    "href": "https://admin-stg.arincare.com/integrations/kbank/payments"
+  },
+  {
+    "text": "IMS Report",
+    "href": "https://admin-stg.arincare.com/integrations/iqvia"
+  },
+  {
+    "text": "IMS Setting Code",
+    "href": "https://admin-stg.arincare.com/integrations/iqvia-location-code"
+  },
+  {
+    "text": "IMS Select Company Manual Report",
+    "href": "https://admin-stg.arincare.com/integrations/iqvia-company-manual"
+  },
+  {
+    "text": "Service Delivery",
+    "href": "https://admin-stg.arincare.com/integrations/service-delivery"
+  },
+  {
+    "text": "รายได้เสริมกับ arincare",
+    "href": "https://admin-stg.arincare.com/integrations/supplemental-income-with-banner"
+  },
+  {
+    "text": "Payment Method",
+    "href": "https://admin-stg.arincare.com/integrations/payment-methods"
+  },
+  {
+    "text": "Line Notification Types",
+    "href": "https://admin-stg.arincare.com/integrations/line-notification-types"
+  },
+  {
+    "text": "Bank Settlement",
+    "href": "https://admin-stg.arincare.com/bank-settlement"
+  },
+  {
+    "text": "Bulk Settlements",
+    "href": "https://admin-stg.arincare.com/bank-settlement?tab=bulks"
+  },
+  {
+    "text": "Settlements",
+    "href": "https://admin-stg.arincare.com/bank-settlement?tab=settlements"
+  },
+  {
+    "text": "MaxMe",
+    "href": "https://admin-stg.arincare.com/maxme/max-card-point-report"
+  },
+  {
+    "text": "Max Card Point Report",
+    "href": "https://admin-stg.arincare.com/maxme/max-card-point-report"
+  },
+  {
+    "text": "Arinshare",
+    "href": "https://admin-stg.arincare.com/arinshare"
+  },
+  {
+    "text": "Listings",
+    "href": "https://admin-stg.arincare.com/arinshare?tab=listings"
+  },
+  {
+    "text": "Carts",
+    "href": "https://admin-stg.arincare.com/arinshare?tab=carts"
+  },
+  {
+    "text": "Purchase Transactions",
+    "href": "https://admin-stg.arincare.com/arinshare?tab=cart"
+  },
+  {
+    "text": "Package",
+    "href": "https://admin-stg.arincare.com/package"
+  },
+  {
+    "text": "Company",
+    "href": "https://admin-stg.arincare.com/package?tab=company"
+  },
+  {
+    "text": "Packages",
+    "href": "https://admin-stg.arincare.com/package?tab=packages"
+  },
+  {
+    "text": "Permissions",
+    "href": "https://admin-stg.arincare.com/package?tab=permissions"
+  },
+  {
+    "text": "SMS Order",
+    "href": "https://admin-stg.arincare.com/package?tab=sms-orders"
+  },
+  {
+    "text": "SMS Package",
+    "href": "https://admin-stg.arincare.com/package?tab=sms-packages"
+  },
+  {
+    "text": "Telepharmacy Packages",
+    "href": "https://admin-stg.arincare.com/package?tab=telepharmacy-packages"
+  },
+  {
+    "text": "Arinlink",
+    "href": "https://admin-stg.arincare.com/arinlink/order-management"
+  },
+  {
+    "text": "Billing",
+    "href": "https://admin-stg.arincare.com/arinlink/billing"
+  },
+  {
+    "text": "Scheduled Jobs",
+    "href": "https://admin-stg.arincare.com/arinlink/scheduled_jobs"
+  },
+  {
+    "text": "Shipping Methods",
+    "href": "https://admin-stg.arincare.com/arinlink/shipping-method"
+  },
+  {
+    "text": "Payment Type",
+    "href": "https://admin-stg.arincare.com/arinlink/payment-type"
+  },
+  {
+    "text": "Order Management",
+    "href": "https://admin-stg.arincare.com/arinlink/order-management"
+  },
+  {
+    "text": "Catalog items",
+    "href": "https://admin-stg.arincare.com/arinlink/catalog"
+  },
+  {
+    "text": "Tier Setup",
+    "href": "https://admin-stg.arincare.com/arinlink/tier-setup"
+  },
+  {
+    "text": "Reward Catalog",
+    "href": "https://admin-stg.arincare.com/arinlink/reward-catalog"
+  },
+  {
+    "text": "Calculate Rebate",
+    "href": "https://admin-stg.arincare.com/arinlink/calculate-rebate"
+  },
+  {
+    "text": "Coupons",
+    "href": "https://admin-stg.arincare.com/arinlink/coupons"
+  },
+  {
+    "text": "Calculate Promotion",
+    "href": "https://admin-stg.arincare.com/arinlink/calculate-promotion"
+  },
+  {
+    "text": "Express",
+    "href": "https://admin-stg.arincare.com/arinlink/express"
+  },
+  {
+    "text": "Export Medcare sales data",
+    "href": "https://admin-stg.arincare.com/export-excel"
+  },
+  {
+    "text": "Avision",
+    "href": "https://admin-stg.arincare.com/avision/post-orders"
+  },
+  {
+    "text": "Post Orders",
+    "href": "https://admin-stg.arincare.com/avision/post-orders"
+  },
+  {
+    "text": "Post Customers",
+    "href": "https://admin-stg.arincare.com/avision/post-customers"
+  },
+  {
+    "text": "Arincare",
+    "href": "#"
+  },
+  {
+    "text": "ออกจากระบบ",
+    "href": "https://admin-stg.arincare.com/logout"
+  },
+  {
+    "text": "หน้าหลัก",
+    "href": "https://admin-stg.arincare.com"
+  },
+  {
+    "text": "เพิ่มสินค้า",
+    "href": "/products2/edit#new"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00001"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00002"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00003"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00004"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00005"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00006"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00007"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00008"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00009"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00010"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00011"
+  },
+  {
+    "text": "Edit",
+    "href": "/products/edit#PCO00012"
+  },
+  {
+    "text": "«",
+    "href": "#"
+  },
+  {
+    "text": "‹",
+    "href": "#"
+  },
+  {
+    "text": "1",
+    "href": "#"
+  },
+  {
+    "text": "2",
+    "href": "#"
+  },
+  {
+    "text": "3",
+    "href": "#"
+  },
+  {
+    "text": "4",
+    "href": "#"
+  },
+  {
+    "text": "5",
+    "href": "#"
+  },
+  {
+    "text": "…",
+    "href": "#"
+  },
+  {
+    "text": "›",
+    "href": "#"
+  },
+  {
+    "text": "»",
+    "href": "#"
+  },
+  {
+    "text": "Messages",
+    "href": null
+  },
+  {
+    "text": "Timeline",
+    "href": null
+  },
+  {
+    "text": "Exceptions",
+    "href": null
+  },
+  {
+    "text": "Views7",
+    "href": null
+  },
+  {
+    "text": "Route",
+    "href": null
+  },
+  {
+    "text": "Queries7",
+    "href": null
+  },
+  {
+    "text": "Mails",
+    "href": null
+  },
+  {
+    "text": "Auth",
+    "href": null
+  },
+  {
+    "text": "Gate",
+    "href": null
+  },
+  {
+    "text": "Session",
+    "href": null
+  },
+  {
+    "text": "Request",
+    "href": null
+  },
+  {
+    "text": "production_arincare",
+    "href": null
+  },
+  {
+    "text": "Load more",
+    "href": null
+  },
+  {
+    "text": "Show only current URL",
+    "href": null
+  },
+  {
+    "text": "Show all",
+    "href": null
+  },
+  {
+    "text": "Delete all",
+    "href": null
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "tag": "DIV",
+  "class": "cart-popover-header tw-flex tw-justify-between tw-items-center",
+  "id": "",
+  "html": "<div class=\"cart-popover-header tw-flex tw-justify-between tw-items-center\"><span class=\"tw-font-bold tw-text-gray-800 tw-text-xs\">\n                                🛒 รายการในตะกร้า\n                            </span> <div class=\"tw-flex tw-items-center tw-space-x-2\"><span class=\"tw-text-xs tw-text-gray-500 tw-bg-gray-200 tw-px-2 tw-py-0.5 tw-rounded-full\">\n                                    1 รายการ\n                                </span> <!----></div></div>"
+}

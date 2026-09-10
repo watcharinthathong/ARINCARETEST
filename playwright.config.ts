@@ -46,5 +46,22 @@ export default defineConfig({
       },
       testMatch: ['**/liff-patient.spec.ts', '**/liff-ekyc.spec.ts'],
     },
+    {
+      name: 'line-notification',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: ['**/line-notification/*.spec.ts'],
+    },
+    // MedEx: รัน cross-device เพื่อตรวจ responsive/UI — 'chromium' project ด้านบนคือขา Desktop Chrome อยู่แล้ว
+    // (ไม่ scope ด้วย testMatch จึงรันทุกไฟล์รวมถึง medex/) สองอันนี้เพิ่มขา Mobile เข้ามา
+    {
+      name: 'medex-mobile-chrome',
+      use: { ...devices['Pixel 7'], locale: 'th-TH', timezoneId: 'Asia/Bangkok' },
+      testMatch: ['**/medex/*.spec.ts'],
+    },
+    {
+      name: 'medex-mobile-safari',
+      use: { ...devices['iPhone 13'], locale: 'th-TH', timezoneId: 'Asia/Bangkok' },
+      testMatch: ['**/medex/*.spec.ts'],
+    },
   ],
 });

@@ -1,0 +1,108 @@
+{
+  "inputs": [
+    {
+      "type": "checkbox",
+      "id": "",
+      "name": null,
+      "placeholder": null
+    },
+    {
+      "type": null,
+      "id": "",
+      "name": null,
+      "placeholder": "วว/ดด/ปปปป"
+    },
+    {
+      "type": null,
+      "id": "",
+      "name": null,
+      "placeholder": "00"
+    },
+    {
+      "type": null,
+      "id": "",
+      "name": null,
+      "placeholder": "00"
+    },
+    {
+      "type": null,
+      "id": "",
+      "name": null,
+      "placeholder": "0.00"
+    },
+    {
+      "type": "file",
+      "id": "",
+      "name": null,
+      "placeholder": null
+    },
+    {
+      "type": "checkbox",
+      "id": "",
+      "name": null,
+      "placeholder": null
+    },
+    {
+      "type": "number",
+      "id": "rating-phone-number",
+      "name": null,
+      "placeholder": null
+    },
+    {
+      "type": "text",
+      "id": "",
+      "name": null,
+      "placeholder": null
+    },
+    {
+      "type": "text",
+      "id": "",
+      "name": null,
+      "placeholder": null
+    },
+    {
+      "type": "text",
+      "id": "",
+      "name": "uri",
+      "placeholder": null
+    },
+    {
+      "type": "text",
+      "id": "",
+      "name": "ip",
+      "placeholder": null
+    }
+  ],
+  "selects": [
+    {
+      "id": "",
+      "name": null
+    },
+    {
+      "id": "",
+      "name": null
+    },
+    {
+      "id": "",
+      "name": "method"
+    }
+  ],
+  "buttons": [
+    "ปิดหน้าต่าง",
+    "Begin!",
+    "×",
+    "ยกเลิก",
+    "ยืนยัน",
+    "เปิดหน้าจอนี้ใน Tab ใหม่เพื่อทำงานต่อ",
+    "ยอมรับ",
+    "×",
+    "แนบหลักฐานการโอน",
+    "อับโหลดสลิป",
+    "ตกลง",
+    "ส่งหลักฐานการโอน",
+    "×",
+    "ปิด",
+    "ส่ง Feedback",
+    "Search"
+  ]
+}

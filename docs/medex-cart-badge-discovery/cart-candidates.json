@@ -1,0 +1,188 @@
+[
+  {
+    "tag": "SPAN",
+    "class": "glyphicon glyphicon-shopping-cart",
+    "text": "",
+    "html": "<span class=\"glyphicon glyphicon-shopping-cart\"></span>"
+  },
+  {
+    "tag": "SPAN",
+    "class": "glyphicon glyphicon-shopping-cart",
+    "text": "",
+    "html": "<span class=\"glyphicon glyphicon-shopping-cart\"></span>"
+  },
+  {
+    "tag": "DIV",
+    "class": "row",
+    "text": "×\n                  คุณมีตะกร้าสินค้าใน Arincare Marketplace",
+    "html": "<div class=\"row\"><div class=\"col-md-12\"><section id=\"response-section\"><div id=\"marketplace-cart-expire-notify\" role=\"alert\" class=\"alert alert-warning alert-dismissible\" style=\"display: none;\"><button type=\"button\" data-dismiss=\"alert\" aria-label=\"Close\" class=\"close\"><span aria-hidden=\"true\">×</span></button>\n                  คุณมีตะกร้าสินค้าใน Arincare Marketplace ที่ใกล้หมดอายุ <a href=\"/companies/arinlink/order?intent=view_pending_payment_order\" target=\"_blank\"><u>คลิกที่นี่เพื่อชำระเงิน<"
+  },
+  {
+    "tag": "DIV",
+    "class": "col-md-12",
+    "text": "×\n                  คุณมีตะกร้าสินค้าใน Arincare Marketplace",
+    "html": "<div class=\"col-md-12\"><section id=\"response-section\"><div id=\"marketplace-cart-expire-notify\" role=\"alert\" class=\"alert alert-warning alert-dismissible\" style=\"display: none;\"><button type=\"button\" data-dismiss=\"alert\" aria-label=\"Close\" class=\"close\"><span aria-hidden=\"true\">×</span></button>\n                  คุณมีตะกร้าสินค้าใน Arincare Marketplace ที่ใกล้หมดอายุ <a href=\"/companies/arinlink/order?intent=view_pending_payment_order\" target=\"_blank\"><u>คลิกที่นี่เพื่อชำระเงิน</u></a></div></se"
+  },
+  {
+    "tag": "DIV",
+    "class": "alert alert-warning alert-dismissible",
+    "text": "×\n                  คุณมีตะกร้าสินค้าใน Arincare Marketplace",
+    "html": "<div id=\"marketplace-cart-expire-notify\" role=\"alert\" class=\"alert alert-warning alert-dismissible\" style=\"display: none;\"><button type=\"button\" data-dismiss=\"alert\" aria-label=\"Close\" class=\"close\"><span aria-hidden=\"true\">×</span></button>\n                  คุณมีตะกร้าสินค้าใน Arincare Marketplace ที่ใกล้หมดอายุ <a href=\"/companies/arinlink/order?intent=view_pending_payment_order\" target=\"_blank\"><u>คลิกที่นี่เพื่อชำระเงิน</u></a></div>"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "text": "ค้นหา  ตะกร้าสินค้าของฉัน \n                    1\n           ",
+    "html": "<div id=\"marketplace\"><div class=\"tw-sticky tw-w-full tw-flex tw-items-center tw-py-2 tw-mb-5 gradient-red\" style=\"z-index: 1040;\"><div><img src=\"/images/logo-medex.png\" class=\"tw-ml-4 tw-w-24 lg:tw-ml-8 lg:tw-w-32 hide-on-mobile\" style=\"object-fit: cover;\"></div> <div class=\"tw-container tw-px-3 tw-my-1 tw-flex tw-flex-col tw-space-y-2 container\"><div class=\"tw-flex tw-space-x-2.5\"><div class=\"tw-w-full product-search-container\"><input type=\"text\" id=\"product-search\" placeholder=\"ค้นหาจาก: ชื่อ"
+  },
+  {
+    "tag": "DIV",
+    "class": "tw-sticky tw-w-full tw-flex tw-items-center tw-py-2 tw-mb-5 gradient-red",
+    "text": "ค้นหา  ตะกร้าสินค้าของฉัน \n                    1\n           ",
+    "html": "<div class=\"tw-sticky tw-w-full tw-flex tw-items-center tw-py-2 tw-mb-5 gradient-red\" style=\"z-index: 1040;\"><div><img src=\"/images/logo-medex.png\" class=\"tw-ml-4 tw-w-24 lg:tw-ml-8 lg:tw-w-32 hide-on-mobile\" style=\"object-fit: cover;\"></div> <div class=\"tw-container tw-px-3 tw-my-1 tw-flex tw-flex-col tw-space-y-2 container\"><div class=\"tw-flex tw-space-x-2.5\"><div class=\"tw-w-full product-search-container\"><input type=\"text\" id=\"product-search\" placeholder=\"ค้นหาจาก: ชื่อสินค้า / ชื่อสามัญทางย"
+  },
+  {
+    "tag": "DIV",
+    "class": "tw-container tw-px-3 tw-my-1 tw-flex tw-flex-col tw-space-y-2 container",
+    "text": "ค้นหา  ตะกร้าสินค้าของฉัน \n                    1\n           ",
+    "html": "<div class=\"tw-container tw-px-3 tw-my-1 tw-flex tw-flex-col tw-space-y-2 container\"><div class=\"tw-flex tw-space-x-2.5\"><div class=\"tw-w-full product-search-container\"><input type=\"text\" id=\"product-search\" placeholder=\"ค้นหาจาก: ชื่อสินค้า / ชื่อสามัญทางยา / ชื่อบริษัท / หรือรหัสสินค้า\" class=\"tw-block tw-w-full tw-rounded tw-font-serif tw-text-body_2 tw-px-2.5 tw-py-1\" style=\"border-color: transparent;\"> <section class=\"dropdown\"><ul class=\"dropdown-menu\"></ul></section></div> <button type=\"b"
+  },
+  {
+    "tag": "DIV",
+    "class": "tw-flex tw-space-x-2.5",
+    "text": "ค้นหา  ตะกร้าสินค้าของฉัน \n                    1",
+    "html": "<div class=\"tw-flex tw-space-x-2.5\"><div class=\"tw-w-full product-search-container\"><input type=\"text\" id=\"product-search\" placeholder=\"ค้นหาจาก: ชื่อสินค้า / ชื่อสามัญทางยา / ชื่อบริษัท / หรือรหัสสินค้า\" class=\"tw-block tw-w-full tw-rounded tw-font-serif tw-text-body_2 tw-px-2.5 tw-py-1\" style=\"border-color: transparent;\"> <section class=\"dropdown\"><ul class=\"dropdown-menu\"></ul></section></div> <button type=\"button\" class=\"tw-flex-none tw-flex tw-justify-center tw-items-center lg:tw-w-20 tw-h-"
+  },
+  {
+    "tag": "BUTTON",
+    "class": "tw-relative tw-flex-none tw-flex tw-justify-center tw-items-center tw-w-12 lg:tw-w-36 tw-h-8 tw-bg-cta-primary-orange hover:tw-bg-primary_red tw-rounded tw-font-serif tw-text-body_2 tw-text-white tw-px-2.5 tw-py-1.5",
+    "text": "ตะกร้าสินค้าของฉัน \n                    1",
+    "html": "<button type=\"button\" id=\"nav-cart-button\" class=\"tw-relative tw-flex-none tw-flex tw-justify-center tw-items-center tw-w-12 lg:tw-w-36 tw-h-8 tw-bg-cta-primary-orange hover:tw-bg-primary_red tw-rounded tw-font-serif tw-text-body_2 tw-text-white tw-px-2.5 tw-py-1.5\" style=\"border-color: transparent;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14.55 11.5C15.3 11.5 15.96 11.09 16.3 10.47L19.88 3.98C20.25 3.32 19.77 2.5 19.01 2.5H4.21L3."
+  },
+  {
+    "tag": "SPAN",
+    "class": "tw-ml-1.5",
+    "text": "ตะกร้าสินค้าของฉัน",
+    "html": "<span class=\"tw-ml-1.5\">ตะกร้าสินค้าของฉัน</span>"
+  },
+  {
+    "tag": "DIV",
+    "class": "modal fade",
+    "text": "การกู้ข้อมูลตะกร้าสินค้า  การกู้ตะกร้าสินค้า คือ\n           ",
+    "html": "<div tabindex=\"-1\" role=\"dialog\" class=\"modal fade\" _v-5d40ee99=\"\"><div role=\"document\" class=\"modal-dialog\"><div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-5d40ee99=\"\" class=\"flex flex-cols font-kanit\"><div _v-5d40ee99=\"\"><img src=\"/images/medex/medex-restore-cart-feature-notification-title.png\" _v-5d40ee99=\"\" class=\"title-img\"></div> <div _v-5d40ee99=\"\" class=\"text-center\"><h2 _v-5d40ee99=\"\" class=\"text-title bold my-5\">การกู้ข้อมูลตะกร้าสินค้า</h2></div> <div _v-5d40ee99=\"\""
+  },
+  {
+    "tag": "DIV",
+    "class": "modal-dialog",
+    "text": "การกู้ข้อมูลตะกร้าสินค้า  การกู้ตะกร้าสินค้า คือ\n           ",
+    "html": "<div role=\"document\" class=\"modal-dialog\"><div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-5d40ee99=\"\" class=\"flex flex-cols font-kanit\"><div _v-5d40ee99=\"\"><img src=\"/images/medex/medex-restore-cart-feature-notification-title.png\" _v-5d40ee99=\"\" class=\"title-img\"></div> <div _v-5d40ee99=\"\" class=\"text-center\"><h2 _v-5d40ee99=\"\" class=\"text-title bold my-5\">การกู้ข้อมูลตะกร้าสินค้า</h2></div> <div _v-5d40ee99=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width="
+  },
+  {
+    "tag": "DIV",
+    "class": "modal-content",
+    "text": "การกู้ข้อมูลตะกร้าสินค้า  การกู้ตะกร้าสินค้า คือ\n           ",
+    "html": "<div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-5d40ee99=\"\" class=\"flex flex-cols font-kanit\"><div _v-5d40ee99=\"\"><img src=\"/images/medex/medex-restore-cart-feature-notification-title.png\" _v-5d40ee99=\"\" class=\"title-img\"></div> <div _v-5d40ee99=\"\" class=\"text-center\"><h2 _v-5d40ee99=\"\" class=\"text-title bold my-5\">การกู้ข้อมูลตะกร้าสินค้า</h2></div> <div _v-5d40ee99=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width=\"90\" height=\"3\" viewBox=\"0 0 90 3\" fill=\"n"
+  },
+  {
+    "tag": "DIV",
+    "class": "modal-body",
+    "text": "การกู้ข้อมูลตะกร้าสินค้า  การกู้ตะกร้าสินค้า คือ\n           ",
+    "html": "<div class=\"modal-body\"><div _v-5d40ee99=\"\" class=\"flex flex-cols font-kanit\"><div _v-5d40ee99=\"\"><img src=\"/images/medex/medex-restore-cart-feature-notification-title.png\" _v-5d40ee99=\"\" class=\"title-img\"></div> <div _v-5d40ee99=\"\" class=\"text-center\"><h2 _v-5d40ee99=\"\" class=\"text-title bold my-5\">การกู้ข้อมูลตะกร้าสินค้า</h2></div> <div _v-5d40ee99=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width=\"90\" height=\"3\" viewBox=\"0 0 90 3\" fill=\"none\" xmlns=\"http://www.w3.org/2000/"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex flex-cols font-kanit",
+    "text": "การกู้ข้อมูลตะกร้าสินค้า  การกู้ตะกร้าสินค้า คือ\n           ",
+    "html": "<div _v-5d40ee99=\"\" class=\"flex flex-cols font-kanit\"><div _v-5d40ee99=\"\"><img src=\"/images/medex/medex-restore-cart-feature-notification-title.png\" _v-5d40ee99=\"\" class=\"title-img\"></div> <div _v-5d40ee99=\"\" class=\"text-center\"><h2 _v-5d40ee99=\"\" class=\"text-title bold my-5\">การกู้ข้อมูลตะกร้าสินค้า</h2></div> <div _v-5d40ee99=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width=\"90\" height=\"3\" viewBox=\"0 0 90 3\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" _v-5d40ee99=\"\"><rec"
+  },
+  {
+    "tag": "DIV",
+    "class": "text-center",
+    "text": "การกู้ข้อมูลตะกร้าสินค้า",
+    "html": "<div _v-5d40ee99=\"\" class=\"text-center\"><h2 _v-5d40ee99=\"\" class=\"text-title bold my-5\">การกู้ข้อมูลตะกร้าสินค้า</h2></div>"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "text": "การกู้ตะกร้าสินค้า คือ\n                    การดึงรายการสินค้",
+    "html": "<div _v-5d40ee99=\"\"><ul _v-5d40ee99=\"\"><li _v-5d40ee99=\"\" class=\"text-content\"><span _v-5d40ee99=\"\" class=\"text-blue\">การกู้ตะกร้าสินค้า</span> คือ\n                    การดึงรายการสินค้าในตะกร้าที่หมดอายุไปแล้วกลับมาใช้ใหม่ โดยหลังจากตะกร้าหมดอายุ\n                    ข้อมูลสินค้าในตะกร้าอาจมีการเปลี่ยนแปลงได้ เช่น ราคา หรือโปรโมชั่นสินค้า\n                    กรุณาตรวจสอบข้อมูลก่อนทำการชำระเงินทุกครั้ง\n                </li> <li _v-5d40ee99=\"\" class=\"text-content\"><span _v-5d40ee99=\"\" class=\"text-"
+  },
+  {
+    "tag": "SPAN",
+    "class": "text-blue",
+    "text": "การกู้ตะกร้าสินค้า",
+    "html": "<span _v-5d40ee99=\"\" class=\"text-blue\">การกู้ตะกร้าสินค้า</span>"
+  },
+  {
+    "tag": "SPAN",
+    "class": "text-blue",
+    "text": "หากสร้างตะกร้าใหม่",
+    "html": "<span _v-5d40ee99=\"\" class=\"text-blue\">หากสร้างตะกร้าใหม่</span>"
+  },
+  {
+    "tag": "DIV",
+    "class": "modal fade",
+    "text": "บันทึกรายการโปรดของคุณ  \n                กดปุ่ม \"หัวใจ\" มุมข",
+    "html": "<div tabindex=\"-1\" role=\"dialog\" class=\"modal fade\" _v-74ac65d4=\"\"><div role=\"document\" class=\"modal-dialog modal-mdsm\"><div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-74ac65d4=\"\" class=\"flex flex-cols font-kanit p-3\"><div _v-74ac65d4=\"\"><img src=\"/images/medex/medex-favorite-product-list-feature-notification-title.png\" _v-74ac65d4=\"\" class=\"title-img\"></div> <div _v-74ac65d4=\"\" class=\"text-center\"><h2 _v-74ac65d4=\"\" class=\"text-title h3\">บันทึกรายการโปรดของคุณ</h2></div> <div"
+  },
+  {
+    "tag": "DIV",
+    "class": "modal-dialog modal-mdsm",
+    "text": "บันทึกรายการโปรดของคุณ  \n                กดปุ่ม \"หัวใจ\" มุมข",
+    "html": "<div role=\"document\" class=\"modal-dialog modal-mdsm\"><div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-74ac65d4=\"\" class=\"flex flex-cols font-kanit p-3\"><div _v-74ac65d4=\"\"><img src=\"/images/medex/medex-favorite-product-list-feature-notification-title.png\" _v-74ac65d4=\"\" class=\"title-img\"></div> <div _v-74ac65d4=\"\" class=\"text-center\"><h2 _v-74ac65d4=\"\" class=\"text-title h3\">บันทึกรายการโปรดของคุณ</h2></div> <div _v-74ac65d4=\"\" class=\"tw-flex tw-items-center tw-justify-center mb"
+  },
+  {
+    "tag": "DIV",
+    "class": "modal-content",
+    "text": "บันทึกรายการโปรดของคุณ  \n                กดปุ่ม \"หัวใจ\" มุมข",
+    "html": "<div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-74ac65d4=\"\" class=\"flex flex-cols font-kanit p-3\"><div _v-74ac65d4=\"\"><img src=\"/images/medex/medex-favorite-product-list-feature-notification-title.png\" _v-74ac65d4=\"\" class=\"title-img\"></div> <div _v-74ac65d4=\"\" class=\"text-center\"><h2 _v-74ac65d4=\"\" class=\"text-title h3\">บันทึกรายการโปรดของคุณ</h2></div> <div _v-74ac65d4=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width=\"90\" height=\"3\" viewBox=\"0 0 90 3\" fil"
+  },
+  {
+    "tag": "DIV",
+    "class": "modal-body",
+    "text": "บันทึกรายการโปรดของคุณ  \n                กดปุ่ม \"หัวใจ\" มุมข",
+    "html": "<div class=\"modal-body\"><div _v-74ac65d4=\"\" class=\"flex flex-cols font-kanit p-3\"><div _v-74ac65d4=\"\"><img src=\"/images/medex/medex-favorite-product-list-feature-notification-title.png\" _v-74ac65d4=\"\" class=\"title-img\"></div> <div _v-74ac65d4=\"\" class=\"text-center\"><h2 _v-74ac65d4=\"\" class=\"text-title h3\">บันทึกรายการโปรดของคุณ</h2></div> <div _v-74ac65d4=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width=\"90\" height=\"3\" viewBox=\"0 0 90 3\" fill=\"none\" xmlns=\"http://www.w3.org/2"
+  },
+  {
+    "tag": "DIV",
+    "class": "flex flex-cols font-kanit p-3",
+    "text": "บันทึกรายการโปรดของคุณ  \n                กดปุ่ม \"หัวใจ\" มุมข",
+    "html": "<div _v-74ac65d4=\"\" class=\"flex flex-cols font-kanit p-3\"><div _v-74ac65d4=\"\"><img src=\"/images/medex/medex-favorite-product-list-feature-notification-title.png\" _v-74ac65d4=\"\" class=\"title-img\"></div> <div _v-74ac65d4=\"\" class=\"text-center\"><h2 _v-74ac65d4=\"\" class=\"text-title h3\">บันทึกรายการโปรดของคุณ</h2></div> <div _v-74ac65d4=\"\" class=\"tw-flex tw-items-center tw-justify-center mb-3\"><svg width=\"90\" height=\"3\" viewBox=\"0 0 90 3\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" _v-74ac65d4=\"\">"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "text": "เลือกช้อปสินค้าจากรายการลงตะกร้าง่ายขึ้นในคลิ๊กเดียว\n       ",
+    "html": "<div _v-74ac65d4=\"\"><ul _v-74ac65d4=\"\" class=\"my-ul\"><li _v-74ac65d4=\"\" class=\"text-content\">\n                    เลือกช้อปสินค้าจากรายการลงตะกร้าง่ายขึ้นในคลิ๊กเดียว\n                </li> <li _v-74ac65d4=\"\" class=\"text-content\">\n                    รับแจ้งเตือนความเคลื่อนไหวสินค้าขายดีและโปรโมชั่น\n                </li></ul></div>"
+  },
+  {
+    "tag": "DIV",
+    "class": "row container-fluid",
+    "text": "หน้าหลักMedEx สินค้าทั้งหมด สินค้าปักตะกร้า สินค้าโปรโมชั่น ",
+    "html": "<div id=\"arinlink\" class=\"row container-fluid\"><ol class=\"breadcrumb\"><li class=\"\"><a href=\"/\">หน้าหลัก</a></li><li class=\"active\">MedEx</li></ol> <div class=\"col-xs-2\"><ul _v-6f20c6bd=\"\" class=\"menu-container\"><li _v-6f20c6bd=\"\"><a href=\"/companies/marketplace\" _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">สินค้าทั้งหมด</h6></a></li> <li _v-6f20c6bd=\"\"><a href=\"/companies/marketplace/recommend\" _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">สินค้าปักตะกร้า</h6></a></li> <li _v-6f20c6bd=\"\"><a href=\"/companies/marketplac"
+  },
+  {
+    "tag": "DIV",
+    "class": "col-xs-2",
+    "text": "สินค้าทั้งหมด สินค้าปักตะกร้า สินค้าโปรโมชั่น \n             ",
+    "html": "<div class=\"col-xs-2\"><ul _v-6f20c6bd=\"\" class=\"menu-container\"><li _v-6f20c6bd=\"\"><a href=\"/companies/marketplace\" _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">สินค้าทั้งหมด</h6></a></li> <li _v-6f20c6bd=\"\"><a href=\"/companies/marketplace/recommend\" _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">สินค้าปักตะกร้า</h6></a></li> <li _v-6f20c6bd=\"\"><a href=\"/companies/marketplace/promotion\" _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">สินค้าโปรโมชั่น</h6></a></li> <li _v-6f20c6bd=\"\" class=\"\"><a _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">\n    "
+  },
+  {
+    "tag": "A",
+    "class": "",
+    "text": "สินค้าปักตะกร้า",
+    "html": "<a href=\"/companies/marketplace/recommend\" _v-6f20c6bd=\"\"><h6 _v-6f20c6bd=\"\">สินค้าปักตะกร้า</h6></a>"
+  },
+  {
+    "tag": "DIV",
+    "class": "",
+    "text": "แนะนำ Feature ใหม่ !\n                    สามารถเลือกสินค้าลง",
+    "html": "<div _v-6f20c6bd=\"\"><div _v-6f20c6bd=\"\" class=\"tooltip-container\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" _v-6f20c6bd=\"\"><path d=\"M11.9638 7.30908H11.9274C11.4911 7.30908 11.0911 7.67272 11.0911 8.14545C11.0911 8.61817 11.4547 8.98181 11.9274 8.98181H11.9638C12.4002 8.98181 12.8002 8.61817 12.8002 8.14545C12.8002 7.67272 12.4365 7.30908 11.9638 7.30908Z\" fill=\"#111928\" _v-6f20c6bd=\"\"></path> <path d=\"M11.9638 10.1816C11.5274 10.1816 11.1274 "
+  },
+  {
+    "tag": "DIV",
+    "class": "modal fade",
+    "text": "บันทึกรายการโปรดของคุณ  \n                กดปุ่ม \"หัวใจ\" มุมข",
+    "html": "<div tabindex=\"-1\" role=\"dialog\" class=\"modal fade\" _v-74ac65d4=\"\" _v-6f20c6bd=\"\"><div role=\"document\" class=\"modal-dialog modal-mdsm\"><div class=\"modal-content\"><!----> <div class=\"modal-body\"><div _v-74ac65d4=\"\" class=\"flex flex-cols font-kanit p-3\"><div _v-74ac65d4=\"\"><img src=\"/images/medex/medex-favorite-product-list-feature-notification-title.png\" _v-74ac65d4=\"\" class=\"title-img\"></div> <div _v-74ac65d4=\"\" class=\"text-center\"><h2 _v-74ac65d4=\"\" class=\"text-title h3\">บันทึกรายการโปรดของคุณ<"
+  }
+]

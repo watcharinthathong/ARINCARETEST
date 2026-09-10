@@ -1,0 +1,262 @@
+[
+  {
+    "text": "Arincare Pharmacy",
+    "href": "https://app-stg.arincare.com/companies/lbeIdC5mld"
+  },
+  {
+    "text": "ข้อมูลสินค้า",
+    "href": "https://app-stg.arincare.com/companies/products"
+  },
+  {
+    "text": "ข้อมูลสินค้า",
+    "href": "https://app-stg.arincare.com/companies/products/list"
+  },
+  {
+    "text": "กลุ่มสินค้า",
+    "href": "https://app-stg.arincare.com/companies/product-groups"
+  },
+  {
+    "text": "ชุดสินค้า",
+    "href": "https://app-stg.arincare.com/companies/products-set"
+  },
+  {
+    "text": "พิมพ์บาร์โค้ดสินค้า",
+    "href": "https://app-stg.arincare.com/companies/product-barcodes"
+  },
+  {
+    "text": "จัดการฉลากยา",
+    "href": "https://app-stg.arincare.com/companies/drug-labels"
+  },
+  {
+    "text": "ตั้งราคาสินค้า",
+    "href": "https://app-stg.arincare.com/companies/bulk-price"
+  },
+  {
+    "text": "ข้อมูลชั้นวางสินค้า",
+    "href": "https://app-stg.arincare.com/companies/products/locations"
+  },
+  {
+    "text": "สมาชิกการค้า",
+    "href": "https://app-stg.arincare.com/companies/suppliers"
+  },
+  {
+    "text": "จัดการเจ้าหนี้",
+    "href": "https://app-stg.arincare.com/companies/suppliers"
+  },
+  {
+    "text": "ข้อมูลลูกค้า",
+    "href": "https://app-stg.arincare.com/companies/customers"
+  },
+  {
+    "text": "SMS",
+    "href": "https://app-stg.arincare.com/companies/sms-bulks"
+  },
+  {
+    "text": "คลังสินค้า",
+    "href": "https://app-stg.arincare.com/companies/inventories"
+  },
+  {
+    "text": "รายการสินค้าคงคลัง",
+    "href": "https://app-stg.arincare.com/companies/inventories/list"
+  },
+  {
+    "text": "รายการปรับสต็อคสินค้า",
+    "href": "https://app-stg.arincare.com/companies/inventory-adjustments"
+  },
+  {
+    "text": "ส่งสินค้าคืนบริษัท",
+    "href": "https://app-stg.arincare.com/companies/supplier-returns"
+  },
+  {
+    "text": "ย้าย SKU สินค้า",
+    "href": "https://app-stg.arincare.com/companies/change-sku"
+  },
+  {
+    "text": "บันทึกอุณหภูมิ (GPP)",
+    "href": "https://app-stg.arincare.com/companies/temperature-monitoring"
+  },
+  {
+    "text": "จัดการตู้ยา",
+    "href": "https://app-stg.arincare.com/companies/temperature-equipments"
+  },
+  {
+    "text": "การซื้อ/รับ",
+    "href": "https://app-stg.arincare.com/companies/goods-receipts/list"
+  },
+  {
+    "text": "รายการใบรับสินค้า",
+    "href": "https://app-stg.arincare.com/companies/goods-receipts"
+  },
+  {
+    "text": "รายการใบสั่งซื้อสินค้า",
+    "href": "https://app-stg.arincare.com/companies/purchase-orders"
+  },
+  {
+    "text": "การขาย",
+    "href": "https://app-stg.arincare.com/companies/list-bills"
+  },
+  {
+    "text": "รายการบิลขาย",
+    "href": "https://app-stg.arincare.com/companies/list-bills"
+  },
+  {
+    "text": "ใบกำกับภาษี",
+    "href": "https://app-stg.arincare.com/companies/tax-invoices"
+  },
+  {
+    "text": "รายงาน",
+    "href": "https://app-stg.arincare.com/companies/reports"
+  },
+  {
+    "text": "รายงานการขาย",
+    "href": "https://app-stg.arincare.com/companies/reports/sales"
+  },
+  {
+    "text": "รายงานคลังสินค้า",
+    "href": "https://app-stg.arincare.com/companies/reports/inventories"
+  },
+  {
+    "text": "รายงาน ขย.",
+    "href": "https://app-stg.arincare.com/companies/reports/generate-report"
+  },
+  {
+    "text": "รายงาน Telepharmacy",
+    "href": "https://app-stg.arincare.com/companies/reports/telepharmacy"
+  },
+  {
+    "text": "MedEx",
+    "href": "https://app-stg.arincare.com/companies/marketplace"
+  },
+  {
+    "text": "ตั้งค่าบริษัท",
+    "href": "https://app-stg.arincare.com/companies/lbeIdC5mld/edit"
+  },
+  {
+    "text": "ทั่วไป",
+    "href": "https://app-stg.arincare.com/companies/lbeIdC5mld/edit"
+  },
+  {
+    "text": "จัดการสาขา",
+    "href": "https://app-stg.arincare.com/companies/branches"
+  },
+  {
+    "text": "จัดการพนักงาน",
+    "href": "https://app-stg.arincare.com/companies/employees"
+  },
+  {
+    "text": "สมุดบัญชีธนาคาร",
+    "href": "https://app-stg.arincare.com/companies/bank-accounts"
+  },
+  {
+    "text": "ข้อความท้ายใบเสร็จ",
+    "href": "https://app-stg.arincare.com/companies/sale-receipt-setup"
+  },
+  {
+    "text": "เครื่องพิมพ์ใบเสร็จ",
+    "href": "https://app-stg.arincare.com/companies/pos-printer"
+  },
+  {
+    "text": "การเชื่อมต่อภายนอก",
+    "href": "https://app-stg.arincare.com/companies/integrations"
+  },
+  {
+    "text": "แพ็คเกจเสริม",
+    "href": "https://app-stg.arincare.com/companies/packages"
+  },
+  {
+    "text": "Watcharin",
+    "href": null
+  },
+  {
+    "text": "ข้อมูลผู้ใช้",
+    "href": "https://app-stg.arincare.com/profile"
+  },
+  {
+    "text": "เริ่มต้นการใช้งาน",
+    "href": null
+  },
+  {
+    "text": "วิธีการใช้งาน",
+    "href": "https://app-stg.arincare.com/companies/learning/tutorials"
+  },
+  {
+    "text": "MEDEX",
+    "href": "https://app-stg.arincare.com/companies/marketplace"
+  },
+  {
+    "text": "เลือกบริษัท",
+    "href": "https://app-stg.arincare.com"
+  },
+  {
+    "text": "ผู้ดูแลระบบ",
+    "href": "http://admin.arincare.dev"
+  },
+  {
+    "text": "เมนูที่ใช้บ่อย",
+    "href": null
+  },
+  {
+    "text": "ออกจากระบบ",
+    "href": "https://app-stg.arincare.com/logout"
+  },
+  {
+    "text": "เมนูที่ใช้บ่อย",
+    "href": "/profile?tab=shortcuts"
+  },
+  {
+    "text": "เงื่อนไขการใช้งาน",
+    "href": null
+  },
+  {
+    "text": "นโยบายคุ้มครองความเป็นส่วนตัว",
+    "href": null
+  },
+  {
+    "text": "นโยบายคุ้มครองความข้อมูลส่วนบุคคล",
+    "href": null
+  },
+  {
+    "text": "dpo.arincare@gmail.com",
+    "href": "mailto:dpo.arincare@gmail.com"
+  },
+  {
+    "text": "สินค้าทั้งหมด",
+    "href": "/companies/marketplace"
+  },
+  {
+    "text": "สินค้าปักตะกร้า",
+    "href": "/companies/marketplace/recommend"
+  },
+  {
+    "text": "สินค้าโปรโมชั่น",
+    "href": "/companies/marketplace/promotion"
+  },
+  {
+    "text": "รายชื่อบริษัทผู้ผลิต",
+    "href": null
+  },
+  {
+    "text": "สินค้าแนะนำโดย Nicha AI",
+    "href": "/companies/marketplace/recommend-by-nicha"
+  },
+  {
+    "text": "หมวดหมู่สินค้า",
+    "href": "#collapseCatalogGroup"
+  },
+  {
+    "text": "กลุ่มยา",
+    "href": "#collapseProductClasses"
+  },
+  {
+    "text": "รายการโปรด",
+    "href": "/companies/marketplace/favorite-product-list"
+  },
+  {
+    "text": "ดูข้อมูลเพิ่มเติม",
+    "href": "#"
+  },
+  {
+    "text": "รายชื่อร้านค้า",
+    "href": null
+  }
+]

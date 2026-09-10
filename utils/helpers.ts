@@ -1,11 +1,14 @@
 import { Page } from '@playwright/test';
 import fs from 'node:fs';
+import path from 'node:path';
 
-const DIR = 'screenshots';
+const BASE_DIR = 'screenshots';
 
-/** บันทึก screenshot เข้าโฟลเดอร์ screenshots/ พร้อมตั้งชื่อชัดเจน */
+/** บันทึก screenshot เข้าโฟลเดอร์ screenshots/<project>/ พร้อมตั้งชื่อชัดเจน */
 export async function shot(page: Page, name: string) {
-  if (!fs.existsSync(DIR)) fs.mkdirSync(DIR, { recursive: true });
-  const safe = name.replace(/[^\w\u0E00-\u0E7F.-]+/g, '_');
-  await page.screenshot({ path: `${DIR}/${safe}.png`, fullPage: true });
+  const safe = name.replace(/[^\w฀-๿./-]+/g, '_');
+  const filePath = `${BASE_DIR}/${safe}.png`;
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  await page.screenshot({ path: filePath, fullPage: true });
 }

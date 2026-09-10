@@ -1,0 +1,31 @@
+import { chromium } from '@playwright/test';
+import { PosRegisterPage } from '../../pages/PosRegisterPage.ts';
+
+const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
+
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({ locale: 'th-TH', timezoneId: 'Asia/Bangkok', userAgent: UA });
+  const page = await context.newPage();
+
+  let productsUrl = '';
+  let authHeaders: Record<string, string> = {};
+  page.on('request', (req) => {
+    if (req.url().includes('/products?') && req.url().includes('branch_id')) {
+      productsUrl = req.url();
+      authHeaders = req.headers();
+    }
+  });
+
+  const pos = new PosRegisterPage(page);
+  await pos.goto();
+  await pos.loginToPos({ company: 'Watcharin TestTest', branch: 'สำนักงานใหญ่' });
+  await page.waitForTimeout(1500);
+
+  const resp = await page.request.get(productsUrl, { headers: authHeaders });
+  const body = await resp.json();
+  const names = body.products.slice(0, 30).map((p: any) => ({ name: p.name, barcode: p.barcode, id: p.id, products_sets_id: p.products_sets_id }));
+  console.log(JSON.stringify(names, null, 2));
+
+  await browser.close();
+})();

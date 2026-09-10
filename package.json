@@ -13,6 +13,7 @@
     "test:e2e": "playwright test customer-create.e2e",
     "test:pos": "playwright test pos-register",
     "test:pos-bugs": "playwright test pos-member-edit-mobile",
+    "test:popup": "playwright test popup-notification",
     "report": "playwright show-report",
     "codegen": "playwright codegen https://app-stg.arincare.com/login"
   },

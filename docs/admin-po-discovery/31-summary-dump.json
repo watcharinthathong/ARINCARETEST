@@ -1,0 +1,42 @@
+[
+  {
+    "label": "ราคารวม",
+    "found": true,
+    "elTag": "LABEL",
+    "parentNextSibHtml": "<div _v-6e35f7fd=\"\" class=\"col-md-2\"><input type=\"number\" step=\"0.01\" readonly=\"readonly\" min=\"0\" _v-6e35f7fd=\"\" class=\"form-control right-aligned-input\" style=\"\"></div>"
+  },
+  {
+    "label": "ส่วนลดโปรโมชั่น",
+    "found": true,
+    "elTag": "LABEL",
+    "parentNextSibHtml": "<div _v-6e35f7fd=\"\" class=\"col-md-2\"><input type=\"number\" step=\"0.01\" readonly=\"readonly\" _v-6e35f7fd=\"\" class=\"form-control right-aligned-input\" style=\"\"></div>"
+  },
+  {
+    "label": "โค้ดคูปองส่วนลด",
+    "found": false
+  },
+  {
+    "label": "ค่าส่ง",
+    "found": true,
+    "elTag": "LABEL",
+    "parentNextSibHtml": "<div _v-6e35f7fd=\"\" class=\"col-md-2\"><input type=\"number\" id=\"form_shipping_amount\" step=\"0.01\" _v-6e35f7fd=\"\" class=\"form-control right-aligned-input\" style=\"\"></div>"
+  },
+  {
+    "label": "ราคาก่อนภาษี",
+    "found": true,
+    "elTag": "LABEL",
+    "parentNextSibHtml": "<div _v-6e35f7fd=\"\" class=\"col-md-2\"><input type=\"number\" step=\"0.01\" readonly=\"readonly\" _v-6e35f7fd=\"\" class=\"form-control right-aligned-input\" style=\"\"></div>"
+  },
+  {
+    "label": "ภาษี",
+    "found": true,
+    "elTag": "LABEL",
+    "parentNextSibHtml": "<div _v-6e35f7fd=\"\" class=\"col-md-2\"><input type=\"number\" step=\"0.01\" readonly=\"readonly\" _v-6e35f7fd=\"\" class=\"form-control right-aligned-input\" style=\"\"></div>"
+  },
+  {
+    "label": "ยอดสุทธิ",
+    "found": true,
+    "elTag": "LABEL",
+    "parentNextSibHtml": "<div _v-6e35f7fd=\"\" class=\"col-md-2\"><input type=\"number\" step=\"0.01\" readonly=\"readonly\" _v-6e35f7fd=\"\" class=\"form-control right-aligned-input\" style=\"\"></div>"
+  }
+]

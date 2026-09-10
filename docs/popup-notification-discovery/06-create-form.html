@@ -1,0 +1,4220 @@
+<!DOCTYPE html><html lang="en" class=""><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="https://admin-stg.arincare.com/images/favicon.ico?20260827015126" type="image/gif" sizes="16x16">
+    <title>ARIN: ผู้ดูแลระบบ - สร้างป็อปอัพแจ้งเตือนใหม่</title>
+    <meta name="csrf-token" content="bwKf8dnf42URynZ86IZ0XvZAsvnfm0wQ1Ld5r8eh">
+
+    <link rel="stylesheet" type="text/css" href="https://admin-stg.arincare.com/css/lib.css">
+    <link rel="stylesheet" type="text/css" href="/build/css/app-3dda69ca0f.css">
+<style type="text/css">
+.modal-xl {
+    width: 90vw;
+}
+</style><style type="text/css">
+
+</style><style type="text/css">
+.profile-picture[_v-1597c360] {
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    background-color: #c0c0c0;
+    background-size: cover;
+    background-position: center;
+}
+.error[_v-1597c360]{
+    color: red;
+}
+</style><style type="text/css">
+.button-footer[_v-160a3343] {
+    padding-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+</style><style type="text/css">
+.card-panel[_v-62ab3cde] {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+.card-title[_v-62ab3cde] {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+.card-description[_v-62ab3cde] {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+.connection-status-box[_v-62ab3cde] {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+}
+.connection-status-box.connected[_v-62ab3cde] {
+    border-left: 4px solid #00b451;
+}
+.connection-status-box.disconnected[_v-62ab3cde] {
+    border-left: 4px solid #ccc;
+}
+.connection-flex[_v-62ab3cde] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+}
+.avatar-circle[_v-62ab3cde] {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #eee;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    font-size: 24px;
+    color: #999;
+    margin-right: 15px;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+.avatar-circle.gray[_v-62ab3cde] {
+    background-color: #e0e0e0;
+}
+.info-content[_v-62ab3cde] {
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+}
+.status-text[_v-62ab3cde] {
+    font-weight: bold;
+    color: #00b451;
+}
+.bold[_v-62ab3cde] {
+    font-weight: bold;
+}
+.detail-text[_v-62ab3cde] {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+}
+.setting-row[_v-62ab3cde] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: start;
+        align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.setting-row[_v-62ab3cde]:last-child {
+    border-bottom: none;
+}
+.setting-info[_v-62ab3cde] {
+    padding-right: 20px;
+}
+.setting-name[_v-62ab3cde] {
+    font-weight: bold;
+    color: #444;
+}
+.setting-desc[_v-62ab3cde] {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 2px;
+}
+.branch-badge-container[_v-62ab3cde] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+.branch-badge-item[_v-62ab3cde] {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    color: #666;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+.branch-badge-item[_v-62ab3cde]:hover {
+    background-color: #e5e5e5;
+}
+.branch-badge-item.active[_v-62ab3cde] {
+    background-color: #e6f7ef;
+    color: #00b451;
+    border-color: #00b451;
+}
+.section-subtitle[_v-62ab3cde] {
+    font-size: 1em;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Switch toggle styles */
+.switch[_v-62ab3cde] {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+.switch input[_v-62ab3cde] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider[_v-62ab3cde] {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+.slider[_v-62ab3cde]:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+input:checked + .slider[_v-62ab3cde] {
+    background-color: #00b451;
+}
+input:focus + .slider[_v-62ab3cde] {
+    box-shadow: 0 0 1px #00b451;
+}
+input:checked + .slider[_v-62ab3cde]:before {
+    transform: translateX(22px);
+}
+.slider.round[_v-62ab3cde] {
+    border-radius: 34px;
+}
+.slider.round[_v-62ab3cde]:before {
+    border-radius: 50%;
+}
+</style><style type="text/css">
+tr.REQUESTED[_v-57897c9b] {
+    background: #fcf8e3 !important;
+}
+
+tr.REQUESTED td[_v-57897c9b] {
+    border-top: 1px solid #faebcc !important;
+    border-bottom: 1px solid #faebcc !important;
+}
+
+tr.PAID[_v-57897c9b] {
+    background-color: #dff0d8 !important;
+}
+
+tr.PAID td[_v-57897c9b] {
+    border-top: 1px solid #d6e9c6 !important;
+    border-bottom: 1px solid #d6e9c6 !important;
+}
+</style><style type="text/css">
+tr.CREATED[_v-5d177962] {
+    background: #fcf8e3 !important;
+}
+
+tr.CREATED td[_v-5d177962] {
+    border-top: 1px solid #faebcc !important;
+    border-bottom: 1px solid #faebcc !important;
+}
+
+tr.COMPLETED[_v-5d177962] {
+    background-color: #dff0d8 !important;
+}
+
+tr.COMPLETED td[_v-5d177962] {
+    border-top: 1px solid #d6e9c6 !important;
+    border-bottom: 1px solid #d6e9c6 !important;
+}
+</style><style type="text/css">
+tr.REQUESTED[_v-4bd4a274] {
+    background: #fcf8e3 !important;
+}
+
+tr.REQUESTED td[_v-4bd4a274] {
+    border-top: 1px solid #faebcc !important;
+    border-bottom: 1px solid #faebcc !important;
+}
+
+tr.PAID[_v-4bd4a274] {
+    background-color: #dff0d8 !important;
+}
+
+tr.PAID td[_v-4bd4a274] {
+    border-top: 1px solid #d6e9c6 !important;
+    border-bottom: 1px solid #d6e9c6 !important;
+}
+</style><style type="text/css">
+</style><style type="text/css">
+
+.palette-container[_v-4422b8f8] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+        flex-direction: row;
+    gap: 5px;
+}
+.my-palette[_v-4422b8f8] {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: #cfff9d;
+  border: 4px solid #ffffff;
+  -ms-flex: none;
+      flex: none;
+  -ms-flex-order: 2;
+      order: 2;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  cursor: pointer;
+}
+
+.selected-palette[_v-4422b8f8] {
+  border: 4px solid #6a6a6a;
+}
+</style><style type="text/css">
+.dropdown-menu[_v-32e27a60] {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 100%;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.dropdown-menu.show[_v-32e27a60] {
+    display: block;
+}
+
+.dropdown-item[_v-32e27a60] {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.dropdown-item[_v-32e27a60]:hover {
+    background-color: #f5f5f5;
+    color: #262626;
+    text-decoration: none;
+}
+</style><style type="text/css">
+.form-control-static[_v-bafc93da] {
+    padding-top: 7px;
+}
+</style><style type="text/css">
+.settlement-orders-model > div[_v-cbbba218], .export-scb-table-model > div[_v-cbbba218] {
+    min-width: 90%;
+}
+</style><style type="text/css">
+.settlement-orders-model > div[_v-26ce36e6], .export-scb-table-model > div[_v-26ce36e6] {
+    min-width: 90%;
+}
+</style><style type="text/css">
+.img-pa[_v-7bcd6e66] {
+    padding-bottom: 20px;
+}
+</style><style type="text/css">
+.images-list[_v-3a20a17c] {
+    margin: 5px 0 10px;
+    height: 124px;
+}
+
+.images-list .card[_v-3a20a17c] {
+    margin: 5px;
+}
+
+.images-list .card .inner[_v-3a20a17c] {
+    width: 114px;
+    height: 114px;
+    line-height: 114px;
+}
+
+.images-list .card .inner a img[_v-3a20a17c] {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.file-upload-wrap[_v-3a20a17c] {
+    display: inline-block;
+    margin: 5px;
+    padding: 39px 15px;
+}
+
+#file-upload[_v-3a20a17c] {
+    font-size: 50px;
+    color: #aaa;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#file-upload[_v-3a20a17c]:hover {
+    color: #333;
+}
+</style><style type="text/css">
+a[_v-7bfd6505] {
+    cursor: pointer;
+}
+</style><style type="text/css">
+.chip {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    min-width: 71px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.chip-primary {
+    background-color: #337ab7;
+}
+.chip-success {
+    background-color: #5cb85c;
+}
+.chip-info {
+    background-color: #5bc0de;
+}
+.chip-warning {
+    background-color: #f0ad4e;
+}
+.chip-error {
+    background-color: #d9534f;
+}
+.chip-orange {
+    background-color: #ff5722;
+}
+</style><style type="text/css">
+.customer-info[_v-7949f1d8] {
+    padding: 16px 20px;
+}
+
+
+#order-detail-modal .modal-lg {
+    width: 1200px;
+}
+</style><style type="text/css">
+.nav-tabs[_v-1a54c918] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-1a54c918] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-1a54c918] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-1a54c918] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-1a54c918] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+.vue-input-tag-wrapper[_v-1a54c918] {
+    background-color: #fff;
+    border: 1px solid #fff;
+    overflow: hidden;
+    padding-left: 4px;
+    padding-top: 4px;
+    cursor: text;
+    text-align: left;
+    -moz-appearance: textfield;
+         appearance: textfield;
+    -webkit-appearance: textfield;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.vue-input-tag-wrapper .new-tag[_v-1a54c918] {
+    background: transparent;
+    border: 0;
+    color: #777;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    margin-top: 1px;
+    outline: none;
+    padding: 4px;
+    padding-left: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.vue-input-tag-wrapper .input-tag[_v-1a54c918] {
+    background-color: #acada8;
+    border-radius: 2px;
+    border: 1px solid #cacac8;
+    color: #1c1c1c;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    padding: 3px;
+}
+
+
+
+</style><style type="text/css">
+#change-cart-payment-status-modal > .modal-dialog {
+    width: 400px;
+}
+</style><style type="text/css">
+.badge {
+    background-color: #f00;
+    color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 1000;
+    right: -5px;
+    top: -5px;
+    height: 25px;
+    min-width: 25px;
+    font-size: 15px;
+    padding: 4px;
+}
+</style><style type="text/css">
+/* Use specific class name to prevent leaking, but keep Global Scope to ensure it hits inner elements */
+/* Use specific class name to prevent leaking, but keep Global Scope to ensure it hits inner elements */
+.multi-select-1281 .form-control {
+    height: auto;
+    min-height: 34px;
+    display: -ms-flexbox;
+    display: flex;
+    /* Removed row-reverse, using 'order' instead for better standard behavior */
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center; /* Center arrow vertically relative to multiline text */
+}
+.multi-select-1281 .form-control .pull-right {
+    -ms-flex-order: 2;
+        order: 2; /* Force Arrow to be visually LAST (Right) */
+    -ms-flex-negative: 0;
+        flex-shrink: 0; /* Don't squash the arrow */
+    margin-left: 8px; /* Space between text and arrow */
+}
+.multi-select-1281 .clearfix:before, 
+.multi-select-1281 .clearfix:after {
+    content: none;
+}
+/* Force override of uiv internal inline styles that cause ellipsis */
+.multi-select-1281 .form-control > div:not(.pull-right) {
+    -ms-flex-order: 1;
+        order: 1; /* Force Text to be visually FIRST (Left) */
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    display: block; 
+    -ms-flex: 1; 
+        flex: 1; /* Allow text block to grow/shrink */
+    min-width: 0; /* allow flex shrink */
+}
+
+
+.product-label-123 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+}
+.clear-product-btn {
+    background-color: transparent;
+    border: none;
+    color: #444;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+}
+</style><style type="text/css">
+.flex-direction-column[_v-67c1aa32]{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+}
+.link-po-doc-show[_v-67c1aa32]{
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+</style><style type="text/css">
+#change-payment-status-modal > .modal-dialog {
+    width: 400px;
+}
+</style><style type="text/css">
+#change-status-modal > .modal-dialog {
+    width: 400px;
+}
+</style><style type="text/css">
+.image-show{
+    max-width: 500px;
+    height: auto;
+}
+</style><style type="text/css">
+.nav-tabs[_v-682c30ec] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-682c30ec] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-682c30ec] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-682c30ec] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-682c30ec] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+</style><style type="text/css">
+#change-order-status-modal > .modal-dialog {
+    width: 400px;
+}
+</style><style type="text/css">
+#change-order-payment-status-modal > .modal-dialog {
+    width: 400px;
+}
+</style><style type="text/css">
+    .bc-status-wrapper[_v-9d5e6d06] {
+    position: relative;
+    cursor: help;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* ตัวกล่อง Tooltip */
+.bc-custom-tooltip[_v-9d5e6d06] {
+    visibility: hidden;
+    width: 320px; /* ปรับให้กว้างนิดนึงจะได้อ่านง่าย */
+    background-color: #fff;
+    color: #333;
+    text-align: left;
+    border-radius: 6px;
+    padding: 0; /* ลบ padding รวม เพื่อให้ header ชิดขอบ */
+    position: absolute;
+    z-index: 1050; /* สูงกว่า dropdown */
+    
+    /* จัดตำแหน่งให้ลอยอยู่ด้านล่าง */
+    top: 100%;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* ใส่เงาและขอบ */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    
+    /* Animation */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: normal;
+    font-size: 12px;
+    /* overflow: hidden;  <-- เอาออกเพราะมันบัง ::before ที่ยื่นออกไปข้างนอก */
+}
+.bc-custom-tooltip[_v-9d5e6d06]::before {
+    content: "";
+    display: block;
+    position: absolute;
+    
+    /* ให้เริ่มจากขอบบนของ Tooltip ขึ้นไปข้างบน */
+    bottom: 100%; 
+    left: 0;
+    
+    /* ความกว้างเต็มกล่อง */
+    width: 100%;
+    
+    /* ความสูงต้องมากกว่าหรือเท่ากับ margin-top (10px) */
+    height: 20px;
+    
+    /* สีโปร่งใส */
+    background-color: transparent; 
+}
+/* ลูกศรชี้ขึ้น */
+.bc-custom-tooltip[_v-9d5e6d06]::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+/* เคส Error ให้ลูกศรเป็นสีแดงตามขอบ */
+.bc-custom-tooltip.tooltip-error[_v-9d5e6d06] {
+    border: 1px solid #d9534f;
+}
+.bc-custom-tooltip.tooltip-error[_v-9d5e6d06]::after {
+    border-color: transparent transparent #d9534f transparent; /* เปลี่ยนสีลูกศร */
+}
+
+/* โชว์ Tooltip เมื่อ Hover */
+.bc-status-wrapper:hover .bc-custom-tooltip[_v-9d5e6d06] {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-header[_v-9d5e6d06] {
+    padding: 8px 10px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    /* เพิ่ม radius เผื่อไว้เพราะเราเอา overflow: hidden ของแม่มันออก */
+    border-radius: 6px 6px 0 0; 
+}
+.tooltip-error .tooltip-header[_v-9d5e6d06] {
+    background-color: #f2dede; /* พื้นหลังแดงอ่อน */
+    color: #a94442;
+}
+
+.tooltip-body[_v-9d5e6d06] {
+    padding: 10px;
+}
+
+/* Scrollbar สวยๆ */
+.tooltip-body ul[_v-9d5e6d06]::-webkit-scrollbar {
+    width: 4px;
+}
+.tooltip-body ul[_v-9d5e6d06]::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.tooltip-body ul[_v-9d5e6d06]::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.text-truncate-hover[_v-9d5e6d06] {
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    cursor: text;
+}
+.text-truncate-hover[_v-9d5e6d06]:hover {
+    overflow: visible;
+    background-color: #fff;
+}
+</style><style type="text/css">
+#change-delivery-modal > .modal-dialog {
+    width: 500px;
+}
+</style><style type="text/css">
+.table tbody tr[_v-6b809a66]:hover,
+.table tbody tr[_v-6b809a66]:nth-child(even) {
+    background-color: initial;
+}
+.special-price-badge[_v-6b809a66] {
+    color: #FFF;
+    background-color: #FF4AAC;
+    border-radius: 10px;
+    padding: 2px 4px;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: small;
+}
+.icon-20[_v-6b809a66]{
+    height: 20px;
+    width: auto;
+}
+.vertical-align-middle[_v-6b809a66]{
+    vertical-align: middle;
+}
+
+</style><style type="text/css">
+.tab-list[_v-534852e0] {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.tab-item[_v-534852e0] {
+    list-style: none;
+    float: left;
+    padding: 0 15px;
+}
+.tab-item[_v-534852e0]:first-child {
+    padding-left: 0;
+}
+.tab-item a[_v-534852e0] {
+    color: #333;
+    cursor: pointer;
+}
+.tab-item a[_v-534852e0]:hover {
+    text-decoration: none;
+}
+.tab-active[_v-534852e0] {
+    height: 4px;
+    background: #1870c3;
+}
+</style><style type="text/css">
+.image-fix-size[_v-2d2a67fc] {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+}
+</style><style type="text/css">
+#paginate ul.pagination {
+    margin: 0;
+}
+</style><style type="text/css">
+.tier-setup-page[_v-1a656c74] {
+    background: #f8fafc;
+    color: #334155;
+    font-family: inherit;
+    font-size: inherit;
+    margin: -5px -15px 0;
+    padding: 24px 24px 36px;
+}
+
+.tier-page-header[_v-1a656c74] {
+    -ms-flex-align: end;
+        align-items: flex-end;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    margin: 0 auto 18px;
+    max-width: 1180px;
+}
+
+.tier-page-header h1[_v-1a656c74] {
+    color: #1f2937;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tier-page-header p[_v-1a656c74] {
+    color: #64748b;
+    font-size: 18px;
+    margin: 6px 0 0;
+}
+
+.tier-settings-row[_v-1a656c74] {
+    display: -ms-grid;
+    display: grid;
+    gap: 16px;
+    -ms-grid-columns: (minmax(0, 1fr))[2];
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto 20px;
+    max-width: 1180px;
+}
+
+.tier-setting-card[_v-1a656c74] {
+    -ms-flex-align: start;
+        align-items: flex-start;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    display: -ms-flexbox;
+    display: flex;
+    gap: 14px;
+    padding: 20px;
+}
+
+.tier-setting-icon[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    border-radius: 999px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 0 0 40px;
+        flex: 0 0 40px;
+    height: 40px;
+    -ms-flex-pack: center;
+        justify-content: center;
+    width: 40px;
+}
+
+.tier-setting-icon-blue[_v-1a656c74] {
+    background: #eff6ff;
+    color: #0284c7;
+}
+
+.tier-setting-icon-green[_v-1a656c74] {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.tier-setting-content h3[_v-1a656c74] {
+    color: #1f2937;
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tier-setting-content p[_v-1a656c74] {
+    color: #64748b;
+    font-size: 18px;
+    margin: 6px 0 12px;
+}
+
+.tier-inline-control[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 8px;
+}
+
+.tier-cycle-meta[_v-1a656c74] {
+    color: #94a3b8;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.tier-inline-control .form-control[_v-1a656c74] {
+    max-width: 170px;
+}
+
+.tier-table-card[_v-1a656c74] {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    margin: 0 auto;
+    max-width: 1180px;
+    overflow: hidden;
+}
+
+.tier-table-header[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 14px 16px;
+}
+
+.tier-table-header h2[_v-1a656c74] {
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tier-table-header i[_v-1a656c74] {
+    color: #94a3b8;
+    margin-right: 6px;
+}
+
+.tier-table-header-actions[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+}
+
+.tier-table-header span[_v-1a656c74] {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    color: #64748b;
+    font-size: 16px;
+    padding: 4px 8px;
+}
+
+.tier-table[_v-1a656c74] {
+    margin-bottom: 0;
+}
+
+.tier-table > thead > tr > th[_v-1a656c74] {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 12px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.tier-table > tbody > tr > td[_v-1a656c74] {
+    border-top: 1px solid #f1f5f9;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.tier-table > tbody > tr[_v-1a656c74]:hover {
+    background: #f0f9ff;
+}
+
+.tier-inactive-row[_v-1a656c74] {
+    color: #64748b;
+    opacity: 0.78;
+}
+
+.tier-level-column[_v-1a656c74] {
+    width: 70px;
+}
+
+.tier-action-column[_v-1a656c74] {
+    white-space: nowrap;
+    width: 80px;
+}
+
+.tier-level[_v-1a656c74] {
+    color: #64748b;
+    font-weight: 700;
+}
+
+.tier-name[_v-1a656c74] {
+    color: #1f2937;
+    font-weight: 700;
+}
+
+.tier-logic-badge[_v-1a656c74] {
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 9px;
+}
+
+.tier-logic-badge-and[_v-1a656c74] {
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    color: #92400e;
+}
+
+.tier-logic-badge-or[_v-1a656c74] {
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    color: #075985;
+}
+
+.tier-logic-help[_v-1a656c74] {
+    color: #64748b;
+    margin-top: 8px;
+}
+
+.tier-description[_v-1a656c74] {
+    color: #94a3b8;
+    font-size: 16px;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tier-number[_v-1a656c74] {
+    color: #334155;
+    font-weight: 700;
+}
+
+.tier-rate-badge[_v-1a656c74] {
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 4px;
+    color: #0284c7;
+    display: inline-block;
+    font-size: 16px;
+    padding: 4px 8px;
+    white-space: nowrap;
+}
+
+.tier-rate-muted[_v-1a656c74] {
+    background: #f1f5f9;
+    border-color: #e5e7eb;
+    color: #64748b;
+}
+
+.tier-card-thumb[_v-1a656c74] {
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    display: inline-block;
+    height: 34px;
+    object-fit: cover;
+    /* สัดส่วนเดียวกับรูปที่แนะนำ 650 × 260 */
+    width: 85px;
+}
+
+.tier-card-thumb-empty[_v-1a656c74] {
+    color: #cbd5e1;
+}
+
+.tier-store-link[_v-1a656c74] {
+    background: transparent;
+    border: 0;
+    color: #0284c7;
+    font-weight: 700;
+    padding: 0;
+}
+
+.tier-store-link[_v-1a656c74]:hover {
+    text-decoration: underline;
+}
+
+.tier-store-muted[_v-1a656c74],
+.tier-store-muted[_v-1a656c74]:hover {
+    color: #94a3b8;
+    cursor: default;
+    text-decoration: none;
+}
+
+.tier-status[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    border-radius: 999px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 700;
+    gap: 6px;
+    padding: 3px 9px;
+}
+
+.tier-status-active[_v-1a656c74] {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.tier-status-inactive[_v-1a656c74] {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.tier-status-dot[_v-1a656c74] {
+    background: currentColor;
+    border-radius: 999px;
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+}
+
+.tier-edit-button[_v-1a656c74],
+.tier-delete-button[_v-1a656c74] {
+    border: 0;
+    border-radius: 999px;
+    height: 32px;
+    width: 32px;
+}
+
+.tier-edit-button[_v-1a656c74] {
+    background: #eff6ff;
+    color: #0284c7;
+    margin-right: 4px;
+}
+
+.tier-edit-button[_v-1a656c74]:hover:not(:disabled) {
+    background: #dbeafe;
+    color: #0369a1;
+}
+
+.tier-delete-button[_v-1a656c74] {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.tier-delete-button[_v-1a656c74]:hover:not(:disabled) {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.tier-edit-button[_v-1a656c74]:disabled,
+.tier-delete-button[_v-1a656c74]:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.tier-modal-sm[_v-1a656c74] {
+    max-width: 420px;
+}
+
+.tier-delete-confirm-body[_v-1a656c74] {
+    text-align: center;
+    padding: 8px 0 4px;
+}
+
+.tier-delete-icon[_v-1a656c74] {
+    color: #f59e0b;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.tier-delete-confirm-body p[_v-1a656c74] {
+    color: #1f2937;
+    font-size: 18px;
+    margin: 0 0 6px;
+}
+
+.tier-delete-warning[_v-1a656c74] {
+    color: #dc2626;
+    font-size: 16px;
+}
+
+.tier-table-footer[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    color: #64748b;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 12px 14px;
+}
+
+.tier-modal-backdrop[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: rgba(15, 23, 42, 0.55);
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    left: 0;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+}
+
+.tier-modal[_v-1a656c74] {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.26);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    /* จำกัดความสูงไม่เกิน viewport (หัก padding backdrop 20px บน+ล่าง) — กัน footer หลุดจอ */
+    max-height: calc(100vh - 40px);
+    max-width: 640px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.tier-modal-header[_v-1a656c74],
+.tier-modal-footer[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    display: -ms-flexbox;
+    display: flex;
+    /* ตรึงหัว/ท้ายไว้เสมอ — เฉพาะ body เท่านั้นที่ scroll */
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 14px 18px;
+}
+
+.tier-modal-header[_v-1a656c74] {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tier-modal-header h3[_v-1a656c74] {
+    color: #1f2937;
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tier-modal-header h3 span[_v-1a656c74] {
+    color: #0284c7;
+}
+
+.tier-close-button[_v-1a656c74] {
+    background: transparent;
+    border: 0;
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.tier-modal-body[_v-1a656c74] {
+    /* body ยืดเต็มพื้นที่ที่เหลือแล้ว scroll เองเมื่อ content ยาว (min-height:0 ให้ flex child หดได้) */
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 20px 24px;
+}
+
+.tier-modal-body label[_v-1a656c74] {
+    color: #475569;
+    font-size: 18px;
+}
+
+.tier-modal-body h4[_v-1a656c74] {
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.tier-condition-box[_v-1a656c74] {
+    background: #f9fafb;
+    border: 1px solid #f1f5f9;
+    border-radius: 6px;
+    padding: 14px;
+}
+
+.tier-logic-toggle[_v-1a656c74] {
+    display: -ms-flexbox;
+    display: flex;
+    gap: 8px;
+}
+
+.tier-logic-btn[_v-1a656c74] {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #475569;
+    cursor: pointer;
+    -ms-flex: 1;
+        flex: 1;
+    font-size: 16px;
+    padding: 8px 12px;
+    text-align: center;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.tier-logic-btn[_v-1a656c74]:hover {
+    border-color: #93c5fd;
+    color: #1e40af;
+}
+
+.tier-logic-btn-active[_v-1a656c74] {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+.tier-point-box[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 6px;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -ms-flex-pack: center;
+        justify-content: center;
+    padding: 14px;
+}
+
+.tier-point-box .form-control[_v-1a656c74] {
+    max-width: 90px;
+}
+
+.tier-point-box .tier-point-input[_v-1a656c74] {
+    color: #0284c7;
+    font-weight: 700;
+    max-width: 100px;
+}
+
+.tier-modal-footer[_v-1a656c74] {
+    border-top: 1px solid #e5e7eb;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+    gap: 10px;
+}
+
+.tier-image-upload[_v-1a656c74] {
+    margin-top: 6px;
+}
+
+.tier-image-preview[_v-1a656c74] {
+    display: inline-block;
+    position: relative;
+}
+
+.tier-image-preview img[_v-1a656c74] {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    max-height: 120px;
+    max-width: 240px;
+    object-fit: contain;
+}
+
+.tier-image-remove[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #dc2626;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 11px;
+    height: 22px;
+    -ms-flex-pack: center;
+        justify-content: center;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 22px;
+}
+
+.tier-image-dropzone[_v-1a656c74] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 6px;
+    color: #64748b;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.tier-image-dropzone[_v-1a656c74]:hover {
+    background: #f0f9ff;
+    border-color: #93c5fd;
+}
+
+.tier-image-dropzone i[_v-1a656c74] {
+    font-size: 24px;
+}
+
+@media (max-width: 767px) {
+    .tier-setup-page[_v-1a656c74] {
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 16px 12px 28px;
+    }
+
+    .tier-settings-row[_v-1a656c74] {
+        -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+    }
+
+    .tier-table-header[_v-1a656c74],
+    .tier-table-footer[_v-1a656c74],
+    .tier-point-box[_v-1a656c74] {
+        -ms-flex-align: start;
+            align-items: flex-start;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    }
+
+    .tier-point-box[_v-1a656c74] {
+        gap: 8px;
+    }
+
+    .tier-point-box .form-control[_v-1a656c74] {
+        max-width: none;
+        width: 100%;
+    }
+}
+</style><style type="text/css">
+.reward-page[_v-43ae96ba] {
+    background: #f8fafc;
+    color: #334155;
+    font-family: inherit;
+    font-size: inherit;
+    margin: -5px -15px 0;
+    padding: 24px 24px 36px;
+}
+
+.reward-page-header[_v-43ae96ba] {
+    -ms-flex-align: end;
+        align-items: flex-end;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    margin: 0 auto 18px;
+    max-width: 1180px;
+}
+
+.reward-page-header h1[_v-43ae96ba] {
+    color: #1f2937;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.reward-page-header p[_v-43ae96ba] {
+    color: #64748b;
+    font-size: 18px;
+    margin: 6px 0 0;
+}
+
+.reward-table-card[_v-43ae96ba] {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    margin: 0 auto;
+    max-width: 1180px;
+    overflow: hidden;
+}
+
+.reward-table-header[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 14px 16px;
+}
+
+.reward-table-header h2[_v-43ae96ba] {
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.reward-table-header i[_v-43ae96ba] {
+    color: #94a3b8;
+    margin-right: 6px;
+}
+
+.reward-table-header-actions[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+}
+
+.reward-table-header-actions > span[_v-43ae96ba] {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    color: #64748b;
+    font-size: 16px;
+    padding: 4px 8px;
+}
+
+.reward-table[_v-43ae96ba] {
+    margin-bottom: 0;
+}
+
+.reward-table > thead > tr > th[_v-43ae96ba] {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.reward-table > tbody > tr > td[_v-43ae96ba] {
+    border-top: 1px solid #f1f5f9;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.reward-table > tbody > tr[_v-43ae96ba]:hover {
+    background: #f0f9ff;
+}
+
+.reward-inactive-row[_v-43ae96ba] {
+    color: #64748b;
+    opacity: 0.78;
+}
+
+.reward-img-column[_v-43ae96ba] {
+    width: 70px;
+}
+
+.reward-action-column[_v-43ae96ba] {
+    white-space: nowrap;
+    width: 80px;
+}
+
+.reward-thumb[_v-43ae96ba] {
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    height: 40px;
+    object-fit: contain;
+    width: 50px;
+}
+
+.reward-no-img[_v-43ae96ba] {
+    color: #d1d5db;
+    font-size: 20px;
+}
+
+.reward-name[_v-43ae96ba] {
+    color: #1f2937;
+    font-weight: 700;
+}
+
+.reward-description[_v-43ae96ba] {
+    color: #94a3b8;
+    font-size: 16px;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.reward-number[_v-43ae96ba] {
+    color: #334155;
+    font-weight: 700;
+}
+
+.reward-status[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    border-radius: 999px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 700;
+    gap: 6px;
+    padding: 3px 9px;
+}
+
+.reward-status-active[_v-43ae96ba] {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.reward-status-inactive[_v-43ae96ba] {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.reward-status-dot[_v-43ae96ba] {
+    background: currentColor;
+    border-radius: 999px;
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+}
+
+.reward-edit-button[_v-43ae96ba],
+.reward-delete-button[_v-43ae96ba] {
+    border: 0;
+    border-radius: 999px;
+    height: 32px;
+    width: 32px;
+}
+
+.reward-edit-button[_v-43ae96ba] {
+    background: #eff6ff;
+    color: #0284c7;
+    margin-right: 4px;
+}
+
+.reward-edit-button[_v-43ae96ba]:hover:not(:disabled) {
+    background: #dbeafe;
+    color: #0369a1;
+}
+
+.reward-delete-button[_v-43ae96ba] {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.reward-delete-button[_v-43ae96ba]:hover:not(:disabled) {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.reward-edit-button[_v-43ae96ba]:disabled,
+.reward-delete-button[_v-43ae96ba]:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.reward-table-footer[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    color: #64748b;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 12px 14px;
+}
+
+.reward-modal-backdrop[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: rgba(15, 23, 42, 0.55);
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    left: 0;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+}
+
+.reward-modal[_v-43ae96ba] {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.26);
+    max-width: 640px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.reward-modal-sm[_v-43ae96ba] {
+    max-width: 420px;
+}
+
+.reward-modal-header[_v-43ae96ba],
+.reward-modal-footer[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 14px 18px;
+}
+
+.reward-modal-header[_v-43ae96ba] {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.reward-modal-header h3[_v-43ae96ba] {
+    color: #1f2937;
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.reward-modal-header h3 span[_v-43ae96ba] {
+    color: #0284c7;
+}
+
+.reward-close-button[_v-43ae96ba] {
+    background: transparent;
+    border: 0;
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.reward-modal-body[_v-43ae96ba] {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 20px 24px;
+}
+
+.reward-modal-body label[_v-43ae96ba] {
+    color: #475569;
+    font-size: 18px;
+}
+
+.reward-modal-footer[_v-43ae96ba] {
+    border-top: 1px solid #e5e7eb;
+    gap: 10px;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+}
+
+.reward-delete-confirm-body[_v-43ae96ba] {
+    padding: 8px 0 4px;
+    text-align: center;
+}
+
+.reward-delete-icon[_v-43ae96ba] {
+    color: #f59e0b;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.reward-delete-confirm-body p[_v-43ae96ba] {
+    color: #1f2937;
+    font-size: 18px;
+    margin: 0 0 6px;
+}
+
+.reward-delete-warning[_v-43ae96ba] {
+    color: #dc2626;
+    font-size: 16px;
+}
+
+.reward-image-upload[_v-43ae96ba] {
+    margin-top: 6px;
+}
+
+.reward-image-preview[_v-43ae96ba] {
+    display: inline-block;
+    position: relative;
+}
+
+.reward-image-preview img[_v-43ae96ba] {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    max-height: 120px;
+    max-width: 240px;
+    object-fit: contain;
+}
+
+.reward-image-remove[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #dc2626;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 11px;
+    height: 22px;
+    -ms-flex-pack: center;
+        justify-content: center;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 22px;
+}
+
+.reward-image-dropzone[_v-43ae96ba] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 6px;
+    color: #64748b;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.reward-image-dropzone[_v-43ae96ba]:hover {
+    background: #f0f9ff;
+    border-color: #93c5fd;
+}
+
+.reward-image-dropzone i[_v-43ae96ba] {
+    font-size: 24px;
+}
+
+@media (max-width: 767px) {
+    .reward-page[_v-43ae96ba] {
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 16px 12px 28px;
+    }
+
+    .reward-table-header[_v-43ae96ba],
+    .reward-table-footer[_v-43ae96ba] {
+        -ms-flex-align: start;
+            align-items: flex-start;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    }
+}
+</style><style type="text/css">
+.calculate-rebate-page[_v-f880cc3c] {
+    background: #fff;
+    color: #333;
+    font-family: inherit;
+    font-size: inherit;
+    margin: -5px -15px 0;
+    padding: 20px 24px 32px;
+}
+
+.rebate-page-header[_v-f880cc3c] {
+    border-bottom: 0;
+    margin: 0 0 16px;
+    padding: 0;
+}
+
+.rebate-page-header h1[_v-f880cc3c] {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.rebate-page-header p[_v-f880cc3c] {
+    color: #777;
+    margin: 4px 0 0;
+}
+
+.rebate-filter-panel[_v-f880cc3c] {
+    background: #f8f8f8;
+    border-color: #ddd;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.rebate-filter-actions[_v-f880cc3c] {
+    padding-top: 28px;
+}
+
+.rebate-filter-actions .btn[_v-f880cc3c] {
+    margin-right: 6px;
+    min-width: 80px;
+}
+
+.rebate-table-panel[_v-f880cc3c] {
+    border-color: #ddd;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.rebate-table-heading[_v-f880cc3c] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f8f8f8;
+    color: #333;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+}
+
+.rebate-export-button[_v-f880cc3c] {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.rebate-table[_v-f880cc3c] {
+    font-size: 16px;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.rebate-table thead tr th[_v-f880cc3c] {
+    background: #f5f5f5;
+    border-bottom: 2px solid #337ab7;
+    color: #333;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.rebate-table small[_v-f880cc3c] {
+    color: #777;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.rebate-store-link[_v-f880cc3c] {
+    background: transparent;
+    border: 0;
+    color: #337ab7;
+    font-weight: 600;
+    padding: 0;
+}
+
+.rebate-store-link[_v-f880cc3c]:hover {
+    text-decoration: underline;
+}
+
+.rebate-amount[_v-f880cc3c],
+.rebate-tier-silver[_v-f880cc3c],
+.rebate-tier-gold[_v-f880cc3c],
+.rebate-tier-member[_v-f880cc3c] {
+    font-weight: 600;
+}
+
+.rebate-tier-silver[_v-f880cc3c] {
+    color: #666;
+}
+
+.rebate-tier-gold[_v-f880cc3c] {
+    color: #b8860b;
+}
+
+.rebate-tier-member[_v-f880cc3c] {
+    color: #777;
+}
+
+.rebate-points[_v-f880cc3c],
+.rebate-add-text[_v-f880cc3c] {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.rebate-deduct-text[_v-f880cc3c] {
+    color: #c62828;
+    font-weight: 600;
+}
+
+.rebate-actions .btn[_v-f880cc3c] {
+    margin: 0 2px;
+}
+
+.rebate-pagination[_v-f880cc3c],
+.rebate-tab-footer[_v-f880cc3c] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f8f8f8;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+}
+
+.rebate-modal-backdrop[_v-f880cc3c] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: rgba(0, 0, 0, 0.42);
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    left: 0;
+    padding: 18px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+}
+
+.rebate-modal[_v-f880cc3c] {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    max-height: 88vh;
+    overflow: hidden;
+}
+
+.rebate-manual-modal[_v-f880cc3c] {
+    max-width: 520px;
+    width: 100%;
+}
+
+.rebate-detail-modal[_v-f880cc3c] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    height: 85vh;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.rebate-modal-header[_v-f880cc3c],
+.rebate-modal-footer[_v-f880cc3c] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 12px 16px;
+}
+
+.rebate-modal-footer[_v-f880cc3c] {
+    border-bottom: 0;
+    border-top: 1px solid #ddd;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+}
+
+.rebate-modal-footer .btn[_v-f880cc3c] {
+    margin-left: 8px;
+}
+
+.rebate-modal-header h3[_v-f880cc3c] {
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.rebate-modal-header p[_v-f880cc3c] {
+    color: #777;
+    margin: 2px 0 0;
+}
+
+.rebate-close-button[_v-f880cc3c] {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #777;
+    height: 32px;
+    width: 32px;
+}
+
+.rebate-modal-body[_v-f880cc3c] {
+    padding: 18px;
+}
+
+.rebate-store-summary[_v-f880cc3c] {
+    background: #eef7ff;
+    border: 1px solid #d9edf7;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 10px 12px;
+}
+
+.radio-group[_v-f880cc3c] {
+    margin-top: 4px;
+}
+
+.rebate-detail-content[_v-f880cc3c] {
+    background: #f8f8f8;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1;
+        flex: 1;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    min-height: 0;
+    padding: 14px;
+}
+
+.rebate-tabs[_v-f880cc3c] {
+    border-bottom-color: #ddd;
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+}
+
+.rebate-tabs > li > a[_v-f880cc3c] {
+    cursor: pointer;
+}
+
+.rebate-tab-panel[_v-f880cc3c] {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1;
+        flex: 1;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    min-height: 0;
+}
+
+.rebate-tab-toolbar[_v-f880cc3c] {
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 10px 12px;
+}
+
+.rebate-scroll-table[_v-f880cc3c] {
+    -ms-flex: 1;
+        flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.rebate-highlight-warning[_v-f880cc3c] {
+    background: #fff8e1;
+}
+
+.rebate-highlight-danger[_v-f880cc3c] {
+    background: #ffebee;
+}
+
+.rebate-highlight-success[_v-f880cc3c] {
+    background: #edf7ed;
+}
+
+@media (max-width: 767px) {
+    .calculate-rebate-page[_v-f880cc3c] {
+        padding: 16px 12px 28px;
+    }
+
+    .rebate-filter-actions[_v-f880cc3c] {
+        padding-top: 0;
+    }
+
+    .rebate-table-heading[_v-f880cc3c],
+    .rebate-pagination[_v-f880cc3c],
+    .rebate-tab-footer[_v-f880cc3c],
+    .rebate-tab-toolbar[_v-f880cc3c],
+    .rebate-store-summary[_v-f880cc3c] {
+        -ms-flex-align: start;
+            align-items: flex-start;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    }
+
+    .rebate-tab-toolbar .form-inline[_v-f880cc3c] {
+        margin-top: 8px;
+    }
+
+    .rebate-detail-modal[_v-f880cc3c] {
+        height: 92vh;
+    }
+}
+</style><style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+#arincare-points {
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+}
+#arincare-points .form-control,
+#arincare-points .btn {
+    font-size: 16px;
+}
+
+
+th.sort[_v-5fc4b660] {
+    cursor: pointer;
+}
+th.sort:hover i[_v-5fc4b660] {
+    display: inline-block !important;
+}
+</style><style type="text/css">
+#arincare-points-modal .modal-content {
+    min-height: 600px;
+}
+#arincare-points-modal .vdp-datepicker > div > input {
+    width: 100%;
+}
+
+
+.green-text[_v-de754126],
+.ADD[_v-de754126] {
+    color: green;
+}
+.red-text[_v-de754126],
+.SUBTRACT[_v-de754126],
+.REDEEM[_v-de754126] {
+    color: red;
+}
+.blue-text[_v-de754126] {
+    color: #00b2ff;
+}
+</style><style type="text/css">
+.coupons > div {
+    margin: 15px 0;
+}
+.paginate-coupons {
+    padding: 0;
+    margin-left: 10px;
+    width: 130px;
+}
+label.pull-left {
+    margin-left: 10px;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+</style><style type="text/css">
+.coupons-item > .thumbnail {
+    border: 1px solid;
+    padding: 0px;
+}
+.coupons-item > .thumbnail > .caption {
+    border-top: 1px solid;
+}
+
+</style><style type="text/css">
+#createCoupon > hr {
+    border-color: black;
+}
+
+#createCoupon > div.row > .text-center > .btn {
+    width: 100px;
+}
+</style><style type="text/css">
+#steps {
+    margin: 0;
+    border: 1px solid;
+    padding: 15px 10px;
+}
+</style><style type="text/css">
+#buttonStep > .row > .pointer {
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+#buttonStep > .row > div > .round {
+    background: white;
+    color: #0580c0;
+    border: 1px solid #d6ced1;
+    border-radius: 20px;
+}
+
+#buttonStep > .row > div > .round-active {
+    background: #0580c0;
+    color: white;
+    border: 1px solid #d6ced1;
+    border-radius: 20px;
+}
+
+#buttonStep > .row  > .line {
+    border: 1px solid #e7e2e4;
+    margin: 13px;
+}
+
+</style><style type="text/css">
+.label-cb-owner {
+    margin-top: 37px;
+}
+</style><style type="text/css">
+#couponResult > div {
+    margin: 30px 0;
+}
+</style><style type="text/css">
+#imageUpload > div {
+    margin: 20px 0;
+}
+
+#imageUpload > div > div > .none {
+    display: none;
+}
+
+#imageUpload > div > div > span {
+    margin-left: 10px;
+}
+
+#imageUpload > div > div > .btn-upload {
+    width: 100px;
+    background: white;
+    border: 1px solid #e7e2e4;
+}
+</style><style type="text/css">
+#couponCondition > div {
+    margin: 30px 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.form-check-label {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.form-check-label.active {
+    color: black;
+}
+.sw-label-group{
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -ms-flex-align: center;
+        align-items: center;
+}
+.text-danger-super{
+    color: red;
+}
+</style><style type="text/css">
+.link[_v-4e84f088] {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.link[_v-4e84f088]:hover {
+    color: #337ab7;
+}
+</style><style type="text/css">.vue-star-rating-star[data-v-ef4bc576]{overflow:visible!important}.vue-star-rating-star-rotate[data-v-ef4bc576]{transition:all .25s}.vue-star-rating-star-rotate[data-v-ef4bc576]:hover{transition:transform .25s;transform:rotate(-15deg) scale(1.3)}</style><style type="text/css">.vue-star-rating-star[data-v-fde73a0c]{display:inline-block}.vue-star-rating-pointer[data-v-fde73a0c]{cursor:pointer}.vue-star-rating[data-v-fde73a0c]{display:flex;align-items:center}.vue-star-rating-inline[data-v-fde73a0c]{display:inline-flex}.vue-star-rating-rating-text[data-v-fde73a0c]{margin-left:7px}.vue-star-rating-rtl[data-v-fde73a0c]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-fde73a0c]{margin-right:10px;direction:rtl}.sr-only[data-v-fde73a0c]{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}</style><style type="text/css">
+.panel-coupon-report > div{
+    margin-top: 10px;
+}
+</style><style type="text/css">
+.summary-report-search-div > .col-md-4 > .vdp-datepicker > div > input {
+    width: 100%;
+}
+</style><style type="text/css">
+.image-fix-size[_v-1d489270] {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+}
+</style><style type="text/css">
+#reports {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+}
+#reports .form-control,
+#reports .btn {
+    font-size: 16px;
+}
+#reports .input-group-btn > .btn {
+    font-size: 17px;
+}
+
+#reports .dropdown-menu div[data-role='date-picker'] {
+    font-family: 'thai_sans_literegular', sans-serif;
+    font-size: 18px;
+}
+</style><style type="text/css">
+.nav-tabs[_v-e22bce7a] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-e22bce7a] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-e22bce7a] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-e22bce7a] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-e22bce7a] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+.vue-input-tag-wrapper[_v-e22bce7a] {
+    background-color: #fff;
+    border: 1px solid #fff;
+    overflow: hidden;
+    padding-left: 4px;
+    padding-top: 4px;
+    cursor: text;
+    text-align: left;
+    -webkit-appearance: textfield;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.vue-input-tag-wrapper .new-tag[_v-e22bce7a] {
+    background: transparent;
+    border: 0;
+    color: #777;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    margin-top: 1px;
+    outline: none;
+    padding: 4px;
+    padding-left: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.vue-input-tag-wrapper .input-tag[_v-e22bce7a] {
+    background-color: #acada8;
+    border-radius: 2px;
+    border: 1px solid #cacac8;
+    color: #1c1c1c;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    padding: 3px;
+}
+</style><style type="text/css">
+.nav-tabs[_v-42e659c8] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-42e659c8] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-42e659c8] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-42e659c8] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-42e659c8] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+</style><style type="text/css">
+.nav-tabs[_v-6d2ee4b7] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-6d2ee4b7] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-6d2ee4b7] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-6d2ee4b7] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-6d2ee4b7] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+</style><style type="text/css">
+.nav-tabs[_v-340562da] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-340562da] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-340562da] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-340562da] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-340562da] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+</style><style type="text/css">
+.nav-tabs[_v-c842d084] {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a[_v-c842d084] {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a[_v-c842d084] {
+    border: 1px solid #bce8f1;
+}
+#cart-list-panel.panel[_v-c842d084] {
+    margin-bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#cart-list-panel > .panel-heading[_v-c842d084] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 5px 15px;
+}
+.d-flex-end[_v-c842d084] {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+}
+
+
+</style><style type="text/css">
+.capitalized-text[_v-7ce18eae] {
+  text-transform: capitalize;
+}
+</style><style type="text/css">
+.image-preview[_v-6e35f7fd] {
+    max-width: 100px;
+    height: auto;
+}
+
+.center-container[_v-6e35f7fd] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+}
+.upload-cancel-icons[_v-6e35f7fd] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.upload-container[_v-6e35f7fd] {
+    position: relative;
+    border: #eee dotted 1px;
+    padding: 10px;
+}
+
+.no-wrap[_v-6e35f7fd] {
+  white-space: nowrap;
+}
+
+.mt-1[_v-6e35f7fd] {
+    margin-top: 1rem;
+}
+.mt-3[_v-6e35f7fd] {
+    margin-top: 3rem;
+}
+
+.mt-0-5[_v-6e35f7fd] {
+    margin-top: 0.5rem;
+}
+.mt-1-5[_v-6e35f7fd] {
+    margin-top: 1.5rem;
+}
+
+.line-top[_v-6e35f7fd] {
+    border-top: 1px solid #d9edf7;
+}
+
+.line-wrapper-div[_v-6e35f7fd] {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  white-space: nowrap;
+}
+
+.line-orange[_v-6e35f7fd] {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  height: 2px;
+  background-color: #F0AD4E;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.btn-round[_v-6e35f7fd] {
+  border-radius: 50px;
+}
+.right-aligned-input[_v-6e35f7fd] {
+  text-align: right;
+}
+
+.form-group-address[_v-6e35f7fd] {
+    position: relative;
+}
+
+.edit-address-btn[_v-6e35f7fd] {
+    position: absolute;
+    top: 40px;    
+    right: 20px;
+}
+.help-block-small[_v-6e35f7fd]{
+    min-height: 20px;
+}
+.help-block-small[_v-6e35f7fd]{
+    font-size: 13px;
+    display: block;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    color: #737373;
+    min-height: 20px;
+    white-space: nowrap;
+}
+
+.py-1[_v-6e35f7fd] {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.px-1[_v-6e35f7fd] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.px-0[_v-6e35f7fd] {
+    padding-left:0!important;
+    padding-right: 0!important;
+}
+.px-0-5[_v-6e35f7fd] {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.pr-2[_v-6e35f7fd]{
+    padding-right: 2rem;
+}
+.capitalized-text[_v-6e35f7fd] {
+  text-transform: capitalize;
+}
+textarea[_v-6e35f7fd] {
+  resize: none;
+}
+.background-fafafa[_v-6e35f7fd]{
+    background-color: #fafafa;
+}
+
+.btn-outline-danger[_v-6e35f7fd] {
+    color: #ac2925;
+    border: #ac2925 solid 1px !important;
+}
+
+.coupon-info-label[_v-6e35f7fd] {
+    color: rgb(13, 0, 255);
+    z-index: 10;
+    position: absolute;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    padding: 5px;
+    background-color: #f7f4f4;
+    padding: 10px;
+}
+
+.product-promotion-table[_v-6e35f7fd]{
+    background-color: transparent;
+    border-width: 0 ;
+    border-color:transparent!important;
+}
+.product-promotion-table tbody[_v-6e35f7fd] {
+    border-bottom: 0!important;
+}
+.product-promotion-table tr[_v-6e35f7fd]{
+    background-color: transparent!important;
+    border-width: 0!important ;
+}
+.product-promotion-table td[_v-6e35f7fd]{
+    background-color: transparent;
+    border-width: 0 ;
+    padding-left: 15px;
+}
+.text-decoration-line-through[_v-6e35f7fd]{
+    text-decoration: line-through;
+}
+.coupon-label[_v-6e35f7fd]{
+    display: inline-block;
+    position: relative;
+    z-index: 10;
+}
+.flex-end[_v-6e35f7fd] {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+}
+.product-code-column[_v-6e35f7fd]{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack:justify;
+      justify-content:space-between;
+  gap: 5px;
+}
+
+.badge-container[_v-6e35f7fd] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: space-evenly;
+        justify-content: space-evenly;
+}
+.special-price-badge[_v-6e35f7fd] {
+    background-color: #FF4AAC;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 20px; 
+    font-size: 16px;
+}
+.coupon-text[_v-6e35f7fd]{
+    overflow-x: hidden;
+    max-width: 100px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.vertical-align-middle[_v-6e35f7fd]{
+    vertical-align: middle;
+}
+.icon-20[_v-6e35f7fd]{
+    height: 20px;
+    width: auto;
+}
+#link-purchase-detail-table > tbody > tr > td[_v-6e35f7fd] {
+    vertical-align: top;
+    padding: 10px 10px;
+}
+</style><style type="text/css">
+.text-red{
+    color: #F00;
+    font-weight: bold;
+}
+.img-container{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+}
+</style><style type="text/css">
+.text-red{
+    color: #F00;
+}
+</style><style type="text/css">
+#marketplace #coupon-modal > .modal-dialog {
+    width: 730px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 10px;
+    margin: 10px;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.flex-2-col {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+        flex-direction: row;
+}
+.img-box {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    width: 200px;
+}
+.img-coupon {
+    width: 150px;
+    height: auto;
+}
+.justify-center {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+}
+.w-100 {
+    width: 100%;
+}
+.p-2 {
+    padding: 2rem;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.card-header {
+    border-style: dashed;
+    border-color: antiquewhite;
+    text-align: center;
+}
+</style><style type="text/css">
+.text-red[_v-147a240b] {
+    color: #f00;
+}
+
+.affected-items-list[_v-147a240b] {
+    padding: 0;
+    list-style-type: none;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.affected-item[_v-147a240b] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.item-info[_v-147a240b] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+}
+
+.product-name[_v-147a240b] {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quantity-info[_v-147a240b] {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.quantity-info strong[_v-147a240b] {
+    color: #000;
+}
+</style><style type="text/css">
+.float-right {
+    float: right;
+}
+.pt-2rem {
+    padding-top: 2rem;
+}
+.p-1rem {
+    padding: 1rem;
+}
+.h-5rem {
+    height: 5rem;
+}
+.h-3rem {
+    height: 3rem;
+}
+.m-0-2rem {
+    margin: 0.2rem;
+}
+.btn-outline-danger {
+    color: #ac2925;
+    border: #ac2925 solid 1px !important;
+}
+.btn-outline-danger:hover {
+    color: #843534;
+    border: #843534 solid 1px !important;
+}
+.mt-0-2rem{
+    margin-top: 0.2rem;
+}
+
+.btn-outline-info {
+    color: #31708f;
+    border: #31708f solid 1px !important;
+}
+.btn-outline-info:hover {
+    color: #245269;
+    border: #245269 solid 1px !important;
+}
+
+.text-dark {
+    color: #000;
+}
+.ml-1rem {
+    margin-left: 1rem;
+}
+
+.mt-1-5rem {
+    margin-top: 1.5rem;
+}
+.mt-2rem {
+    margin-top: 2rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to{
+    opacity: 0;
+}
+.cursor_pointer{
+    cursor: pointer;
+}
+
+</style><style type="text/css">
+.w-100px {
+    width: 100px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+</style><style type="text/css">
+.nav-tabs {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+.nav-tabs > li > a {
+    border: 1px solid #bce8f1;
+}
+</style><style type="text/css">
+.multiple-select[_v-9dba9338] {
+    --multiple-border-color: #ccc;
+    --multiple-arrow-color: #ccc;
+    --multiple-clear-all-border-color: #ccc;
+    --multiple-clear-all-background-color: white;
+    --multiple-label-background-color: #ededed;
+    --multiple-checkbox-border-color: #ccc;
+    --multiple-checkbox-background-color: #ccc;
+    --multiple-checkbox-check-color: white;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+.multiple-select[_v-9dba9338]:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-right: solid 1px var(--multiple-arrow-color);
+    border-bottom: solid 1px var(--multiple-arrow-color);
+    transform: rotate(45deg);
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+}
+.multiple-select__input[_v-9dba9338] {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    padding: 6px 12px;
+    padding-right: 32px;
+    color: black;
+    border: solid 1px var(--multiple-border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.multiple-select__selector[_v-9dba9338] {
+    width: 100%;
+    max-height: 400px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 10px;
+    box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.3);
+}
+.multiple-select__selector-enter-active[_v-9dba9338],
+.multiple-select__selector-leave-active[_v-9dba9338] {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.multiple-select__selector-enter[_v-9dba9338],
+.multiple-select__selector-leave-to[_v-9dba9338] {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+.multiple-select__clear-all-button[_v-9dba9338] {
+    display: block;
+    width: 100%;
+    border: solid 1px var(--multiple-clear-all-border-color);
+    border-radius: 6px;
+    background: var(--multiple-clear-all-background-color);
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 8px;
+    cursor: pointer;
+}
+.multiple-select__selector-list[_v-9dba9338] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+.multiple-select__selector-list-item[_v-9dba9338] {
+    margin-top: 4px;
+}
+.multiple-select__selector-list-item[_v-9dba9338]:first-child {
+    margin-top: 0;
+}
+.multiple-select__item-label[_v-9dba9338] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+.multiple-select__item-label[_v-9dba9338]:hover {
+    background: var(--multiple-label-background-color);
+}
+.multiple-select__item-checkbox[_v-9dba9338] {
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    background: white;
+    border: solid 1px var(--multiple-checkbox-border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.multiple-select__item-checkbox[_v-9dba9338]:checked {
+    background-color: var(--multiple-checkbox-background-color);
+}
+.multiple-select__item-checkbox[_v-9dba9338]:checked:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 4px;
+    border-left: solid 2px var(--multiple-checkbox-check-color);
+    border-bottom: solid 2px var(--multiple-checkbox-check-color);
+    transform: rotate(-45deg);
+}
+</style><style type="text/css">
+.sortable-header {
+  cursor: pointer;
+  position: relative;
+}
+
+.arrow-up::before,
+.arrow-down::before {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.arrow-up::before {
+  border-bottom: 5px solid black;
+}
+
+.arrow-down::before {
+  border-top: 5px solid black;
+}
+</style><style type="text/css">
+.img-container[_v-0650bd51] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+}
+</style><style type="text/css">
+/* Using Bootstrap classes from the original HTML, so minimal custom CSS needed */
+.box-title[_v-a2a2a260] {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.box-content[_v-a2a2a260] {
+  padding-left: 15px;
+}
+
+.label-success[_v-a2a2a260] {
+  background-color: #5cb85c;
+}
+
+.label-danger[_v-a2a2a260] {
+  background-color: #d9534f;
+}
+
+.label[_v-a2a2a260] {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.action-space[_v-a2a2a260] {
+  margin-left: 10px;
+}
+
+.btn-group .btn[_v-a2a2a260] {
+  margin-right: 5px;
+}
+</style><style type="text/css">
+.image-item[_v-70e0ae96] {
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+}
+
+.thumbnail[_v-70e0ae96] {
+  display: block;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  padding: 3px;
+}
+
+.delete-bt[_v-70e0ae96] {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+</style><style type="text/css">
+.preview-backdrop[_v-5022e6b4] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.preview-dialog[_v-5022e6b4] {
+    width: 100%;
+    position: relative;
+    animation: popupScale 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: auto;
+}
+
+@keyframes popupScale {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.preview-sm[_v-5022e6b4] { max-width: 400px; }
+.preview-md[_v-5022e6b4] { max-width: 560px; }
+.preview-lg[_v-5022e6b4] { max-width: 760px; }
+.preview-xl[_v-5022e6b4] { max-width: 960px; }
+.preview-2xl[_v-5022e6b4] { max-width: 1140px; }
+
+.preview-card[_v-5022e6b4] {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.preview-close-corner[_v-5022e6b4] {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1;
+    color: #64748b;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    transition: all 0.15s;
+    z-index: 10;
+}
+
+.preview-close-corner[_v-5022e6b4]:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: scale(1.05);
+}
+
+.preview-html-content[_v-5022e6b4] {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1e293b;
+    word-break: break-word;
+}
+
+.preview-actions[_v-5022e6b4] {
+    margin-top: 24px;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+}
+
+.preview-btn[_v-5022e6b4] {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.preview-toolbar[_v-5022e6b4] {
+    margin-top: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.preview-notice[_v-5022e6b4] {
+    color: #94a3b8;
+}
+</style><style type="text/css">
+.modal-backdrop-custom[_v-3eb573fb] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 1050;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    padding: 20px;
+}
+
+.modal-dialog-custom[_v-3eb573fb] {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header-custom[_v-3eb573fb] {
+    padding: 16px 24px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+}
+
+.modal-header-custom h3[_v-3eb573fb] {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.campaign-sub-name[_v-3eb573fb] {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+    display: block;
+}
+
+.close-btn[_v-3eb573fb] {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+.close-btn[_v-3eb573fb]:hover {
+    color: #0f172a;
+}
+
+.modal-body-custom[_v-3eb573fb] {
+    padding: 20px 24px;
+    overflow-y: auto;
+    -ms-flex: 1;
+        flex: 1;
+}
+
+.stats-row[_v-3eb573fb] {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stat-card[_v-3eb573fb] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    gap: 14px;
+}
+
+.stat-icon[_v-3eb573fb] {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    font-size: 18px;
+}
+
+.stat-views[_v-3eb573fb] {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.stat-clicks[_v-3eb573fb] {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.stat-ctr[_v-3eb573fb] {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.stat-info[_v-3eb573fb] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+}
+
+.stat-label[_v-3eb573fb] {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.stat-value[_v-3eb573fb] {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.filter-bar[_v-3eb573fb] {
+    background: #f1f5f9;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-label[_v-3eb573fb] {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 4px;
+}
+
+.custom-table[_v-3eb573fb] {
+    margin-bottom: 0;
+}
+
+.custom-table th[_v-3eb573fb] {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    font-size: 13px;
+    border-bottom: 2px solid #e2e8f0 !important;
+}
+
+.action-tag[_v-3eb573fb] {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.tag-view[_v-3eb573fb] {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.tag-click[_v-3eb573fb] {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.tag-dismiss[_v-3eb573fb] {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.platform-text-cell[_v-3eb573fb] {
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+}
+
+.empty-cell[_v-3eb573fb] {
+    padding: 40px 0;
+}
+
+.empty-cell p[_v-3eb573fb] {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.loading-box[_v-3eb573fb] {
+    padding: 40px 0;
+    color: #64748b;
+}
+
+.pagination-footer[_v-3eb573fb] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.modal-footer-custom[_v-3eb573fb] {
+    padding: 12px 24px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    text-align: right;
+}
+</style><style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+
+.popup-form-page[_v-34086fd4] {
+    padding: 10px 0 40px 0;
+}
+
+.page-header-row[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.back-link[_v-34086fd4] {
+    color: #64748b;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.back-link[_v-34086fd4]:hover {
+    color: #0284c7;
+}
+
+.page-title[_v-34086fd4] {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.header-actions[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+}
+
+.form-card[_v-34086fd4] {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.card-heading[_v-34086fd4] {
+    background: #f8fafc !important;
+    font-weight: 600;
+    color: #334155;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.required-label[_v-34086fd4]::after {
+    content: " *";
+    color: #ef4444;
+}
+
+.scope-mode-options[_v-34086fd4] {
+    margin: 8px 0 12px 0;
+}
+
+.scope-builder-box[_v-34086fd4] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.scope-table[_v-34086fd4] {
+    margin: 10px 0 0 0;
+    background: #ffffff;
+}
+
+.scope-table th[_v-34086fd4] {
+    background: #f1f5f9;
+    font-size: 11px;
+}
+
+.btn-del-scope[_v-34086fd4] {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.template-quick-bar[_v-34086fd4] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-label[_v-34086fd4] {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    margin-right: 4px;
+}
+
+.custom-wysiwyg-wrapper[_v-34086fd4] {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.wysiwyg-toolbar[_v-34086fd4] {
+    background: #f8fafc;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 8px 12px;
+}
+
+.toolbar-row[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.toolbar-row[_v-34086fd4]:last-child {
+    margin-bottom: 0;
+}
+
+.toolbar-group[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    gap: 4px;
+}
+
+.tb-select[_v-34086fd4] {
+    height: 30px;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    border-color: #cbd5e1;
+    color: #334155;
+    background-color: #ffffff;
+}
+
+.tb-btn[_v-34086fd4] {
+    padding: 4px 9px;
+    font-size: 12px;
+    border-color: #cbd5e1;
+    color: #334155;
+    background-color: #ffffff;
+    height: 30px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+}
+
+.tb-btn[_v-34086fd4]:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+    color: #0f172a;
+}
+
+.tb-btn.font-bold[_v-34086fd4] {
+    font-weight: 600;
+}
+
+.toolbar-divider[_v-34086fd4] {
+    width: 1px;
+    height: 22px;
+    background-color: #cbd5e1;
+    margin: 0 4px;
+}
+
+.color-pickers-group[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    gap: 6px;
+}
+
+.color-picker-label[_v-34086fd4] {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 0;
+    width: 30px;
+    height: 30px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.color-picker-label[_v-34086fd4]:hover {
+    background: #f1f5f9;
+}
+
+.color-input[_v-34086fd4] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: auto;
+}
+
+.wysiwyg-canvas[_v-34086fd4] {
+    min-height: 320px;
+    padding: 20px;
+    outline: none;
+    font-family: 'Kanit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.6;
+    background: #ffffff;
+}
+
+.wysiwyg-canvas[_v-34086fd4]:empty:before {
+    content: attr(placeholder);
+    color: #94a3b8;
+    pointer-events: none;
+    display: block;
+}
+
+.wysiwyg-canvas img[_v-34086fd4] {
+    max-width: 100%;
+    height: auto;
+}
+
+.wysiwyg-canvas h1[_v-34086fd4], .wysiwyg-canvas h2[_v-34086fd4], .wysiwyg-canvas h3[_v-34086fd4] {
+    color: #0f172a;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.raw-editor-wrapper .html-textarea[_v-34086fd4] {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    background: #0f172a;
+    color: #f8fafc;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.button-item-card[_v-34086fd4] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.button-item-header[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    margin-bottom: 8px;
+}
+
+.btn-num[_v-34086fd4] {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0284c7;
+}
+
+.font-mono[_v-34086fd4] {
+    font-family: monospace;
+}
+
+.d-flex-between[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+}
+
+.selected-company-card[_v-34086fd4] {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 12px;
+}
+
+.selected-company-header[_v-34086fd4] {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+}
+
+.company-tag[_v-34086fd4] {
+    font-size: 13px;
+    color: #1e293b;
+}
+
+.modal-backdrop-custom[_v-34086fd4] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 1050;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    padding: 20px;
+}
+
+.modal-sm-custom[_v-34086fd4] {
+    max-width: 480px;
+    width: 100%;
+    margin: 0;
+}
+
+.page-loading[_v-34086fd4] {
+    padding: 80px 0;
+    color: #64748b;
+}
+
+.preview-stage-bottom[_v-34086fd4] {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    border-radius: 0 0 8px 8px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
+}
+
+.preview-canvas-card[_v-34086fd4] {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #cbd5e1;
+    position: relative;
+    padding: 28px;
+    width: 100%;
+    transition: max-width 0.25s ease;
+}
+
+.preview-canvas-card.box-size-sm[_v-34086fd4] { max-width: 400px; }
+.preview-canvas-card.box-size-md[_v-34086fd4] { max-width: 560px; }
+.preview-canvas-card.box-size-lg[_v-34086fd4] { max-width: 760px; }
+.preview-canvas-card.box-size-xl[_v-34086fd4] { max-width: 960px; }
+.preview-canvas-card.box-size-2xl[_v-34086fd4] { max-width: 1140px; }
+
+.preview-corner-close[_v-34086fd4] {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    color: #64748b;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    transition: all 0.15s;
+}
+
+.preview-corner-close[_v-34086fd4]:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: scale(1.05);
+}
+
+.preview-inner-body[_v-34086fd4] {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1e293b;
+    word-break: break-word;
+}
+
+.preview-inner-buttons[_v-34086fd4] {
+    margin-top: 24px;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+}
+
+.preview-cta-btn[_v-34086fd4] {
+    padding: 7px 16px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+</style><style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
+
+<body id="index" class="" style="margin-bottom: 30px;">
+    <div class="preloader" id="loading" style="opacity: 0.5">
+	<div class="cssload-square">
+		<div class="cssload-square-part cssload-square-green"></div>
+		<div class="cssload-square-part cssload-square-pink"></div>
+		<div class="cssload-square-blend"></div>
+	</div>
+</div>
+    <div id="app"><header class="header"><nav class="top-menu"><div class="menu-logo fl"><img src="https://admin-stg.arincare.com/images/header-logo.png" width="45" height="45"></div> <div class="menu-hamburger float"><span class="glyphicon glyphicon-menu-hamburger menu-open"></span> <span class="glyphicon glyphicon-remove menu-close"></span></div> <p class="menu-title fl">ผู้ดูแลระบบ</p> <div class="menu-content"><ul class="menu menu-left"><li class="open"><a href="https://admin-stg.arincare.com/users">ผู้ใช้งาน</a> <ul><li><a href="https://admin-stg.arincare.com/users">ผู้ใช้งาน</a></li> <li><a href="https://admin-stg.arincare.com/companies">บริษัท</a></li> <li><a href="https://admin-stg.arincare.com/document-type">ประเภทเอกสาร</a></li> <li><a href="https://admin-stg.arincare.com/sales-zones">Sales Zone</a></li> <li><a href="https://admin-stg.arincare.com/supplier-offlines">Supplier Offline</a></li> <li><a href="https://admin-stg.arincare.com/ads-conditions">ADS condition setting</a></li> <li class="active"><a href="https://admin-stg.arincare.com/popup-notifications">การแจ้งเตือนป็อปอัพ</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/products">สินค้า</a> <ul><li><a href="https://admin-stg.arincare.com/products">สินค้ากลาง</a></li> <li><a href="https://admin-stg.arincare.com/products/edit">แก้ไขสินค้ากลาง</a></li> <li><a href="https://admin-stg.arincare.com/products/turnkey">แก้ไขสินค้า (TurnKey)</a></li> <li><a href="https://admin-stg.arincare.com/products/request-product">Request Product</a></li> <li><a href="https://admin-stg.arincare.com/price-levels">ระดับราคา</a></li> <li><a href="https://admin-stg.arincare.com/units">หน่วยสินค้า</a></li> <li><a href="https://admin-stg.arincare.com/categories">ประเภทสินค้า</a></li> <li><a href="https://admin-stg.arincare.com/treatment-classes">ประเภทยา</a></li> <li><a href="https://admin-stg.arincare.com/manufacturers">ผู้ผลิต</a></li> <li><a href="https://admin-stg.arincare.com/medical-info-categories">หัวข้อข้อมูลยา</a></li> <li><a href="https://admin-stg.arincare.com/ingredients">ส่วนผสม</a></li> <li><a href="https://admin-stg.arincare.com/formulas">สูตรยา</a></li> <li><a href="https://admin-stg.arincare.com/list-smallest-units">แก้ไขหน่วยที่เล็กที่สุด</a></li> <li><a href="https://admin-stg.arincare.com/prices">ราคากลาง</a></li> <li><a href="https://admin-stg.arincare.com/data-sourcing">เลือกสินค้า</a></li> <li><a href="https://admin-stg.arincare.com/data-merging">จับคู่สินค้า PCO</a></li> <li><a href="https://admin-stg.arincare.com/merging-dashboard">เทียบราคาสินค้า</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/diseases">โรคประจำตัว</a></li> <li><a href="https://admin-stg.arincare.com/address">ข้อมูลจังหวัด</a></li> <li><a href="https://admin-stg.arincare.com/roles">สิทธิ์การเข้าถึง</a> <ul><li><a href="https://admin-stg.arincare.com/roles">ผู้ใช้งาน</a></li> <li><a href="https://admin-stg.arincare.com/company-roles">บริษัท</a></li> <li><a href="https://admin-stg.arincare.com/branch-roles">สาขา</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/reports/sale-report">รายงาน</a> <ul><li><a href="https://admin-stg.arincare.com/reports/sellno-active">ไม่มียอดขายนานเกินปกติ</a></li> <li><a href="https://admin-stg.arincare.com/reports/never-use">สมัครเข้ามาแต่ไม่มียอดขาย</a></li> <li><a href="https://admin-stg.arincare.com/reports/last-register">รายงานการสมัครล่าสุด</a></li> <li><a href="https://admin-stg.arincare.com/reports/sale-report">รายงานเซลส์</a></li> <li><a href="https://admin-stg.arincare.com/reports/sale-report-by-province">รายงานเการขายแยกตามจังหวัด</a></li> <li><a href="https://admin-stg.arincare.com/reports/medex-daily-report">สรุปยอดขายประจำวัน (MedEx)</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/data-import">Import</a> <ul><li><a href="https://admin-stg.arincare.com/data-import">นำเข้าข้อมูลสินค้า</a></li> <li><a href="https://admin-stg.arincare.com/customers">ย้าย Members มา Customers</a></li> <li><a href="https://admin-stg.arincare.com/import-excel">Create/Update PCO</a></li> <li><a href="https://admin-stg.arincare.com/import-excel-company">Import Excel to company</a></li> <li><a href="https://admin-stg.arincare.com/import-excel-product">Import Product</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/integrations/kbank">การเชื่อมต่อภายนอก</a> <ul><li><a href="https://admin-stg.arincare.com/integrations/kbank">K PLUS SHOP</a></li> <li><a href="https://admin-stg.arincare.com/integrations/kbank/bulk">K PLUS SHOP (Bulk)</a></li> <li><a href="https://admin-stg.arincare.com/integrations/kbank/merchants">K PLUS Merchants</a></li> <li><a href="https://admin-stg.arincare.com/integrations/kbank/payments">K PLUS QR Payments</a></li> <li><a href="https://admin-stg.arincare.com/integrations/iqvia">IMS Report</a></li> <li><a href="https://admin-stg.arincare.com/integrations/iqvia-location-code">IMS Setting Code</a></li> <li><a href="https://admin-stg.arincare.com/integrations/iqvia-company-manual">IMS Select Company Manual Report</a></li> <li><a href="https://admin-stg.arincare.com/integrations/service-delivery">Service Delivery</a></li> <li><a href="https://admin-stg.arincare.com/integrations/supplemental-income-with-banner">รายได้เสริมกับ arincare</a></li> <li><a href="https://admin-stg.arincare.com/integrations/payment-methods">Payment Method</a></li> <li><a href="https://admin-stg.arincare.com/integrations/line-notification-types">Line Notification Types</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/bank-settlement">Bank Settlement</a> <ul><li class="active"><a href="https://admin-stg.arincare.com/bank-settlement?tab=bulks">Bulk Settlements</a></li> <li><a href="https://admin-stg.arincare.com/bank-settlement?tab=settlements">Settlements</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/maxme/max-card-point-report">MaxMe</a> <ul><li><a href="https://admin-stg.arincare.com/maxme/max-card-point-report">Max Card Point Report</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/arinshare">Arinshare</a> <ul><li class="active"><a href="https://admin-stg.arincare.com/arinshare?tab=listings">Listings</a></li> <li><a href="https://admin-stg.arincare.com/arinshare?tab=carts">Carts</a></li> <li><a href="https://admin-stg.arincare.com/arinshare?tab=cart">Purchase Transactions</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/package">Package</a> <ul><li class="active"><a href="https://admin-stg.arincare.com/package?tab=company">Company</a></li> <li><a href="https://admin-stg.arincare.com/package?tab=packages">Packages</a></li> <li><a href="https://admin-stg.arincare.com/package?tab=permissions">Permissions</a></li> <li><a href="https://admin-stg.arincare.com/package?tab=sms-orders">SMS Order</a></li> <li><a href="https://admin-stg.arincare.com/package?tab=sms-packages">SMS Package</a></li> <li><a href="https://admin-stg.arincare.com/package?tab=telepharmacy-packages">Telepharmacy Packages</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/arinlink/order-management">Arinlink</a> <ul><li><a href="https://admin-stg.arincare.com/arinlink/billing">Billing</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/scheduled_jobs">Scheduled Jobs</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/shipping-method">Shipping Methods</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/payment-type">Payment Type</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/order-management">Order Management</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/catalog">Catalog items</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/tier-setup">Tier Setup</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/reward-catalog">Reward Catalog</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/calculate-rebate">Calculate Rebate</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/coupons">Coupons</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/calculate-promotion">Calculate Promotion</a></li> <li><a href="https://admin-stg.arincare.com/arinlink/express">Express</a></li></ul></li> <li><a href="https://admin-stg.arincare.com/export-excel">Export Medcare sales data</a> <ul><li>
+									customers
+								</li> <li>
+									Products
+								</li></ul></li> <li><a href="https://admin-stg.arincare.com/avision/post-orders">Avision</a> <ul><li><a href="https://admin-stg.arincare.com/avision/post-orders">Post Orders</a></li> <li><a href="https://admin-stg.arincare.com/avision/post-customers">Post Customers</a></li></ul></li></ul> <ul class="menu menu-right"><li><a href="#"><span aria-hidden="true" class="glyphicon glyphicon-user"></span>
+								Arincare
+								<span class="caret"></span></a> <ul class="menu-dropdown"><li><a href="https://admin-stg.arincare.com/logout"><span aria-hidden="true" class="glyphicon glyphicon-log-out"></span>
+										ออกจากระบบ
+									</a></li></ul></li></ul> <div class="clr"></div></div></nav></header> <article class="container-fluid"><div class="row"><div class="col-md-12"><section id="response-section"></section></div></div> <div class="row"><div class="col-md-12"><ol class="breadcrumb"><li><a href="https://admin-stg.arincare.com">หน้าหลัก</a></li> <li><a href="https://admin-stg.arincare.com/popup-notifications">การแจ้งเตือนป็อปอัพ</a></li> <li class="active">สร้างแคมเปญใหม่</li></ol> <div _v-34086fd4="" class="popup-form-page"><div _v-34086fd4="" class="page-header-row"><div _v-34086fd4="" class="header-left"><a href="/popup-notifications" _v-34086fd4="" class="back-link"><i _v-34086fd4="" class="fa fa-arrow-left"></i> กลับหน้ารายการ</a> <h1 _v-34086fd4="" class="page-title">สร้างป็อปอัพแจ้งเตือนใหม่</h1></div> <div _v-34086fd4="" class="header-actions"><button type="button" _v-34086fd4="" class="btn btn-default"><i _v-34086fd4="" class="fa fa-eye"></i> ดูตัวอย่าง (Preview)
+            </button> <button type="button" _v-34086fd4="" class="btn btn-primary"><i _v-34086fd4="" class="fa fa-save"></i>
+                สร้างป็อปอัพ
+            </button></div></div> <div _v-34086fd4=""><div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-md-6"><div _v-34086fd4="" class="panel panel-info"><div _v-34086fd4="" class="panel-heading"><h3 _v-34086fd4="" class="panel-title"><i _v-34086fd4="" class="fa fa-info-circle"></i> 1. ข้อมูลทั่วไป
+                        </h3></div> <div _v-34086fd4="" class="panel-body"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="control-label">ชื่อหัวข้อป็อปอัพ <span _v-34086fd4="" class="text-danger">*</span></label> <input type="text" placeholder="เช่น แจ้งปรับปรุงระบบประจำเดือน, ข่าวสารประชาสัมพันธ์" _v-34086fd4="" class="form-control" style=""></div> <div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="control-label">รหัสอ้างอิง (Code)</label> <input type="text" placeholder="เช่น POPUP_NOTICE_2026" _v-34086fd4="" class="form-control" style=""></div></div> <div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="control-label">สถานะ <span _v-34086fd4="" class="text-danger">*</span></label> <select _v-34086fd4="" class="form-control"><option value="active" _v-34086fd4="">Active (เปิดใช้งาน)</option> <option value="inactive" _v-34086fd4="">Inactive (ปิดการใช้งาน)</option></select></div></div></div> <div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="control-label">วันเวลาเริ่มต้น <span _v-34086fd4="" class="text-danger">*</span></label> <input type="datetime-local" _v-34086fd4="" class="form-control" style=""></div></div> <div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="control-label">วันเวลาสิ้นสุด <span _v-34086fd4="" class="text-danger">*</span></label> <input type="datetime-local" _v-34086fd4="" class="form-control" style=""></div></div></div></div></div></div> <div _v-34086fd4="" class="col-md-6"><div _v-34086fd4="" class="panel panel-info"><div _v-34086fd4="" class="panel-heading"><h3 _v-34086fd4="" class="panel-title"><i _v-34086fd4="" class="fa fa-bullseye"></i> 2. กลุ่มเป้าหมายและเงื่อนไขการแสดงผล
+                        </h3></div> <div _v-34086fd4="" class="panel-body"><div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="required-label">แพลตฟอร์มที่แสดงผล (Platforms)</label> <div _v-34086fd4="" class="platform-checkbox-group" style="margin-top: 6px; display: flex; gap: 16px;"><label _v-34086fd4="" class="checkbox-inline" style="font-weight: 500; cursor: pointer; margin-left: 0px; margin-right: 15px;"><input type="checkbox" value="web-app" _v-34086fd4="" style=""> <i _v-34086fd4="" class="fa fa-globe text-primary"></i> <strong _v-34086fd4="">Web-App</strong> (ERP / MedEx)
+                                        </label> <label _v-34086fd4="" class="checkbox-inline" style="font-weight: 500; cursor: pointer; margin-left: 0px;"><input type="checkbox" value="pos-v2" _v-34086fd4="" style=""> <i _v-34086fd4="" class="fa fa-desktop text-success"></i> <strong _v-34086fd4="">POS-v2</strong> (หน้าร้านขายยา)
+                                        </label></div> <small _v-34086fd4="" class="text-muted" style="font-size: 11px; display: block; margin-top: 5px;">* สามารถเลือกแสดงผลได้หลายช่องทางพร้อมกัน</small></div></div> <div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group"><label _v-34086fd4="" class="required-label">ความถี่ในการแสดงผล (Display Frequency)</label> <select _v-34086fd4="" class="form-control"><option value="once" _v-34086fd4="">ครั้งเดียวต่อพนักงาน (Once) - แสดง 1 ครั้งจนกว่าจะกดปิด</option> <option value="daily" _v-34086fd4="">วันละ 1 ครั้ง (Daily) - แสดงทุกวันจนกว่าจะหมดช่วงเวลา</option> <option value="weekly" _v-34086fd4="">สัปดาห์ละ 1 ครั้ง (Weekly) - แสดงสัปดาห์ละครั้งตามรอบสัปดาห์</option> <option value="monthly" _v-34086fd4="">เดือนละ 1 ครั้ง (Monthly) - แสดงเดือนละครั้งตามรอบเดือน</option></select></div></div></div> <div _v-34086fd4="" class="form-group" style="margin-top: 10px; margin-bottom: 0px;"><label _v-34086fd4="" class="required-label">ขอบเขตการแสดงผล (Scope Targeting)</label> <div _v-34086fd4="" class="scope-mode-options"><label _v-34086fd4="" class="radio-inline"><input type="radio" _v-34086fd4="" value="false" style=""> <strong _v-34086fd4="">ทุกร้านค้าและสาขา (Global)</strong></label> <label _v-34086fd4="" class="radio-inline"><input type="radio" _v-34086fd4="" value="true" style=""> <strong _v-34086fd4="">กำหนดเฉพาะร้านค้า / สาขา</strong></label></div> <div _v-34086fd4="" class="scope-builder-box"><div _v-34086fd4="" class="scope-search-row"><div _v-34086fd4="" class="form-group-sm"><label _v-34086fd4="" style="font-size: 11px; margin-bottom: 3px; color: rgb(71, 85, 105);"><i _v-34086fd4="" class="fa fa-search"></i> ค้นหาร้านค้า (Company Autocomplete)
+                                        </label> <input type="search" id="scope_company_search" placeholder="พิมพ์ชื่อร้าน หรือรหัสสาขา ARC... เพื่อค้นหา" autocomplete="off" _v-34086fd4="" class="form-control input-sm" style=""> <section class="dropdown" _v-34086fd4=""><ul class="dropdown-menu"></ul></section></div></div> <div _v-34086fd4="" class="text-muted text-center" style="padding: 10px 0px; font-size: 12px;">
+                                    ยังไม่มีร้านค้าในขอบเขต (กรุณาค้นหาและเพิ่มอย่างน้อย 1 รายการ)
+                                </div></div></div></div></div></div></div> <div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-md-12"><div _v-34086fd4="" class="panel panel-info"><div _v-34086fd4="" class="panel-heading"><h3 _v-34086fd4="" class="panel-title pull-left" style="line-height: 24px;"><i _v-34086fd4="" class="fa fa-paint-brush"></i> 3. ออกแบบและแก้ไขเนื้อหาป็อปอัพ (Visual WYSIWYG Editor)
+                        </h3> <div _v-34086fd4="" class="pull-right"><span _v-34086fd4="" class="text-muted" style="margin-right: 8px;">ขนาดป็อปอัพ:</span> <div _v-34086fd4="" class="btn-group btn-group-xs"><button type="button" _v-34086fd4="" class="btn btn-default">
+                                    SM
+                                </button><button type="button" _v-34086fd4="" class="btn btn-default">
+                                    MD
+                                </button><button type="button" _v-34086fd4="" class="btn btn-default">
+                                    LG
+                                </button><button type="button" _v-34086fd4="" class="btn btn-default">
+                                    XL
+                                </button><button type="button" _v-34086fd4="" class="btn btn-primary active">
+                                    2XL
+                                </button></div> <button type="button" _v-34086fd4="" class="btn btn-default btn-xs" style="margin-left: 10px;"><i _v-34086fd4="" class="fa fa-eye"></i> จำลอง Modal จริง
+                            </button></div> <div _v-34086fd4="" class="clearfix"></div></div> <div _v-34086fd4="" class="panel-body"><div _v-34086fd4="" class="template-quick-bar"><span _v-34086fd4="" class="quick-label"><i _v-34086fd4="" class="fa fa-magic"></i> แม่แบบสำเร็จรูป (Quick Templates):</span> <button type="button" _v-34086fd4="" class="btn btn-default btn-xs"><i _v-34086fd4="" class="fa fa-gift text-danger"></i> โปรโมชั่นสินค้า + แบนเนอร์
+                            </button> <button type="button" _v-34086fd4="" class="btn btn-default btn-xs"><i _v-34086fd4="" class="fa fa-wrench text-warning"></i> ประกาศแจ้งปิดปรับปรุงระบบ
+                            </button> <button type="button" _v-34086fd4="" class="btn btn-default btn-xs"><i _v-34086fd4="" class="fa fa-star text-primary"></i> แนะนำฟีเจอร์ใหม่
+                            </button> <button type="button" _v-34086fd4="" class="btn btn-default btn-xs"><i _v-34086fd4="" class="fa fa-bullhorn text-success"></i> ข่าวประชาสัมพันธ์ทั่วไป
+                            </button> <div _v-34086fd4="" class="pull-right"><button type="button" _v-34086fd4="" class="btn btn-xs btn-default"><i _v-34086fd4="" class="fa fa-code"></i> สลับไปโหมดเขียนโค้ด Raw HTML
+                                </button></div></div> <div _v-34086fd4="" class="custom-wysiwyg-wrapper"><div _v-34086fd4="" class="wysiwyg-toolbar"><div _v-34086fd4="" class="toolbar-row"><div _v-34086fd4="" class="toolbar-group"><select _v-34086fd4="" class="form-control input-sm tb-select"><option value="p" _v-34086fd4="">ปกติ (Paragraph)</option> <option value="h1" _v-34086fd4="">หัวข้อใหญ่ (H1)</option> <option value="h2" _v-34086fd4="">หัวข้อกลาง (H2)</option> <option value="h3" _v-34086fd4="">หัวข้อย่อย (H3)</option></select></div> <div _v-34086fd4="" class="toolbar-group"><select _v-34086fd4="" class="form-control input-sm tb-select"><option value="'Kanit', sans-serif" selected="selected" _v-34086fd4="">Kanit (คณิต) - ค่าเริ่มต้น</option> <option value="'Prompt', sans-serif" _v-34086fd4="">Prompt (พร้อม)</option> <option value="'Sarabun', sans-serif" _v-34086fd4="">Sarabun (สารบัญ)</option> <option value="'Inter', sans-serif" _v-34086fd4="">Inter</option> <option value="Arial, sans-serif" _v-34086fd4="">Arial</option> <option value="Tahoma, sans-serif" _v-34086fd4="">Tahoma</option> <option value="monospace" _v-34086fd4="">Courier (Monospace)</option> <option value="inherit" _v-34086fd4="">ฟอนต์ดั้งเดิมของระบบ (System)</option></select></div> <div _v-34086fd4="" class="toolbar-group"><select _v-34086fd4="" class="form-control input-sm tb-select"><option value="" _v-34086fd4="">ขนาดฟอนต์</option> <option value="12px" _v-34086fd4="">12px (เล็กมาก)</option> <option value="14px" _v-34086fd4="">14px (ปกติ)</option> <option value="16px" _v-34086fd4="">16px (เด่น)</option> <option value="18px" _v-34086fd4="">18px (หัวข้อย่อย)</option> <option value="20px" _v-34086fd4="">20px (หัวข้อกลาง)</option> <option value="24px" _v-34086fd4="">24px (หัวข้อใหญ่)</option> <option value="28px" _v-34086fd4="">28px</option> <option value="32px" _v-34086fd4="">32px (เน้นพิเศษ)</option> <option value="40px" _v-34086fd4="">40px (Hero Text)</option></select></div> <div _v-34086fd4="" class="toolbar-divider"></div> <div _v-34086fd4="" class="toolbar-group"><button type="button" title="ตัวหนา (Ctrl+B)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-bold"></i></button> <button type="button" title="ตัวเอียง (Ctrl+I)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-italic"></i></button> <button type="button" title="ขีดเส้นใต้ (Ctrl+U)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-underline"></i></button> <button type="button" title="ขีดฆ่า" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-strikethrough"></i></button></div> <div _v-34086fd4="" class="toolbar-divider"></div> <div _v-34086fd4="" class="toolbar-group color-pickers-group"><label title="สีตัวอักษร" _v-34086fd4="" class="color-picker-label"><i _v-34086fd4="" class="fa fa-font" style="border-bottom: 3px solid rgb(2, 132, 199);"></i> <input type="color" value="#0f172a" _v-34086fd4="" class="color-input" style=""></label> <label title="สีไฮไลท์พื้นหลัง" _v-34086fd4="" class="color-picker-label"><i _v-34086fd4="" class="fa fa-paint-brush" style="color: rgb(245, 158, 11);"></i> <input type="color" value="#fef08a" _v-34086fd4="" class="color-input" style=""></label> <button type="button" title="ล้างการจัดรูปแบบ" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-eraser text-danger"></i></button></div></div> <div _v-34086fd4="" class="toolbar-row"><div _v-34086fd4="" class="toolbar-group"><button type="button" title="จัดชิดซ้าย" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-align-left"></i></button> <button type="button" title="จัดกึ่งกลาง" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-align-center"></i></button> <button type="button" title="จัดชิดขวา" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-align-right"></i></button> <button type="button" title="จัดเต็มบรรทัด" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-align-justify"></i></button></div> <div _v-34086fd4="" class="toolbar-divider"></div> <div _v-34086fd4="" class="toolbar-group"><button type="button" title="รายการแบบจุด (Bullet List)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-list-ul"></i></button> <button type="button" title="รายการแบบตัวเลข (Numbered List)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-list-ol"></i></button> <button type="button" title="ลดการเยื้อง" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-outdent"></i></button> <button type="button" title="เพิ่มการเยื้อง" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-indent"></i></button></div> <div _v-34086fd4="" class="toolbar-divider"></div> <div _v-34086fd4="" class="toolbar-group"><button type="button" title="แทรกรูปภาพ / แบนเนอร์" _v-34086fd4="" class="btn btn-primary btn-sm tb-btn font-bold"><i _v-34086fd4="" class="fa fa-picture-o"></i> แทรกรูปภาพ
+                                        </button> <button type="button" title="แทรกลิงก์" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-link text-primary"></i> ลิงก์
+                                        </button> <button type="button" title="แทรกตาราง" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-table text-info"></i> ตาราง
+                                        </button> <button type="button" title="แทรกเส้นคั่น" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-minus"></i> เส้นคั่น
+                                        </button></div> <div _v-34086fd4="" class="toolbar-divider"></div> <div _v-34086fd4="" class="toolbar-group"><div _v-34086fd4="" class="btn-group"><button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" _v-34086fd4="" class="btn btn-default btn-sm dropdown-toggle"><i _v-34086fd4="" class="fa fa-square-o text-warning"></i> กล่องไฮไลท์ <span _v-34086fd4="" class="caret"></span></button> <ul _v-34086fd4="" class="dropdown-menu"><li _v-34086fd4=""><a href="javascript:void(0)" _v-34086fd4=""><i _v-34086fd4="" class="fa fa-info-circle text-info"></i> กล่องข้อมูลสีฟ้า (Info)</a></li> <li _v-34086fd4=""><a href="javascript:void(0)" _v-34086fd4=""><i _v-34086fd4="" class="fa fa-check-circle text-success"></i> กล่องสำเร็จสีเขียว (Success)</a></li> <li _v-34086fd4=""><a href="javascript:void(0)" _v-34086fd4=""><i _v-34086fd4="" class="fa fa-exclamation-triangle text-warning"></i> กล่องแจ้งเตือนสีส้ม (Warning)</a></li> <li _v-34086fd4=""><a href="javascript:void(0)" _v-34086fd4=""><i _v-34086fd4="" class="fa fa-times-circle text-danger"></i> กล่องสำคัญสีแดง (Danger)</a></li></ul></div></div> <div _v-34086fd4="" class="pull-right"><button type="button" title="เลิกทำ (Undo)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-undo"></i></button> <button type="button" title="ทำซ้ำ (Redo)" _v-34086fd4="" class="btn btn-default btn-sm tb-btn"><i _v-34086fd4="" class="fa fa-repeat"></i></button></div></div></div> <div contenteditable="true" placeholder="พิมพ์เนื้อหาที่ต้องการแสดง หรือเลือกแม่แบบด้านบน..." _v-34086fd4="" class="wysiwyg-canvas" style=""><div style="font-family: 'Kanit', sans-serif; text-align: center;"><h3 style="color: #0284c7; margin-top: 0; font-family: 'Kanit', sans-serif;">🎉 สิทธิพิเศษสำหรับร้านขายยาของคุณ!</h3><p style="color: #475569; font-size: 14px; line-height: 1.6; font-family: 'Kanit', sans-serif;">พบกับข้อเสนอโปรโมชั่นสุดพิเศษและสินค้าใหม่ประจำสัปดาห์ พร้อมจัดส่งฟรีถึงหน้าร้าน</p></div></div></div> <div _v-34086fd4="" class="raw-editor-wrapper" style="display: none;"><textarea rows="18" placeholder="ใส่โค้ด HTML เช่น &lt;div style='text-align: center;'&gt;&lt;img src='...' style='max-width: 100%; border-radius: 8px;'&gt;&lt;h3&gt;หัวข้อ&lt;/h3&gt;&lt;p&gt;รายละเอียด...&lt;/p&gt;&lt;/div&gt;" _v-34086fd4="" class="form-control html-textarea font-mono" style=""></textarea></div></div></div></div></div> <div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-md-12"><div _v-34086fd4="" class="panel panel-info"><div _v-34086fd4="" class="panel-heading"><h3 _v-34086fd4="" class="panel-title pull-left" style="line-height: 24px;"><i _v-34086fd4="" class="fa fa-link"></i> 4. ปุ่ม Action (Custom CTA Buttons)
+                        </h3> <button type="button" _v-34086fd4="" class="btn btn-success btn-xs pull-right"><span _v-34086fd4="" class="glyphicon glyphicon-plus"></span> เพิ่มปุ่ม Action
+                        </button> <div _v-34086fd4="" class="clearfix"></div></div> <div _v-34086fd4="" class="panel-body"><div _v-34086fd4="" class="row buttons-builder-grid"><div _v-34086fd4="" class="col-md-6 col-sm-12" style="margin-bottom: 15px;"><div _v-34086fd4="" class="button-item-card"><div _v-34086fd4="" class="button-item-header"><span _v-34086fd4="" class="btn-num"><i _v-34086fd4="" class="fa fa-hand-o-right"></i> ปุ่ม #1</span> <button type="button" _v-34086fd4="" class="btn-del-scope">×</button></div> <div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group-sm"><label _v-34086fd4="">ข้อความบนปุ่ม</label> <input type="text" placeholder="เช่น สั่งซื้อเลย, ดูรายละเอียด" _v-34086fd4="" class="form-control input-sm" style=""></div></div> <div _v-34086fd4="" class="col-sm-6"><div _v-34086fd4="" class="form-group-sm"><label _v-34086fd4="">สไตล์สีปุ่ม</label> <select _v-34086fd4="" class="form-control input-sm"><option value="btn-primary" _v-34086fd4="">Primary (สีน้ำเงิน)</option> <option value="btn-success" _v-34086fd4="">Success (สีเขียว)</option> <option value="btn-warning" _v-34086fd4="">Warning (สีส้ม)</option> <option value="btn-danger" _v-34086fd4="">Danger (สีแดง)</option> <option value="btn-info" _v-34086fd4="">Info (สีฟ้า)</option> <option value="btn-default" _v-34086fd4="">Default (สีเทา)</option></select></div></div></div> <div _v-34086fd4="" class="row" style="margin-top: 10px;"><div _v-34086fd4="" class="col-sm-4"><div _v-34086fd4="" class="form-group-sm"><label _v-34086fd4="">Action เมื่อคลิก</label> <select _v-34086fd4="" class="form-control input-sm"><option value="redirect" _v-34086fd4="">เปิดลิงก์ (Redirect URL)</option> <option value="close" _v-34086fd4="">ปิดหน้าต่าง (Close Modal)</option> <option value="api_call" _v-34086fd4="">เรียก API ภายนอก</option></select></div></div> <!----></div></div></div></div></div></div></div></div> <div _v-34086fd4="" class="row"><div _v-34086fd4="" class="col-md-12"><div _v-34086fd4="" class="panel panel-info"><div _v-34086fd4="" class="panel-heading"><h3 _v-34086fd4="" class="panel-title pull-left" style="line-height: 24px;"><i _v-34086fd4="" class="fa fa-desktop"></i> 5. ตัวอย่างการแสดงผลจริง (Live Preview)
+                        </h3> <div _v-34086fd4="" class="pull-right"><span _v-34086fd4="" class="text-muted" style="margin-right: 12px;">
+                                ขนาด: <strong _v-34086fd4="">2XL</strong></span> <button type="button" _v-34086fd4="" class="btn btn-default btn-xs"><i _v-34086fd4="" class="fa fa-external-link"></i> จำลองเปิด Modal จริง
+                            </button></div> <div _v-34086fd4="" class="clearfix"></div></div> <div _v-34086fd4="" class="panel-body preview-stage-bottom"><div _v-34086fd4="" class="preview-canvas-card box-size-2xl"><button type="button" title="จำลองคลิกปิด" _v-34086fd4="" class="preview-corner-close">×</button> <div _v-34086fd4="" class="preview-inner-body"><div style="font-family: 'Kanit', sans-serif; text-align: center;"><h3 style="color: #0284c7; margin-top: 0; font-family: 'Kanit', sans-serif;">🎉 สิทธิพิเศษสำหรับร้านขายยาของคุณ!</h3><p style="color: #475569; font-size: 14px; line-height: 1.6; font-family: 'Kanit', sans-serif;">พบกับข้อเสนอโปรโมชั่นสุดพิเศษและสินค้าใหม่ประจำสัปดาห์ พร้อมจัดส่งฟรีถึงหน้าร้าน</p></div></div> <div _v-34086fd4="" class="preview-inner-buttons"><button type="button" _v-34086fd4="" class="btn preview-cta-btn btn-default">
+                                    ปิด
+                                </button></div></div> <div _v-34086fd4="" class="text-center" style="margin-top: 15px;"><button type="button" _v-34086fd4="" class="btn btn-default btn-sm"><i _v-34086fd4="" class="fa fa-eye text-primary"></i> คลิกที่นี่เพื่อเปิดหน้าต่าง Popup Modal จำลองขนาดจริง
+                            </button></div></div></div></div></div></div> <!----> <!----> <!----></div></div></div> <footer class="row"><div class="col-md-12 text-center">
+                    Copyright © arincare 2026
+                </div></footer></article></div>
+<link rel="stylesheet" type="text/css" property="stylesheet" href="//admin-stg.arincare.com/_debugbar/assets/stylesheets?v=1646999279"><script type="text/javascript" src="//admin-stg.arincare.com/_debugbar/assets/javascript?v=1646999279"></script><script type="text/javascript">jQuery.noConflict(true);</script>
+<div class="phpdebugbar phpdebugbar-minimized"><div class="phpdebugbar-drag-capture"></div><div class="phpdebugbar-resize-handle"></div><div class="phpdebugbar-header"><div class="phpdebugbar-header-left"><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-list-alt"></i><span class="phpdebugbar-text">Messages</span><span class="phpdebugbar-badge" style="display: none;"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-tasks"></i><span class="phpdebugbar-text">Timeline</span><span class="phpdebugbar-badge"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-bug"></i><span class="phpdebugbar-text">Exceptions</span><span class="phpdebugbar-badge" style="display: none;"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-leaf"></i><span class="phpdebugbar-text">Views</span><span class="phpdebugbar-badge" style="display: inline;">7</span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-share"></i><span class="phpdebugbar-text">Route</span><span class="phpdebugbar-badge"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-database"></i><span class="phpdebugbar-text">Queries</span><span class="phpdebugbar-badge" style="display: inline;">7</span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-inbox"></i><span class="phpdebugbar-text">Mails</span><span class="phpdebugbar-badge" style="display: none;"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-lock"></i><span class="phpdebugbar-text">Auth</span><span class="phpdebugbar-badge"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-list-alt"></i><span class="phpdebugbar-text">Gate</span><span class="phpdebugbar-badge" style="display: none;"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-archive"></i><span class="phpdebugbar-text">Session</span><span class="phpdebugbar-badge"></span></a><a class="phpdebugbar-tab"><i class="phpdebugbar-fa phpdebugbar-fa-tags"></i><span class="phpdebugbar-text">Request</span><span class="phpdebugbar-badge"></span></a></div><div class="phpdebugbar-header-right"><a class="phpdebugbar-close-btn"></a><a class="phpdebugbar-minimize-btn"></a><a class="phpdebugbar-maximize-btn"></a><a class="phpdebugbar-open-btn" style="display: block;"></a><select class="phpdebugbar-datasets-switcher"><option value="ac849a26776d28cecc8cc2dc70cdb06b">#1 create (13:51:26)</option></select><span class="phpdebugbar-indicator"><i class="phpdebugbar-fa phpdebugbar-fa-clock-o"></i><span class="phpdebugbar-text">69.02ms</span><span class="phpdebugbar-tooltip">Request Duration</span></span><span class="phpdebugbar-indicator"><i class="phpdebugbar-fa phpdebugbar-fa-cogs"></i><span class="phpdebugbar-text">4MB</span><span class="phpdebugbar-tooltip">Memory Usage</span></span><span class="phpdebugbar-indicator"><i class="phpdebugbar-fa phpdebugbar-fa-share"></i><span class="phpdebugbar-text">GET popup-notifications/create</span><span class="phpdebugbar-tooltip">Route</span></span><span class="phpdebugbar-indicator"><i class="phpdebugbar-fa phpdebugbar-fa-user"></i><span class="phpdebugbar-text">web: patiwat</span><span class="phpdebugbar-tooltip">Auth status</span></span></div></div><div class="phpdebugbar-body" style="height: 300px;"><div class="phpdebugbar-panel"><div class="phpdebugbar-widgets-messages"><ul class="phpdebugbar-widgets-list"></ul><div class="phpdebugbar-widgets-toolbar"><i class="phpdebugbar-fa phpdebugbar-fa-search"></i><input type="text" style=""></div></div></div><div class="phpdebugbar-panel"><ul class="phpdebugbar-widgets-timeline"><li><div class="phpdebugbar-widgets-measure"><span class="phpdebugbar-widgets-value" style="left: 0%; width: 56.72%;"></span><span class="phpdebugbar-widgets-label">Booting (39.15ms)</span></div></li><li><div class="phpdebugbar-widgets-measure"><span class="phpdebugbar-widgets-value" style="left: 39.56%; width: 60.44%;"></span><span class="phpdebugbar-widgets-label">Application (41.72ms)</span></div></li></ul></div><div class="phpdebugbar-panel"><div class="phpdebugbar-widgets-exceptions"><ul class="phpdebugbar-widgets-list"></ul></div></div><div class="phpdebugbar-panel"><div class="phpdebugbar-widgets-templates"><div class="phpdebugbar-widgets-status"><span>7 templates were rendered</span></div><ul class="phpdebugbar-widgets-list"><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">themes.bootstrap.popup-notifications.form (resources/views/themes/bootstrap/popup-notifications/form.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">1</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>popupId</code></pre></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">breadcrumbs::bootstrap3 (vendor/davejamesmiller/laravel-breadcrumbs/views/bootstrap3.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">1</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>breadcrumbs</code></pre></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">themes.bootstrap.layouts.base (resources/views/themes/bootstrap/layouts/base.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">5</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>obLevel</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">1</td><td class="phpdebugbar-widgets-value"><pre><code>__env</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">2</td><td class="phpdebugbar-widgets-value"><pre><code>app</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">3</td><td class="phpdebugbar-widgets-value"><pre><code>errors</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">4</td><td class="phpdebugbar-widgets-value"><pre><code>popupId</code></pre></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">themes.bootstrap.layouts.preloader (resources/views/themes/bootstrap/layouts/preloader.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">5</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>obLevel</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">1</td><td class="phpdebugbar-widgets-value"><pre><code>__env</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">2</td><td class="phpdebugbar-widgets-value"><pre><code>app</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">3</td><td class="phpdebugbar-widgets-value"><pre><code>errors</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">4</td><td class="phpdebugbar-widgets-value"><pre><code>popupId</code></pre></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">themes.bootstrap.layouts.header (resources/views/themes/bootstrap/layouts/header.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">5</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>obLevel</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">1</td><td class="phpdebugbar-widgets-value"><pre><code>__env</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">2</td><td class="phpdebugbar-widgets-value"><pre><code>app</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">3</td><td class="phpdebugbar-widgets-value"><pre><code>errors</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">4</td><td class="phpdebugbar-widgets-value"><pre><code>popupId</code></pre></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">flash::message (vendor/laracasts/flash/src/views/message.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">5</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>obLevel</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">1</td><td class="phpdebugbar-widgets-value"><pre><code>__env</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">2</td><td class="phpdebugbar-widgets-value"><pre><code>app</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">3</td><td class="phpdebugbar-widgets-value"><pre><code>errors</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">4</td><td class="phpdebugbar-widgets-value"><pre><code>popupId</code></pre></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" style="cursor: pointer;"><span class="phpdebugbar-widgets-name">themes.bootstrap.layouts.footer (resources/views/themes/bootstrap/layouts/footer.blade.php)</span><span title="Parameter count" class="phpdebugbar-widgets-param-count">5</span><span title="Type" class="phpdebugbar-widgets-type">blade</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Params</th></tr><tr><td class="phpdebugbar-widgets-name">0</td><td class="phpdebugbar-widgets-value"><pre><code>obLevel</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">1</td><td class="phpdebugbar-widgets-value"><pre><code>__env</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">2</td><td class="phpdebugbar-widgets-value"><pre><code>app</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">3</td><td class="phpdebugbar-widgets-value"><pre><code>errors</code></pre></td></tr><tr><td class="phpdebugbar-widgets-name">4</td><td class="phpdebugbar-widgets-value"><pre><code>popupId</code></pre></td></tr></tbody></table></li></ul></div></div><div class="phpdebugbar-panel"><dl class="phpdebugbar-widgets-kvlist phpdebugbar-widgets-varlist"><dt class="phpdebugbar-widgets-key"><span title="uri">uri</span></dt><dd class="phpdebugbar-widgets-value">GET popup-notifications/create</dd><dt class="phpdebugbar-widgets-key"><span title="middleware">middleware</span></dt><dd class="phpdebugbar-widgets-value">web, auth, permission:ACCESS_ADMIN</dd><dt class="phpdebugbar-widgets-key"><span title="as">as</span></dt><dd class="phpdebugbar-widgets-value">popup-notifications.create</dd><dt class="phpdebugbar-widgets-key"><span title="controller">controller</span></dt><dd class="phpdebugbar-widgets-value">App\Http\Controllers\PopupNotificationController@create</dd><dt class="phpdebugbar-widgets-key"><span title="namespace">namespace</span></dt><dd class="phpdebugbar-widgets-value">App\Http\Controllers</dd><dt class="phpdebugbar-widgets-key"><span title="prefix">prefix</span></dt><dd class="phpdebugbar-widgets-value">null</dd><dt class="phpdebugbar-widgets-key"><span title="where">where</span></dt><dd class="phpdebugbar-widgets-value"></dd><dt class="phpdebugbar-widgets-key"><span title="file">file</span></dt><dd class="phpdebugbar-widgets-value">app/Http/Controllers/PopupNotificationController.php:21-26</dd></dl></div><div class="phpdebugbar-panel"><div class="phpdebugbar-widgets-sqlqueries"><div class="phpdebugbar-widgets-status"><span>7 statements were executed</span><span title="Accumulated duration" class="phpdebugbar-widgets-duration">6.42ms</span></div><div class="phpdebugbar-widgets-toolbar"><a class="phpdebugbar-widgets-filter" rel="production_arincare">production_arincare</a></div><ul class="phpdebugbar-widgets-list"><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">`users`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`users`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">'1297'</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`users`</span>.<span class="hljs-string">`deleted_at`</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span> limit <span class="hljs-number">1</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">1.46ms</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:1009</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;1297</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li><li class="phpdebugbar-widgets-table-list-item"><code>LIMIT</code> without <code>ORDER BY</code> causes non-deterministic results, depending on the query execution plan</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:1009</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:512</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">17.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:20</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">22.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">27.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">32.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">37.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">42.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">49.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">50.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">51.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">52.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">60.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">67.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">68.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">69.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> <span class="hljs-string">`roles`</span>.*, <span class="hljs-string">`role_user`</span>.<span class="hljs-string">`user_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_user_id`</span>, <span class="hljs-string">`role_user`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_role_id`</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`roles`</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <span class="hljs-string">`role_user`</span> <span class="hljs-keyword">on</span> <span class="hljs-string">`roles`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">`role_user`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`role_user`</span>.<span class="hljs-string">`user_id`</span> = <span class="hljs-string">'1297'</span> <span class="hljs-keyword">and</span> <span class="hljs-string">`roles`</span>.<span class="hljs-string">`deleted_at`</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">1.04ms</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:11326</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;1297</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">12.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11326</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11311</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11289</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">15.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11627</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">16.</span>&nbsp;/app/Helpers/permission.php<span class="phpdebugbar-text-muted">:30</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">23.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">28.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">33.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">38.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">43.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">48.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">55.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">56.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">57.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">58.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">66.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">73.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">74.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">75.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> <span class="hljs-string">`permissions`</span>.*, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_role_id`</span>, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_permission_id`</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`permissions`</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <span class="hljs-string">`permission_role`</span> <span class="hljs-keyword">on</span> <span class="hljs-string">`permissions`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> = <span class="hljs-string">'3'</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">630μs</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:11326</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;3</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">12.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11326</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11311</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11289</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">15.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11627</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">16.</span>&nbsp;/app/Helpers/permission.php<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">23.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">28.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">33.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">38.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">43.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">48.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">55.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">56.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">57.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">58.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">66.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">73.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">74.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">75.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> <span class="hljs-string">`permissions`</span>.*, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_role_id`</span>, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_permission_id`</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`permissions`</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <span class="hljs-string">`permission_role`</span> <span class="hljs-keyword">on</span> <span class="hljs-string">`permissions`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> = <span class="hljs-string">'4'</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">560μs</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:11326</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;4</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">12.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11326</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11311</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11289</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">15.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11627</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">16.</span>&nbsp;/app/Helpers/permission.php<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">23.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">28.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">33.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">38.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">43.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">48.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">55.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">56.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">57.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">58.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">66.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">73.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">74.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">75.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> <span class="hljs-string">`permissions`</span>.*, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_role_id`</span>, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_permission_id`</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`permissions`</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <span class="hljs-string">`permission_role`</span> <span class="hljs-keyword">on</span> <span class="hljs-string">`permissions`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> = <span class="hljs-string">'7'</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">540μs</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:11326</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;7</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">12.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11326</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11311</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11289</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">15.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11627</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">16.</span>&nbsp;/app/Helpers/permission.php<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">23.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">28.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">33.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">38.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">43.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">48.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">55.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">56.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">57.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">58.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">66.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">73.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">74.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">75.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> <span class="hljs-string">`permissions`</span>.*, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_role_id`</span>, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_permission_id`</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`permissions`</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <span class="hljs-string">`permission_role`</span> <span class="hljs-keyword">on</span> <span class="hljs-string">`permissions`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> = <span class="hljs-string">'2'</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">730μs</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:11326</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;2</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">12.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11326</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11311</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11289</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">15.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11627</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">16.</span>&nbsp;/app/Helpers/permission.php<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">23.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">28.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">33.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">38.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">43.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">48.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">55.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">56.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">57.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">58.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">66.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">73.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">74.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">75.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li><li class="phpdebugbar-widgets-list-item" connection="production_arincare" style="cursor: pointer;"><code class="phpdebugbar-widgets-sql"><span class="hljs-operator"><span class="hljs-keyword">select</span> <span class="hljs-string">`permissions`</span>.*, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_role_id`</span>, <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`pivot_permission_id`</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`permissions`</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <span class="hljs-string">`permission_role`</span> <span class="hljs-keyword">on</span> <span class="hljs-string">`permissions`</span>.<span class="hljs-string">`id`</span> = <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`permission_id`</span> <span class="hljs-keyword">where</span> <span class="hljs-string">`permission_role`</span>.<span class="hljs-string">`role_id`</span> = <span class="hljs-string">'1'</span></span></code><span title="Duration" class="phpdebugbar-widgets-duration">1.46ms</span><span title="Prepared statement ID" class="phpdebugbar-widgets-stmt-id">/bootstrap/cache/compiled.php:11326</span><span title="Connection" class="phpdebugbar-widgets-database">production_arincare</span><table class="phpdebugbar-widgets-params"><tbody><tr><th colspan="2">Metadata</th></tr><tr><td class="phpdebugbar-widgets-name">Bindings <i class="phpdebugbar-fa phpdebugbar-fa-thumb-tack phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">0.</span>&nbsp;1</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Hints <i class="phpdebugbar-fa phpdebugbar-fa-question-circle phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item">Use <code>SELECT *</code> only if you need all columns from table</li></ul></td></tr><tr><td class="phpdebugbar-widgets-name">Backtrace <i class="phpdebugbar-fa phpdebugbar-fa-list-ul phpdebugbar-text-muted"></i></td><td class="phpdebugbar-widgets-value"><ul class="phpdebugbar-widgets-table-list"><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">12.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11326</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">13.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11311</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">14.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11289</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">15.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11627</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">16.</span>&nbsp;/app/Helpers/permission.php<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">23.</span>&nbsp;middleware::auth<span class="phpdebugbar-text-muted">:35</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">28.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3225</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">33.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13474</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">38.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:11964</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">43.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13213</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">48.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:13150</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">55.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8226</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">56.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8217</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">57.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:8207</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">58.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2419</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">66.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:3286</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">73.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2366</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">74.</span>&nbsp;/bootstrap/cache/compiled.php<span class="phpdebugbar-text-muted">:2350</span></li><li class="phpdebugbar-widgets-table-list-item"><span class="phpdebugbar-text-muted">75.</span>&nbsp;/public/index.php<span class="phpdebugbar-text-muted">:53</span></li></ul></td></tr></tbody></table></li></ul></div></div><div class="phpdebugbar-panel"><div class="phpdebugbar-widgets-mails"><ul class="phpdebugbar-widgets-list"></ul></div></div><div class="phpdebugbar-panel"><dl class="phpdebugbar-widgets-kvlist phpdebugbar-widgets-varlist"><dt class="phpdebugbar-widgets-key"><span title="web">web</span></dt><dd class="phpdebugbar-widgets-value">array:2 [
+  "name" =&gt; "patiwat"
+  "user" =&gt; array:21 [
+    "id" =&gt; 1297
+    "username" =&gt; "patiwat"
+...</dd><dt class="phpdebugbar-widgets-key"><span title="api">api</span></dt><dd class="phpdebugbar-widgets-value">array:2 [
+  "name" =&gt; "Guest"
+  "user" =&gt; array:1 [
+    "guest" =&gt; true
+  ]
+]</dd></dl></div><div class="phpdebugbar-panel"><div class="phpdebugbar-widgets-messages"><ul class="phpdebugbar-widgets-list"></ul><div class="phpdebugbar-widgets-toolbar"><i class="phpdebugbar-fa phpdebugbar-fa-search"></i><input type="text" style=""></div></div></div><div class="phpdebugbar-panel"><dl class="phpdebugbar-widgets-kvlist phpdebugbar-widgets-varlist"><dt class="phpdebugbar-widgets-key"><span title="_token">_token</span></dt><dd class="phpdebugbar-widgets-value">bwKf8dnf42URynZ86IZ0XvZAsvnfm0wQ1Ld5r8eh</dd><dt class="phpdebugbar-widgets-key"><span title="_previous">_previous</span></dt><dd class="phpdebugbar-widgets-value">array:1 [
+  "url" =&gt; "https://admin-stg.arincare.com/popup-notifications/create"
+]</dd><dt class="phpdebugbar-widgets-key"><span title="flash">flash</span></dt><dd class="phpdebugbar-widgets-value">array:2 [
+  "old" =&gt; []
+  "new" =&gt; []
+]</dd><dt class="phpdebugbar-widgets-key"><span title="login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d">login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d</span></dt><dd class="phpdebugbar-widgets-value">1297</dd><dt class="phpdebugbar-widgets-key"><span title="PHPDEBUGBAR_STACK_DATA">PHPDEBUGBAR_STACK_DATA</span></dt><dd class="phpdebugbar-widgets-value">[]</dd></dl></div><div class="phpdebugbar-panel"><dl class="phpdebugbar-widgets-kvlist phpdebugbar-widgets-varlist"><dt class="phpdebugbar-widgets-key"><span title="format">format</span></dt><dd class="phpdebugbar-widgets-value">html</dd><dt class="phpdebugbar-widgets-key"><span title="content_type">content_type</span></dt><dd class="phpdebugbar-widgets-value">text/html; charset=UTF-8</dd><dt class="phpdebugbar-widgets-key"><span title="status_text">status_text</span></dt><dd class="phpdebugbar-widgets-value">OK</dd><dt class="phpdebugbar-widgets-key"><span title="status_code">status_code</span></dt><dd class="phpdebugbar-widgets-value">200</dd><dt class="phpdebugbar-widgets-key"><span title="request_query">request_query</span></dt><dd class="phpdebugbar-widgets-value">[]</dd><dt class="phpdebugbar-widgets-key"><span title="request_request">request_request</span></dt><dd class="phpdebugbar-widgets-value">[]</dd><dt class="phpdebugbar-widgets-key"><span title="request_headers">request_headers</span></dt><dd class="phpdebugbar-widgets-value">array:18 [
+  "cookie" =&gt; array:1 [
+    0 =&gt; "jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEyOT...</dd><dt class="phpdebugbar-widgets-key"><span title="request_server">request_server</span></dt><dd class="phpdebugbar-widgets-value">array:43 [
+  "USER" =&gt; "www-data"
+  "HOME" =&gt; "/var/www"
+  "HTTP_COOKIE" =&gt; "jwt=eyJ0eXAiOiJKV1QiLCJ...</dd><dt class="phpdebugbar-widgets-key"><span title="request_cookies">request_cookies</span></dt><dd class="phpdebugbar-widgets-value">array:3 [
+  "jwt" =&gt; null
+  "XSRF-TOKEN" =&gt; "bwKf8dnf42URynZ86IZ0XvZAsvnfm0wQ1Ld5r8eh"
+  "laravel_se...</dd><dt class="phpdebugbar-widgets-key"><span title="response_headers">response_headers</span></dt><dd class="phpdebugbar-widgets-value">array:3 [
+  "cache-control" =&gt; array:1 [
+    0 =&gt; "no-cache"
+  ]
+  "content-type" =&gt; array:1 [
+    0...</dd><dt class="phpdebugbar-widgets-key"><span title="path_info">path_info</span></dt><dd class="phpdebugbar-widgets-value">/popup-notifications/create</dd><dt class="phpdebugbar-widgets-key"><span title="session_attributes">session_attributes</span></dt><dd class="phpdebugbar-widgets-value">array:5 [
+  "_token" =&gt; "bwKf8dnf42URynZ86IZ0XvZAsvnfm0wQ1Ld5r8eh"
+  "_previous" =&gt; array:1 [
+    "u...</dd></dl></div></div><a class="phpdebugbar-restore-btn" style="display: none;"></a></div><div class="phpdebugbar-openhandler" style="display: none;"><div class="phpdebugbar-openhandler-header">PHP DebugBar | Open<a><i class="phpdebugbar-fa phpdebugbar-fa-times"></i></a></div><table><thead><tr><th width="150">Date</th><th width="55">Method</th><th>URL</th><th width="125">IP</th><th width="100">Filter data</th></tr></thead><tbody></tbody></table><div class="phpdebugbar-openhandler-actions"><a>Load more</a><a>Show only current URL</a><a>Show all</a><a>Delete all</a><form><br><b>Filter results</b><br>Method: <select name="method"><option></option><option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option></select><br>Uri: <input type="text" name="uri" style=""><br>IP: <input type="text" name="ip" style=""><br><button type="submit">Search</button></form></div></div><div class="phpdebugbar-openhandler-overlay" style="display: none;"></div>
+
+<script type="text/javascript" src="/build/js/app-c01dea42a1.js"></script>
+<script type="text/javascript">
+    var base_url = 'https://admin-stg.arincare.com/';
+    var api_url = 'https://api-stg.arincare.com/v1/';
+    var API_URL = 'https://api-stg.arincare.com/v1/';
+    var api2_url = 'https://api-stg.arincare.com/v2/';
+    var API2_URL = 'https://api-stg.arincare.com/v2/';
+    var API3_URL  = 'https://api-stg.arincare.com/v3/';
+    var API4_URL  = 'https://api-stg.arincare.com/v4/';
+    var DATAMERGING_API_URL  = 'https://datamerging-api-stg.arincare.com/';
+    var arin = angular.module('arincare', []);
+    var MEDCARE_API_URL  = 'https://mc-api-stg.arincare.com';
+    var csrf_token = $('meta[name="csrf-token"]').attr('content');
+    var API_V2_URL = 'https://api2-stg.arincare.com/api/';
+    var ARINCARE_COMPANY_SLUG = 'NaayRURUOD';
+
+    var me = {"id":1297,"username":"patiwat","email":"patiwat.arincare@gmail.com","first_name":"Arincare","last_name":"Patiwat","active_code":"o2waKTi5FAQ6wRdTAsUB","activated":1,"accepted":1,"newsletter":0,"image_path":"images\/profiles\/","image_normal":"acu001297_7925439_n.jpg","image_original":"acu001297_7925439_o.jpg","image_ratio":1.749430523918,"image_width":1536,"image_height":878,"address_id":null,"signature_image_id":null,"created_at":"2019-08-21 12:21:35","updated_at":"2026-08-27 13:09:45","deleted_at":null,"roles":[{"id":3,"name":"\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b","description":"\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b","slug":"USER","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"user_id":1297,"role_id":3},"permissions":[{"id":3,"name":"\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c","description":"\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e27\u0e47\u0e1a arincare \u0e44\u0e14\u0e49","slug":"ACCESS_SITE","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"role_id":3,"permission_id":3}}]},{"id":4,"name":"\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a \u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e08\u0e33\u0e2b\u0e19\u0e48\u0e32\u0e22","description":"\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a \u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e08\u0e33\u0e2b\u0e19\u0e48\u0e32\u0e22","slug":"SUPPLIER_ADMINISTRATOR","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"user_id":1297,"role_id":4},"permissions":[]},{"id":7,"name":"\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25","description":"\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25","slug":"HOSPITAL","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"user_id":1297,"role_id":7},"permissions":[]},{"id":2,"name":"\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23","description":"\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e17\u0e35\u0e48\u0e40\u0e1b\u0e47\u0e19 \u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 \u0e17\u0e35\u0e48\u0e08\u0e30\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19\u0e15\u0e31\u0e27\u0e23\u0e30\u0e1a\u0e1a web application \u0e44\u0e14\u0e49","slug":"BUSINESS","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"user_id":1297,"role_id":2},"permissions":[{"id":2,"name":"\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48 application","description":"\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e2b\u0e19\u0e49\u0e32\u0e40\u0e27\u0e47\u0e1a application \u0e02\u0e2d\u0e07 arincare \u0e44\u0e14\u0e49","slug":"ACCESS_APP","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"role_id":2,"permission_id":2}}]},{"id":1,"name":"\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a","description":"\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e23\u0e30\u0e1a\u0e1a","slug":"ADMINISTRATOR","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"user_id":1297,"role_id":1},"permissions":[{"id":1,"name":"\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23\u0e23\u0e30\u0e1a\u0e1a","description":"\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48 Back-Office \u0e02\u0e2d\u0e07\u0e40\u0e27\u0e47\u0e1a\u0e44\u0e0b\u0e15\u0e4c arincare \u0e44\u0e14\u0e49","slug":"ACCESS_ADMIN","created_at":null,"updated_at":null,"deleted_at":null,"pivot":{"role_id":1,"permission_id":1}}]}]};    
+    var admin_team_lead  = 'sale.lead@gmail.com,patiwat.arincare@gmail.com';
+    var admin_sale_group  = 'sale.admin@gmail.com,patiwat.arincare@gmail.com';
+    var isAdmin = true;
+</script>
+
+    <script type="text/javascript" src="/build/js/vue-bundle-2d01b469e4.js"></script>
+
+</body></html>

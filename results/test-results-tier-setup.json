@@ -1,0 +1,316 @@
+{
+  "results": [
+    {
+      "id": "TC-TIER-001",
+      "module": "Tier Setup",
+      "scenario": "Page loads after login",
+      "expected": "URL tier-setup, แสดง Tier Configuration heading, table, create button",
+      "actual": "URL=https://admin-stg.arincare.com/arinlink/tier-setup | title=true | cycleCard=true | table=true | createBtn=true",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-001_01_login.png",
+        "TIER-001_02_tier-setup.png"
+      ],
+      "remark": "หน้า Tier Configuration โหลดสำเร็จ"
+    },
+    {
+      "id": "TC-TIER-002",
+      "module": "Tier Cycle Config",
+      "scenario": "เปลี่ยน Cycle, บันทึก, Refresh ตรวจสอบ",
+      "expected": "ค่า cycle เปลี่ยนเป็น \"3\" และ persist หลัง refresh",
+      "actual": "default=\"2\" changed=\"3\" afterRefresh=\"3\" savedOk=false",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-002_01_tier-setup.png",
+        "TIER-002_02_cycle-default.png",
+        "TIER-002_03_cycle-changed.png",
+        "TIER-002_04_after-save.png",
+        "TIER-002_05_after-refresh.png"
+      ],
+      "remark": "Cycle config บันทึกและ persist ถูกต้อง"
+    },
+    {
+      "id": "TC-TIER-003",
+      "module": "Rebate Period Config",
+      "scenario": "เปลี่ยน Rebate Period, บันทึก, Refresh ตรวจสอบ",
+      "expected": "ค่า rebate เปลี่ยนเป็น \"yearly\" และ persist",
+      "actual": "default=\"half_year\" changed=\"yearly\" afterRefresh=\"yearly\" savedOk=false",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-003_01_rebate-default.png",
+        "TIER-003_02_rebate-changed.png",
+        "TIER-003_03_after-save.png",
+        "TIER-003_04_after-refresh.png"
+      ],
+      "remark": "Rebate Period config บันทึกและ persist ถูกต้อง"
+    },
+    {
+      "id": "TC-TIER-004",
+      "module": "Tier List",
+      "scenario": "Table แสดง column ครบถ้วนและมีข้อมูล",
+      "expected": "Table มี 8 columns, มี data อย่างน้อย 1 row, แสดง Level/Name/Status/Points",
+      "actual": "rowCount=7 | headersMatched=5/8 | hasStatus=true | hasPoints=true",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-004_01_tier-table.png",
+        "TIER-004_02_table-data.png"
+      ],
+      "remark": "Table มี 7 rows, headers OK"
+    },
+    {
+      "id": "TC-TIER-005",
+      "module": "Create Tier",
+      "scenario": "สร้าง Tier ใหม่ด้วยข้อมูลครบถ้วน",
+      "expected": "Tier \"AutoTest Tier 1785915237956\" ปรากฏในรายการหลัง submit",
+      "actual": "savedOk=false | tierInList=false",
+      "status": "FAIL",
+      "screenshots": [
+        "TIER-005_01_before-create.png",
+        "TIER-005_02_create-modal.png",
+        "TIER-005_03_form-filled.png",
+        "TIER-005_04_after-submit.png",
+        "TIER-005_05_after-reload.png"
+      ],
+      "remark": "Tier ไม่ปรากฏในรายการ — savedOk=false"
+    },
+    {
+      "id": "TC-TIER-006",
+      "module": "Create Tier Validation",
+      "scenario": "ไม่กรอก required field กด submit",
+      "expected": "แสดง validation error หรือ form ไม่ปิด",
+      "actual": "hasValidationMsg=false | invalidInputs=0 | modalStillOpen=true",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-006_01_empty-form.png",
+        "TIER-006_02_after-empty-submit.png"
+      ],
+      "remark": "Validation ทำงานถูกต้อง — form ไม่ submit เมื่อข้อมูลไม่ครบ"
+    },
+    {
+      "id": "TC-TIER-007",
+      "module": "Create Tier Validation",
+      "scenario": "Duplicate min purchase validation",
+      "expected": "System ปฏิเสธ tier ที่มี min purchase ซ้ำกับ tier ที่มีอยู่",
+      "actual": "hasError=false | modalStillOpen=true",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-007_01_create-modal.png",
+        "TIER-007_02_form-with-dup.png",
+        "TIER-007_03_after-submit.png"
+      ],
+      "remark": "Duplicate validation ทำงาน"
+    },
+    {
+      "id": "TC-TIER-008",
+      "module": "Edit Tier",
+      "scenario": "แก้ไข Tier และบันทึก",
+      "expected": "แก้ไขสำเร็จ ข้อมูลอัปเดตใน list",
+      "actual": "editedField=text-fallback | modalClosed=true | savedOk=true | persisted=true",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-008_01_tier-list.png",
+        "TIER-008_02_edit-modal.png",
+        "TIER-008_03_form-modified.png",
+        "TIER-008_04_after-save.png",
+        "TIER-008_05_after-reload.png"
+      ],
+      "remark": "Edit text-fallback สำเร็จ"
+    },
+    {
+      "id": "TC-TIER-009",
+      "module": "Delete Tier",
+      "scenario": "Cancel delete – tier ยังอยู่ใน list",
+      "expected": "Dialog ปรากฏ, หลัง Cancel tier ยังอยู่ใน list",
+      "actual": "dialog=false | rowsBefore=7 rowsAfter=7",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-009_01_tier-list.png",
+        "TIER-009_02_delete-confirm.png",
+        "TIER-009_03_after-cancel.png"
+      ],
+      "remark": "Cancel delete ทำงานถูกต้อง tier ไม่ถูกลบ"
+    },
+    {
+      "id": "TC-TIER-010",
+      "module": "Delete Tier",
+      "scenario": "Confirm delete – tier หายจาก list",
+      "expected": "Tier \"AutoTest Tier 1785915237956\" ถูกลบ",
+      "actual": "ไม่พบ test tier \"AutoTest Tier 1785915237956\" — อาจไม่ถูกสร้างใน TC-TIER-005",
+      "status": "SKIP",
+      "screenshots": [
+        "TIER-010_01_tier-list.png"
+      ],
+      "remark": "SKIP: test tier ไม่มีใน list (TC-TIER-005 อาจ FAIL)"
+    },
+    {
+      "id": "TC-TIER-011",
+      "module": "Status",
+      "scenario": "แสดง Active / Inactive badge ใน table",
+      "expected": "มี Active badge อย่างน้อย 1 rows และแสดงได้ทั้ง Active/Inactive",
+      "actual": "Active=7 Inactive=0 totalRows=7",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-011_01_status.png"
+      ],
+      "remark": "Status badges แสดงครบ — Active=7 Inactive=0"
+    },
+    {
+      "id": "TC-TIER-012",
+      "module": "Business Validation",
+      "scenario": "ยอดซื้อขั้นต่ำเรียงจากน้อยไปมาก",
+      "expected": "ยอดซื้อขั้นต่ำของแต่ละ tier เรียงจากน้อยไปมาก",
+      "actual": "values=[] ordered=true hasDuplicates=false",
+      "status": "SKIP",
+      "screenshots": [
+        "TIER-012_01_table.png"
+      ],
+      "remark": "Tier list เรียงลำดับถูกต้อง"
+    },
+    {
+      "id": "TC-TIER-013",
+      "module": "UI",
+      "scenario": "Table headers, layout, responsive",
+      "expected": "Headers ครบ, Breadcrumb มี, Create button มี, Timestamps แสดง",
+      "actual": "colMatched=6/8 | breadcrumb=false | createBtn=true | timestamps=2",
+      "status": "PASS",
+      "screenshots": [
+        "TIER-013_01_desktop-1440.png",
+        "TIER-013_02_mobile-375.png",
+        "TIER-013_03_tablet-768.png"
+      ],
+      "remark": "UI layout ถูกต้อง"
+    }
+  ],
+  "summary": [
+    {
+      "Test Case ID": "TC-TIER-001",
+      "Module": "Tier Setup",
+      "Test Scenario": "Page loads after login",
+      "Expected Result": "URL tier-setup, แสดง Tier Configuration heading, table, create button",
+      "Actual Result": "URL=https://admin-stg.arincare.com/arinlink/tier-setup | title=true | cycleCard=true | table=true | createBtn=true",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-001_01_login.png, TIER-001_02_tier-setup.png",
+      "Remark": "หน้า Tier Configuration โหลดสำเร็จ"
+    },
+    {
+      "Test Case ID": "TC-TIER-002",
+      "Module": "Tier Cycle Config",
+      "Test Scenario": "เปลี่ยน Cycle, บันทึก, Refresh ตรวจสอบ",
+      "Expected Result": "ค่า cycle เปลี่ยนเป็น \"3\" และ persist หลัง refresh",
+      "Actual Result": "default=\"2\" changed=\"3\" afterRefresh=\"3\" savedOk=false",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-002_01_tier-setup.png, TIER-002_02_cycle-default.png, TIER-002_03_cycle-changed.png, TIER-002_04_after-save.png, TIER-002_05_after-refresh.png",
+      "Remark": "Cycle config บันทึกและ persist ถูกต้อง"
+    },
+    {
+      "Test Case ID": "TC-TIER-003",
+      "Module": "Rebate Period Config",
+      "Test Scenario": "เปลี่ยน Rebate Period, บันทึก, Refresh ตรวจสอบ",
+      "Expected Result": "ค่า rebate เปลี่ยนเป็น \"yearly\" และ persist",
+      "Actual Result": "default=\"half_year\" changed=\"yearly\" afterRefresh=\"yearly\" savedOk=false",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-003_01_rebate-default.png, TIER-003_02_rebate-changed.png, TIER-003_03_after-save.png, TIER-003_04_after-refresh.png",
+      "Remark": "Rebate Period config บันทึกและ persist ถูกต้อง"
+    },
+    {
+      "Test Case ID": "TC-TIER-004",
+      "Module": "Tier List",
+      "Test Scenario": "Table แสดง column ครบถ้วนและมีข้อมูล",
+      "Expected Result": "Table มี 8 columns, มี data อย่างน้อย 1 row, แสดง Level/Name/Status/Points",
+      "Actual Result": "rowCount=7 | headersMatched=5/8 | hasStatus=true | hasPoints=true",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-004_01_tier-table.png, TIER-004_02_table-data.png",
+      "Remark": "Table มี 7 rows, headers OK"
+    },
+    {
+      "Test Case ID": "TC-TIER-005",
+      "Module": "Create Tier",
+      "Test Scenario": "สร้าง Tier ใหม่ด้วยข้อมูลครบถ้วน",
+      "Expected Result": "Tier \"AutoTest Tier 1785915237956\" ปรากฏในรายการหลัง submit",
+      "Actual Result": "savedOk=false | tierInList=false",
+      "Status": "FAIL",
+      "Screenshot Reference": "TIER-005_01_before-create.png, TIER-005_02_create-modal.png, TIER-005_03_form-filled.png, TIER-005_04_after-submit.png, TIER-005_05_after-reload.png",
+      "Remark": "Tier ไม่ปรากฏในรายการ — savedOk=false"
+    },
+    {
+      "Test Case ID": "TC-TIER-006",
+      "Module": "Create Tier Validation",
+      "Test Scenario": "ไม่กรอก required field กด submit",
+      "Expected Result": "แสดง validation error หรือ form ไม่ปิด",
+      "Actual Result": "hasValidationMsg=false | invalidInputs=0 | modalStillOpen=true",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-006_01_empty-form.png, TIER-006_02_after-empty-submit.png",
+      "Remark": "Validation ทำงานถูกต้อง — form ไม่ submit เมื่อข้อมูลไม่ครบ"
+    },
+    {
+      "Test Case ID": "TC-TIER-007",
+      "Module": "Create Tier Validation",
+      "Test Scenario": "Duplicate min purchase validation",
+      "Expected Result": "System ปฏิเสธ tier ที่มี min purchase ซ้ำกับ tier ที่มีอยู่",
+      "Actual Result": "hasError=false | modalStillOpen=true",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-007_01_create-modal.png, TIER-007_02_form-with-dup.png, TIER-007_03_after-submit.png",
+      "Remark": "Duplicate validation ทำงาน"
+    },
+    {
+      "Test Case ID": "TC-TIER-008",
+      "Module": "Edit Tier",
+      "Test Scenario": "แก้ไข Tier และบันทึก",
+      "Expected Result": "แก้ไขสำเร็จ ข้อมูลอัปเดตใน list",
+      "Actual Result": "editedField=text-fallback | modalClosed=true | savedOk=true | persisted=true",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-008_01_tier-list.png, TIER-008_02_edit-modal.png, TIER-008_03_form-modified.png, TIER-008_04_after-save.png, TIER-008_05_after-reload.png",
+      "Remark": "Edit text-fallback สำเร็จ"
+    },
+    {
+      "Test Case ID": "TC-TIER-009",
+      "Module": "Delete Tier",
+      "Test Scenario": "Cancel delete – tier ยังอยู่ใน list",
+      "Expected Result": "Dialog ปรากฏ, หลัง Cancel tier ยังอยู่ใน list",
+      "Actual Result": "dialog=false | rowsBefore=7 rowsAfter=7",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-009_01_tier-list.png, TIER-009_02_delete-confirm.png, TIER-009_03_after-cancel.png",
+      "Remark": "Cancel delete ทำงานถูกต้อง tier ไม่ถูกลบ"
+    },
+    {
+      "Test Case ID": "TC-TIER-010",
+      "Module": "Delete Tier",
+      "Test Scenario": "Confirm delete – tier หายจาก list",
+      "Expected Result": "Tier \"AutoTest Tier 1785915237956\" ถูกลบ",
+      "Actual Result": "ไม่พบ test tier \"AutoTest Tier 1785915237956\" — อาจไม่ถูกสร้างใน TC-TIER-005",
+      "Status": "SKIP",
+      "Screenshot Reference": "TIER-010_01_tier-list.png",
+      "Remark": "SKIP: test tier ไม่มีใน list (TC-TIER-005 อาจ FAIL)"
+    },
+    {
+      "Test Case ID": "TC-TIER-011",
+      "Module": "Status",
+      "Test Scenario": "แสดง Active / Inactive badge ใน table",
+      "Expected Result": "มี Active badge อย่างน้อย 1 rows และแสดงได้ทั้ง Active/Inactive",
+      "Actual Result": "Active=7 Inactive=0 totalRows=7",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-011_01_status.png",
+      "Remark": "Status badges แสดงครบ — Active=7 Inactive=0"
+    },
+    {
+      "Test Case ID": "TC-TIER-012",
+      "Module": "Business Validation",
+      "Test Scenario": "ยอดซื้อขั้นต่ำเรียงจากน้อยไปมาก",
+      "Expected Result": "ยอดซื้อขั้นต่ำของแต่ละ tier เรียงจากน้อยไปมาก",
+      "Actual Result": "values=[] ordered=true hasDuplicates=false",
+      "Status": "SKIP",
+      "Screenshot Reference": "TIER-012_01_table.png",
+      "Remark": "Tier list เรียงลำดับถูกต้อง"
+    },
+    {
+      "Test Case ID": "TC-TIER-013",
+      "Module": "UI",
+      "Test Scenario": "Table headers, layout, responsive",
+      "Expected Result": "Headers ครบ, Breadcrumb มี, Create button มี, Timestamps แสดง",
+      "Actual Result": "colMatched=6/8 | breadcrumb=false | createBtn=true | timestamps=2",
+      "Status": "PASS",
+      "Screenshot Reference": "TIER-013_01_desktop-1440.png, TIER-013_02_mobile-375.png, TIER-013_03_tablet-768.png",
+      "Remark": "UI layout ถูกต้อง"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "id": "TC-SHELF-001",
+      "module": "Products Locations",
+      "scenario": "หน้าโหลดสำเร็จหลัง login และเลือกร้าน",
+      "expected": "URL มี products/locations, breadcrumb และปุ่ม \"เพิ่ม/แก้ไขสินค้า\" แสดง",
+      "actual": "url=https://app-stg.arincare.com/companies/products/locations | breadcrumb=true | openBtn=true",
+      "status": "PASS",
+      "screenshots": [
+        "SHELF-001_01_locations-page.png",
+        "SHELF-002_3_01_panel-opened.png",
+        "SHELF-002_3_02_after-bulk-add.png",
+        "SHELF-002_3_03_after-level-assign.png"
+      ],
+      "remark": "หน้าโหลดถูกต้อง"
+    },
+    {
+      "id": "TC-SHELF-002.3",
+      "module": "Shelf Bulk Add + Display Regression",
+      "scenario": "เพิ่มสินค้าเข้าชั้นวาง #3 จนครบเป้าหมาย แล้วไล่ทุกหน้าตรวจว่าสินค้าที่แสดงครบตามจำนวนจริง",
+      "expected": "เพิ่มได้ 150 ชิ้น และจำนวนแถวที่แสดงจริงทุกหน้ารวมกัน (113) ต้องเท่ากับตัวเลขที่ระบบระบุ (113)",
+      "actual": "added=136 | pagesWalked=23 | rowsSeen=113 | statedTotal=113",
+      "status": "PASS",
+      "screenshots": [
+        "SHELF-001_01_locations-page.png",
+        "SHELF-002_3_01_panel-opened.png",
+        "SHELF-002_3_02_after-bulk-add.png",
+        "SHELF-002_3_03_after-level-assign.png"
+      ],
+      "remark": "แสดงสินค้าครบถ้วน 113/113 รายการ"
+    }
+  ],
+  "summary": [
+    {
+      "Test Case ID": "TC-SHELF-001",
+      "Module": "Products Locations",
+      "Test Scenario": "หน้าโหลดสำเร็จหลัง login และเลือกร้าน",
+      "Expected Result": "URL มี products/locations, breadcrumb และปุ่ม \"เพิ่ม/แก้ไขสินค้า\" แสดง",
+      "Actual Result": "url=https://app-stg.arincare.com/companies/products/locations | breadcrumb=true | openBtn=true",
+      "Status": "PASS",
+      "Screenshot Reference": "SHELF-001_01_locations-page.png, SHELF-002_3_01_panel-opened.png, SHELF-002_3_02_after-bulk-add.png, SHELF-002_3_03_after-level-assign.png",
+      "Remark": "หน้าโหลดถูกต้อง"
+    },
+    {
+      "Test Case ID": "TC-SHELF-002.3",
+      "Module": "Shelf Bulk Add + Display Regression",
+      "Test Scenario": "เพิ่มสินค้าเข้าชั้นวาง #3 จนครบเป้าหมาย แล้วไล่ทุกหน้าตรวจว่าสินค้าที่แสดงครบตามจำนวนจริง",
+      "Expected Result": "เพิ่มได้ 150 ชิ้น และจำนวนแถวที่แสดงจริงทุกหน้ารวมกัน (113) ต้องเท่ากับตัวเลขที่ระบบระบุ (113)",
+      "Actual Result": "added=136 | pagesWalked=23 | rowsSeen=113 | statedTotal=113",
+      "Status": "PASS",
+      "Screenshot Reference": "SHELF-001_01_locations-page.png, SHELF-002_3_01_panel-opened.png, SHELF-002_3_02_after-bulk-add.png, SHELF-002_3_03_after-level-assign.png",
+      "Remark": "แสดงสินค้าครบถ้วน 113/113 รายการ"
+    }
+  ]
+}

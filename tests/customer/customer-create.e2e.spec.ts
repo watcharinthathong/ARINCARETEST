@@ -1,6 +1,6 @@
 import { test, expect } from './fixtures.js';
-import { shot } from '../utils/helpers.js';
-import { fullCustomer, priceLevels, uniqueMobile } from '../data/customer.testdata.js';
+import { shot } from '../../utils/helpers.js';
+import { fullCustomer, priceLevels, uniqueMobile } from '../../data/customer.testdata.js';
 
 test.describe('เพิ่มลูกค้าใหม่ - E2E ครบทุก Tab', () => {
   test.beforeEach(async ({ loggedIn, customerForm }) => {
@@ -16,41 +16,41 @@ test.describe('เพิ่มลูกค้าใหม่ - E2E ครบท�
 
     // ข้อมูลทั่วไป
     await customerForm.fillGeneral(data);
-    await shot(page, 'TC-CUST-004_tab-general');
+    await shot(page, 'customer/TC-CUST-004_tab-general');
 
     // Tab ที่อยู่
     await customerForm.fillAddress(data);
-    await shot(page, 'TC-CUST-004_tab-address');
+    await shot(page, 'customer/TC-CUST-004_tab-address');
 
     // Tab ราคาขาย
     await customerForm.selectPriceLevel(data.priceLevel!);
-    await shot(page, 'TC-CUST-004_tab-price');
+    await shot(page, 'customer/TC-CUST-004_tab-price');
 
     // Tab ข้อมูลทางยา (เปิดดูเฉย ๆ ไม่บังคับกรอก)
     await customerForm.tab('ข้อมูลทางยา');
-    await shot(page, 'TC-CUST-004_tab-medical');
+    await shot(page, 'customer/TC-CUST-004_tab-medical');
 
     // Tab ประวัติการซื้อ (ตรวจว่าแสดงได้)
     await customerForm.tab('ประวัติการซื้อ');
-    await shot(page, 'TC-CUST-004_tab-history');
+    await shot(page, 'customer/TC-CUST-004_tab-history');
 
     // Tab หมายเหตุ
     await customerForm.fillNote(data.note!);
-    await shot(page, 'TC-CUST-004_tab-note');
+    await shot(page, 'customer/TC-CUST-004_tab-note');
 
     // บันทึก
     await customerForm.save();
     await customerForm.expectSaveSuccess();
-    await shot(page, 'TC-CUST-004_after-save');
+    await shot(page, 'customer/TC-CUST-004_after-save');
 
     // ค้นหา + เปิดรายละเอียด
     await customerForm.searchCustomer(mobile);
     await customerForm.expectCustomerInList(mobile);
-    await shot(page, 'TC-CUST-004_customer-list');
+    await shot(page, 'customer/TC-CUST-004_customer-list');
 
     await customerForm.openCustomerDetail(mobile);
     await expect.soft(page.getByText('Test', { exact: false }).first()).toBeVisible();
-    await shot(page, 'TC-CUST-004_customer-detail');
+    await shot(page, 'customer/TC-CUST-004_customer-detail');
   });
 
   // TC-PRICE-003 : เลือกได้ครบทุกระดับราคา (data-driven)
@@ -58,7 +58,7 @@ test.describe('เพิ่มลูกค้าใหม่ - E2E ครบท�
     test(`TC-PRICE-003 เลือกระดับราคา: ${level}`, async ({ page, customerForm }) => {
       await customerForm.fillGeneral({ mobile: uniqueMobile('081') });
       await customerForm.selectPriceLevel(level);
-      await shot(page, `TC-PRICE-003_${level}`);
+      await shot(page, `customer/TC-PRICE-003_${level}`);
       await customerForm.save();
       await customerForm.expectSaveSuccess();
     });
@@ -69,7 +69,7 @@ test.describe('เพิ่มลูกค้าใหม่ - E2E ครบท�
     await customerForm.fillGeneral({ firstName: 'Temp', mobile: uniqueMobile('081') });
     await customerForm.cancelButton.click();
     await expect(customerForm.saveButton).toBeHidden({ timeout: 8000 }).catch(() => {});
-    await shot(page, 'TC-UI-001_after-cancel');
+    await shot(page, 'customer/TC-UI-001_after-cancel');
   });
 
   // TC-UI-002 : สลับ Tab ข้อมูลคงอยู่

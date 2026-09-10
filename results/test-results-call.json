@@ -97,7 +97,11 @@
     "id": "TC-CALL-006",
     "scenario": "Accept VDO → Full screen + PIP + controls",
     "status": "SKIP",
+<<<<<<< Updated upstream
     "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+=======
+    "actualResult": "inChat=false | URL: https://telepharmacy-liff.vercel.app/profile | body: \"มานี มีใจ\nยืนยัน OTP แล้ว\nข้อมูล\nวันเกิด\n13 พฤษภาคม 2540\nเพศ\nชาย\nเบอร์โทรศัพท์\nX\"",
+>>>>>>> Stashed changes
     "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
     "screenshots": [
       "tc-call-006_cms_01_login.png",
@@ -111,14 +115,24 @@
       "tc-call-006_liff_02_pass.png",
       "tc-call-006_liff_03_after-login.png",
       "tc-call-006_liff_04_after-login.png",
+<<<<<<< Updated upstream
       "tc-call-006_liff_05_state.png"
+=======
+      "tc-call-006_liff_05_state.png",
+      "tc-call-006_liff_07_scrolled.png",
+      "tc-call-006_liff_08_chat.png"
+>>>>>>> Stashed changes
     ]
   },
   {
     "id": "TC-CALL-007",
     "scenario": "ห้ามสลับ patient ระหว่าง call",
     "status": "SKIP",
+<<<<<<< Updated upstream
     "actualResult": "LIFF โหลดสำเร็จ (แสดง profile) แต่ call button ต้องเปิดจาก LINE app เท่านั้น — browser ไม่มี LINE session token",
+=======
+    "actualResult": "inChat=false | URL: https://telepharmacy-liff.vercel.app/?provider_code=rms1aidk | body: \"กำลังตรวจสอบสิทธิ์...\"",
+>>>>>>> Stashed changes
     "remark": "SKIP: call button อยู่ใน LINE app เท่านั้น (browser LIFF ไม่มี LINE session token)",
     "screenshots": [
       "tc-call-007_cms_01_login.png",
@@ -132,7 +146,13 @@
       "tc-call-007_liff_02_pass.png",
       "tc-call-007_liff_03_after-login.png",
       "tc-call-007_liff_04_after-login.png",
+<<<<<<< Updated upstream
       "tc-call-007_liff_05_state.png"
+=======
+      "tc-call-007_liff_05_state.png",
+      "tc-call-007_liff_07_scrolled.png",
+      "tc-call-007_liff_08_chat.png"
+>>>>>>> Stashed changes
     ]
   },
   {

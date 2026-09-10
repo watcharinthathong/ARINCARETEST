@@ -19,8 +19,8 @@
  */
 
 import { test, expect } from './pos-fixtures.js';
-import { shot } from '../utils/helpers.js';
-import { uniquePosMobile, posMinimalMember } from '../data/pos-member.testdata.js';
+import { shot } from '../../utils/helpers.js';
+import { uniquePosMobile, posMinimalMember } from '../../data/pos-member.testdata.js';
 
 type CapturedRequest = {
   method: string;
@@ -58,10 +58,10 @@ test.describe('BC365 Bug: Customer sync ขาด Mobile / Email / Contact Name'
 
     await posRegister.openRegisterForm();
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
-    await shot(page, 'BC365-SYNC-001_01_filled');
+    await shot(page, 'pos/BC365-SYNC-001_01_filled');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'BC365-SYNC-001_02_saved');
+    await shot(page, 'pos/BC365-SYNC-001_02_saved');
 
     // รอ async requests ที่อาจ trigger หลัง save เล็กน้อย
     await page.waitForTimeout(2_000);
@@ -96,10 +96,10 @@ test.describe('BC365 Bug: Customer sync ขาด Mobile / Email / Contact Name'
 
     await posRegister.openRegisterForm();
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, email: testEmail });
-    await shot(page, 'BC365-SYNC-002_01_filled');
+    await shot(page, 'pos/BC365-SYNC-002_01_filled');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'BC365-SYNC-002_02_saved');
+    await shot(page, 'pos/BC365-SYNC-002_02_saved');
 
     await page.waitForTimeout(2_000);
 
@@ -142,10 +142,10 @@ test.describe('BC365 Bug: Customer sync ขาด Mobile / Email / Contact Name'
       birthDate: '01/01/1992',
       gender: 'ชาย',
     });
-    await shot(page, 'BC365-SYNC-003_01_filled-all-fields');
+    await shot(page, 'pos/BC365-SYNC-003_01_filled-all-fields');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'BC365-SYNC-003_02_saved-success');
+    await shot(page, 'pos/BC365-SYNC-003_02_saved-success');
 
     await page.waitForTimeout(2_000);
 

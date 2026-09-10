@@ -19,7 +19,7 @@
  */
 
 import { test, expect } from './pos-fixtures.js';
-import { shot } from '../utils/helpers.js';
+import { shot } from '../../utils/helpers.js';
 import {
   uniquePosMobile,
   posMobileCases,
@@ -27,7 +27,7 @@ import {
   posMinimalMember,
   posFullMember,
   posTaxMember,
-} from '../data/pos-member.testdata.js';
+} from '../../data/pos-member.testdata.js';
 
 // ═══════════════════════════════════════════════════════════════════
 // Positive (Happy Path)
@@ -43,10 +43,10 @@ test.describe('POS สมัครสมาชิกใหม่ - Positive', ()
   test('@smoke TC-CUST-001 สมัครด้วย required fields เท่านั้น (ชื่อ, เบอร์, วันเกิด, เพศ)', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('081');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
-    await shot(page, 'TC-CUST-001_before-save');
+    await shot(page, 'pos/TC-CUST-001_before-save');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'TC-CUST-001_after-save');
+    await shot(page, 'pos/TC-CUST-001_after-save');
   });
 
   // TC-CUST-002
@@ -55,7 +55,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Positive', ()
     await posRegister.fillGeneralInfo({ ...posFullMember, mobile });
     await posRegister.fillTaxInfo(posTaxMember);
     await posRegister.fillNotesTab('ทดสอบหมายเหตุ ครบทุก Tab');
-    await shot(page, 'TC-CUST-002_all-tabs');
+    await shot(page, 'pos/TC-CUST-002_all-tabs');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -65,7 +65,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Positive', ()
     const mobile = uniquePosMobile('083');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillTaxInfo(posTaxMember);
-    await shot(page, 'TC-CUST-003_with-tax');
+    await shot(page, 'pos/TC-CUST-003_with-tax');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -85,47 +85,47 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: R
   test('TC-CUST-010 ไม่กรอกชื่อ → ไม่บันทึก', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('091');
     await posRegister.fillGeneralInfo({ birthDate: '01/01/1992', gender: 'ชาย', mobile });
-    await shot(page, 'TC-CUST-010_before-save');
+    await shot(page, 'pos/TC-CUST-010_before-save');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-010_error');
+    await shot(page, 'pos/TC-CUST-010_error');
   });
 
   // TC-CUST-011
   test('TC-CUST-011 ไม่กรอกเบอร์มือถือ → ไม่บันทึก', async ({ page, posRegister }) => {
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile: '' });
-    await shot(page, 'TC-CUST-011_before-save');
+    await shot(page, 'pos/TC-CUST-011_before-save');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-011_error');
+    await shot(page, 'pos/TC-CUST-011_error');
   });
 
   // TC-CUST-012
   test('TC-CUST-012 ไม่กรอกวันเกิด → ไม่บันทึก', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('092');
     await posRegister.fillGeneralInfo({ firstName: 'สมชาย', gender: 'ชาย', mobile });
-    await shot(page, 'TC-CUST-012_before-save');
+    await shot(page, 'pos/TC-CUST-012_before-save');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-012_error');
+    await shot(page, 'pos/TC-CUST-012_error');
   });
 
   // TC-CUST-013
   test('TC-CUST-013 ไม่เลือกเพศ → ไม่บันทึก', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('093');
     await posRegister.fillGeneralInfo({ firstName: 'สมชาย', birthDate: '01/01/1992', mobile });
-    await shot(page, 'TC-CUST-013_before-save');
+    await shot(page, 'pos/TC-CUST-013_before-save');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-013_error');
+    await shot(page, 'pos/TC-CUST-013_error');
   });
 
   // TC-CUST-014
   test('TC-CUST-014 ไม่กรอกอะไรเลย → แสดง error ทุก required field', async ({ page, posRegister }) => {
-    await shot(page, 'TC-CUST-014_empty-form');
+    await shot(page, 'pos/TC-CUST-014_empty-form');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-014_all-errors');
+    await shot(page, 'pos/TC-CUST-014_all-errors');
   });
 });
 
@@ -151,14 +151,14 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
         gender:    'ชาย',
         mobile,
       });
-      await shot(page, `${tc.id}_input`);
+      await shot(page, `pos/${tc.id}_input`);
       await posRegister.save();
       if (tc.expect === 'PASS') {
         await posRegister.expectSaveSuccess();
       } else {
         await posRegister.expectValidationError();
       }
-      await shot(page, `${tc.id}_result`);
+      await shot(page, `pos/${tc.id}_result`);
     });
   }
 });
@@ -177,14 +177,14 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
     test(`${tc.id} ${tc.title}`, async ({ page, posRegister }) => {
       const mobile = uniquePosMobile('094');
       await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, email: tc.email });
-      await shot(page, `${tc.id}_input`);
+      await shot(page, `pos/${tc.id}_input`);
       await posRegister.save();
       if (tc.expect === 'PASS') {
         await posRegister.expectSaveSuccess();
       } else {
         await posRegister.expectValidationError();
       }
-      await shot(page, `${tc.id}_result`);
+      await shot(page, `pos/${tc.id}_result`);
     });
   }
 });
@@ -203,36 +203,36 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
   test('TC-CUST-040 วันเกิดผิดรูปแบบ (ปปปป/ดด/วว) → error', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('095');
     await posRegister.fillGeneralInfo({ firstName: 'ทดสอบ', gender: 'ชาย', mobile, birthDate: '2535/01/01' });
-    await shot(page, 'TC-CUST-040_input');
+    await shot(page, 'pos/TC-CUST-040_input');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-040_error');
+    await shot(page, 'pos/TC-CUST-040_error');
   });
 
   // TC-CUST-041
   test('TC-CUST-041 วันเกิดในอนาคต → error', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('096');
     await posRegister.fillGeneralInfo({ firstName: 'ทดสอบ', gender: 'ชาย', mobile, birthDate: '01/01/2600' });
-    await shot(page, 'TC-CUST-041_input');
+    await shot(page, 'pos/TC-CUST-041_input');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-041_error');
+    await shot(page, 'pos/TC-CUST-041_error');
   });
 
   // TC-CUST-042
   test('TC-CUST-042 วันเกิดรูปแบบถูกต้อง วว/ดด/ปปปป → บันทึกสำเร็จ', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('097');
     await posRegister.fillGeneralInfo({ firstName: 'ทดสอบ', lastName: 'ทดสอบ', gender: 'ชาย', mobile, birthDate: '15/08/1997' });
-    await shot(page, 'TC-CUST-042_input');
+    await shot(page, 'pos/TC-CUST-042_input');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'TC-CUST-042_success');
+    await shot(page, 'pos/TC-CUST-042_success');
   });
 
   // TC-CUST-043
   test('TC-CUST-043 คลิก field วันเกิด → date picker แสดงขึ้นมา', async ({ page, posRegister }) => {
     await posRegister.birthDateInput.click();
-    await shot(page, 'TC-CUST-043_datepicker-open');
+    await shot(page, 'pos/TC-CUST-043_datepicker-open');
     await expect.soft(
       page.locator('[class*="datepicker"], [class*="calendar"], .picker').first()
     ).toBeVisible({ timeout: 5_000 });
@@ -242,10 +242,10 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
   test('TC-CUST-044 วันที่ไม่มีจริง 31/02 → error', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('098');
     await posRegister.fillGeneralInfo({ firstName: 'ทดสอบ', gender: 'ชาย', mobile, birthDate: '31/02/1990' });
-    await shot(page, 'TC-CUST-044_input');
+    await shot(page, 'pos/TC-CUST-044_input');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-044_error');
+    await shot(page, 'pos/TC-CUST-044_error');
   });
 });
 
@@ -263,7 +263,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
   test('TC-CUST-050 บัตรประชาชน 13 หลักถูกต้อง → บันทึกสำเร็จ', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('085');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, citizenId: '1234567890121' });
-    await shot(page, 'TC-CUST-050_input');
+    await shot(page, 'pos/TC-CUST-050_input');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -272,10 +272,10 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
   test('TC-CUST-051 บัตรประชาชนน้อยกว่า 13 หลัก → error', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('086');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, citizenId: '12345' });
-    await shot(page, 'TC-CUST-051_input');
+    await shot(page, 'pos/TC-CUST-051_input');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-051_error');
+    await shot(page, 'pos/TC-CUST-051_error');
   });
 
   // TC-CUST-052
@@ -284,7 +284,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Validation: �
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.nationalitySelect.selectOption({ index: 2 });
     await page.waitForTimeout(500);
-    await shot(page, 'TC-CUST-052_passport-field');
+    await shot(page, 'pos/TC-CUST-052_passport-field');
     // POS แสดง placeholder "X-XXXX-XXXXX-XX-X" เมื่อเลือกสัญชาติต่างชาติ
     await expect.soft(
       page.locator('input[placeholder*="X-XXXX"], :text("/ Passport")').first()
@@ -307,7 +307,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: ข้�
     const mobile = uniquePosMobile('088');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillTaxInfo({ ...posTaxMember, taxId: '0105536000000' });
-    await shot(page, 'TC-CUST-060_input');
+    await shot(page, 'pos/TC-CUST-060_input');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -317,10 +317,10 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: ข้�
     const mobile = uniquePosMobile('089');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillTaxInfo({ companyName: 'บริษัท ABC', taxId: '12345' });
-    await shot(page, 'TC-CUST-061_input');
+    await shot(page, 'pos/TC-CUST-061_input');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-061_error');
+    await shot(page, 'pos/TC-CUST-061_error');
   });
 
   // TC-CUST-062
@@ -333,7 +333,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: ข้�
       () => (document.querySelector('select[name="city_id"]') as HTMLSelectElement)?.options.length > 1,
       { timeout: 10_000 }
     );
-    await shot(page, 'TC-CUST-062_cascade-district');
+    await shot(page, 'pos/TC-CUST-062_cascade-district');
     await expect.soft(posRegister.citySelect).not.toHaveValue('');
   });
 
@@ -342,17 +342,17 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: ข้�
     const mobile = uniquePosMobile('089');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillTaxInfo({ companyName: 'บริษัท ABC', taxId: '0105536000000', zipcode: '101' });
-    await shot(page, 'TC-CUST-063_input');
+    await shot(page, 'pos/TC-CUST-063_input');
     await posRegister.save();
     await posRegister.expectValidationError();
-    await shot(page, 'TC-CUST-063_error');
+    await shot(page, 'pos/TC-CUST-063_error');
   });
 
   // TC-CUST-064
   test('TC-CUST-064 ข้าม Tab ใบกำกับภาษี (optional) → บันทึกได้', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('088');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
-    await shot(page, 'TC-CUST-064_skip-tax');
+    await shot(page, 'pos/TC-CUST-064_skip-tax');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -373,7 +373,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: หม�
     const mobile = uniquePosMobile('085');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.switchTab('หมายเหตุและการแพ้ยา');
-    await shot(page, 'TC-CUST-070_notes-tab');
+    await shot(page, 'pos/TC-CUST-070_notes-tab');
     await expect.soft(
       page.locator('button:has-text("แพ้ยา"), button:has-text("สินค้า"), [class*="add"]').first()
     ).toBeVisible({ timeout: 5_000 });
@@ -384,7 +384,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: หม�
     const mobile = uniquePosMobile('086');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillNotesTab('ก'.repeat(255));
-    await shot(page, 'TC-CUST-073_255chars');
+    await shot(page, 'pos/TC-CUST-073_255chars');
     await expect.soft(page.locator(':text("255")').first()).toBeVisible({ timeout: 3_000 });
   });
 
@@ -393,7 +393,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: หม�
     const mobile = uniquePosMobile('087');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillNotesTab('ก'.repeat(256));
-    await shot(page, 'TC-CUST-074_256chars');
+    await shot(page, 'pos/TC-CUST-074_256chars');
     const val = await posRegister.noteTextarea.inputValue();
     expect.soft(val.length).toBeLessThanOrEqual(255);
   });
@@ -404,7 +404,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Tab: หม�
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.switchTab('หมายเหตุและการแพ้ยา');
     await posRegister.noteTextarea.fill('สวัสดี');
-    await shot(page, 'TC-CUST-075_counter');
+    await shot(page, 'pos/TC-CUST-075_counter');
     await expect.soft(
       page.locator('[class*="counter"], :text-matches("\\d+\\/255")').first()
     ).toBeVisible({ timeout: 3_000 });
@@ -425,9 +425,9 @@ test.describe('POS สมัครสมาชิกใหม่ - Edge Cases', 
   test('TC-CUST-080 ชื่อยาว 300 ตัวอักษร → ระบบไม่ crash', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('085');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, firstName: 'ก'.repeat(300) });
-    await shot(page, 'TC-CUST-080_long-name');
+    await shot(page, 'pos/TC-CUST-080_long-name');
     await posRegister.save();
-    await shot(page, 'TC-CUST-080_result');
+    await shot(page, 'pos/TC-CUST-080_result');
     // soft: ไม่ crash (page ยังอยู่)
     await expect.soft(page).toHaveURL(/pos-stg\.arincare\.com/, { timeout: 5_000 });
   });
@@ -436,7 +436,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Edge Cases', 
   test('TC-CUST-081 ชื่อด้วยอักขระพิเศษ / อีโมจิ → บันทึกและแสดงผลถูกต้อง', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('086');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, firstName: 'Łukasz', lastName: '😀' });
-    await shot(page, 'TC-CUST-081_special-chars');
+    await shot(page, 'pos/TC-CUST-081_special-chars');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -445,7 +445,7 @@ test.describe('POS สมัครสมาชิกใหม่ - Edge Cases', 
   test('TC-CUST-082 ชื่อมีช่องว่างหน้า-หลัง → trim แล้วบันทึกสำเร็จ', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('087');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, firstName: '  สมชาย  ' });
-    await shot(page, 'TC-CUST-082_spaces');
+    await shot(page, 'pos/TC-CUST-082_spaces');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });
@@ -453,9 +453,9 @@ test.describe('POS สมัครสมาชิกใหม่ - Edge Cases', 
   // TC-CUST-083
   test('TC-CUST-083 กรอกเบอร์ซ้ำกับลูกค้าเดิม → แสดงแจ้งเตือน', async ({ page, posRegister }) => {
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile: '0812345678' });
-    await shot(page, 'TC-CUST-083_dup-mobile');
+    await shot(page, 'pos/TC-CUST-083_dup-mobile');
     await posRegister.save();
-    await shot(page, 'TC-CUST-083_dup-result');
+    await shot(page, 'pos/TC-CUST-083_dup-result');
     const dupWarning = page.locator(':text("ซ้ำ"), :text("มีอยู่แล้ว"), :text("duplicate"), .alert, .swal2-popup').first();
     await expect.soft(dupWarning).toBeVisible({ timeout: 8_000 });
   });
@@ -475,33 +475,33 @@ test.describe('POS สมัครสมาชิกใหม่ - UI Behavior',
   test('TC-CUST-090 ข้อมูล Tab1 ยังคงอยู่หลังสลับไป Tab2 แล้วกลับ', async ({ page, posRegister }) => {
     await posRegister.firstNameInput.fill('สมชาย');
     await posRegister.switchTab('ข้อมูลใบกำกับภาษี');
-    await shot(page, 'TC-CUST-090_switched-tab2');
+    await shot(page, 'pos/TC-CUST-090_switched-tab2');
     await posRegister.switchTab('ข้อมูลทั่วไป');
     await expect.soft(posRegister.firstNameInput).toHaveValue('สมชาย');
-    await shot(page, 'TC-CUST-090_back-tab1-data-intact');
+    await shot(page, 'pos/TC-CUST-090_back-tab1-data-intact');
   });
 
   // TC-CUST-091
   test('TC-CUST-091 กดยกเลิก → ฟอร์มปิด ไม่บันทึกข้อมูล', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('099');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
-    await shot(page, 'TC-CUST-091_filled');
+    await shot(page, 'pos/TC-CUST-091_filled');
     await posRegister.cancel();
-    await shot(page, 'TC-CUST-091_after-cancel');
+    await shot(page, 'pos/TC-CUST-091_after-cancel');
     await posRegister.expectFormClosed();
   });
 
   // TC-CUST-092
   test('TC-CUST-092 กดปุ่ม X มุมขวาบน → ฟอร์มปิด ไม่บันทึก', async ({ page, posRegister }) => {
-    await shot(page, 'TC-CUST-092_form-open');
+    await shot(page, 'pos/TC-CUST-092_form-open');
     await posRegister.close();
-    await shot(page, 'TC-CUST-092_form-closed');
+    await shot(page, 'pos/TC-CUST-092_form-closed');
     await posRegister.expectFormClosed();
   });
 
   // TC-CUST-093
   test('TC-CUST-093 เปิด modal → Tab เริ่มต้นคือ "ข้อมูลทั่วไป"', async ({ page, posRegister }) => {
-    await shot(page, 'TC-CUST-093_default-tab');
+    await shot(page, 'pos/TC-CUST-093_default-tab');
     await expect.soft(posRegister.firstNameInput).toBeVisible({ timeout: 5_000 });
   });
 });
@@ -520,9 +520,9 @@ test.describe('POS สมัครสมาชิกใหม่ - Security', ()
   test('TC-CUST-100 XSS payload ในช่องชื่อ → sanitize ไม่ execute script', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('085');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, firstName: '<script>alert(1)</script>' });
-    await shot(page, 'TC-CUST-100_xss-input');
+    await shot(page, 'pos/TC-CUST-100_xss-input');
     await posRegister.save();
-    await shot(page, 'TC-CUST-100_after-save');
+    await shot(page, 'pos/TC-CUST-100_after-save');
     // soft: ไม่มี JS dialog ขึ้นมา
     await expect.soft(page.locator('dialog').first()).not.toBeVisible({ timeout: 2_000 });
   });
@@ -536,9 +536,9 @@ test.describe('POS สมัครสมาชิกใหม่ - Security', ()
       firstName: "' OR '1'='1",
       lastName:  "Robert');DROP TABLE--",
     });
-    await shot(page, 'TC-CUST-101_sqli-input');
+    await shot(page, 'pos/TC-CUST-101_sqli-input');
     await posRegister.save();
-    await shot(page, 'TC-CUST-101_result');
+    await shot(page, 'pos/TC-CUST-101_result');
     // soft: ไม่มี DB error 500
     await expect.soft(page.locator(':text("500"), :text("SQL"), :text("error")').first())
       .not.toBeVisible({ timeout: 3_000 });
@@ -557,7 +557,7 @@ test.describe('POS สมัครสมาชิกใหม่ - UI Defaults',
 
   // TC-CUST-110
   test('TC-CUST-110 ค่าเริ่มต้น dropdown สัญชาติ = ไทย', async ({ page, posRegister }) => {
-    await shot(page, 'TC-CUST-110_nationality-default');
+    await shot(page, 'pos/TC-CUST-110_nationality-default');
     await expect.soft(
       page.locator('select[name="nationality"] option:checked').first()
     ).toContainText(/ไทย/i, { timeout: 5_000 });
@@ -565,7 +565,7 @@ test.describe('POS สมัครสมาชิกใหม่ - UI Defaults',
 
   // TC-CUST-111
   test('TC-CUST-111 dropdown ระดับราคาแสดงค่า default ตามบริษัท', async ({ page, posRegister }) => {
-    await shot(page, 'TC-CUST-111_pricelevel-default');
+    await shot(page, 'pos/TC-CUST-111_pricelevel-default');
     await expect.soft(posRegister.priceLevelSelect).toBeVisible({ timeout: 5_000 });
   });
 
@@ -573,7 +573,7 @@ test.describe('POS สมัครสมาชิกใหม่ - UI Defaults',
   test('TC-CUST-112 เลือกหมู่เลือด A → บันทึกถูกต้อง', async ({ page, posRegister }) => {
     const mobile = uniquePosMobile('087');
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile, bloodType: 'A' });
-    await shot(page, 'TC-CUST-112_bloodtype-A');
+    await shot(page, 'pos/TC-CUST-112_bloodtype-A');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
   });

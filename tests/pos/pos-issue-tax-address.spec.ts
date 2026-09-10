@@ -12,8 +12,8 @@
  */
 
 import { test, expect } from './pos-fixtures.js';
-import { shot } from '../utils/helpers.js';
-import { uniquePosMobile, posMinimalMember } from '../data/pos-member.testdata.js';
+import { shot } from '../../utils/helpers.js';
+import { uniquePosMobile, posMinimalMember } from '../../data/pos-member.testdata.js';
 
 const taxWithAddress = {
   companyName:  'บริษัท ทดสอบ จำกัด',
@@ -42,18 +42,18 @@ test.describe('POS Bug: ข้อมูลที่อยู่ใบกำก�
     await posRegister.openRegisterForm();
     await posRegister.fillGeneralInfo({ ...posMinimalMember, mobile });
     await posRegister.fillTaxInfo(taxWithAddress);
-    await shot(page, 'POS-TAX-001_01_filled-tax-address');
+    await shot(page, 'pos/POS-TAX-001_01_filled-tax-address');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'POS-TAX-001_02_saved');
+    await shot(page, 'pos/POS-TAX-001_02_saved');
 
     // 2. ค้นหาสมาชิกแล้วเปิด edit form
     await posRegister.openMemberEditForm(mobile);
-    await shot(page, 'POS-TAX-001_03_edit-form-opened');
+    await shot(page, 'pos/POS-TAX-001_03_edit-form-opened');
 
     // 3. ตรวจสอบ Tab ใบกำกับภาษี — ต้องแสดงข้อมูลครบ (ไม่ว่าง)
     await posRegister.switchTab('ข้อมูลใบกำกับภาษี');
-    await shot(page, 'POS-TAX-001_04_tax-tab-in-edit');
+    await shot(page, 'pos/POS-TAX-001_04_tax-tab-in-edit');
     await posRegister.expectTaxFieldsPopulated(taxWithAddress);
   });
 
@@ -72,7 +72,7 @@ test.describe('POS Bug: ข้อมูลที่อยู่ใบกำก�
 
     await posRegister.openMemberEditForm(mobile);
     await posRegister.switchTab('ข้อมูลใบกำกับภาษี');
-    await shot(page, 'POS-TAX-002_tax-tab-edit');
+    await shot(page, 'pos/POS-TAX-002_tax-tab-edit');
 
     await expect.soft(posRegister.companyNameInput).toHaveValue('ABC Corp ทดสอบ', { timeout: 5_000 });
     await expect.soft(posRegister.taxIdInput).toHaveValue('0105536000002', { timeout: 5_000 });
@@ -97,12 +97,12 @@ test.describe('POS Bug: ข้อมูลที่อยู่ใบกำก�
     await posRegister.firstNameInput.fill('สมชายแก้ไขแล้ว');
     await posRegister.save();
     await posRegister.expectSaveSuccess();
-    await shot(page, 'POS-TAX-003_01_after-name-edit');
+    await shot(page, 'pos/POS-TAX-003_01_after-name-edit');
 
     // Edit ครั้งที่ 2: ตรวจสอบ Tax address ยังคงอยู่
     await posRegister.openMemberEditForm(mobile);
     await posRegister.switchTab('ข้อมูลใบกำกับภาษี');
-    await shot(page, 'POS-TAX-003_02_tax-tab-after-edit');
+    await shot(page, 'pos/POS-TAX-003_02_tax-tab-after-edit');
     await posRegister.expectTaxFieldsPopulated(taxWithAddress);
   });
 });

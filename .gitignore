@@ -1,5 +1,6 @@
 node_modules/
 .env
+.DS_Store
 playwright-report/
 test-results/
 screenshots/
@@ -10,4 +11,6 @@ chat-selectors-raw.json
 
 # Security: credentials & session tokens — DO NOT COMMIT
 arincare-test-108540e51ee3.json
+arincare-test-c1b6210b0d10.json
 liff-session.json
+storage-state.json

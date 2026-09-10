@@ -460,7 +460,7 @@ for fill, text in legend:
     row += 1
 
 # ── Save ─────────────────────────────────────────────────────────────────────
-output = "pos-selector-discovery/POS_Member_Selectors.xlsx"
+output = "docs/pos-selector-discovery/POS_Member_Selectors.xlsx"
 wb.save(output)
 print(f"✅ บันทึก Excel: {output}")
 print(f"   - Sheet 'Login Flow'       : {len(login_data)} rows")

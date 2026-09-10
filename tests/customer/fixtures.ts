@@ -1,6 +1,6 @@
 import { test as base } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage.js';
-import { CustomerFormPage } from '../pages/CustomerFormPage.js';
+import { LoginPage } from '../../pages/LoginPage.js';
+import { CustomerFormPage } from '../../pages/CustomerFormPage.js';
 
 type Fixtures = {
   loginPage: LoginPage;

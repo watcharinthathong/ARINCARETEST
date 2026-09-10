@@ -1,5 +1,5 @@
 import { test as base } from '@playwright/test';
-import { PosRegisterPage } from '../pages/PosRegisterPage.js';
+import { PosRegisterPage } from '../../pages/PosRegisterPage.js';
 
 type PosFixtures = {
   posRegister: PosRegisterPage;

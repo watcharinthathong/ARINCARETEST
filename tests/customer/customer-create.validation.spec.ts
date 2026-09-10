@@ -1,8 +1,8 @@
 import { test, expect } from './fixtures.js';
-import { shot } from '../utils/helpers.js';
+import { shot } from '../../utils/helpers.js';
 import {
   mobileCases, emailCases, securityPayloads, uniqueMobile,
-} from '../data/customer.testdata.js';
+} from '../../data/customer.testdata.js';
 
 test.describe('เพิ่มลูกค้าใหม่ - Validation (Data-Driven)', () => {
   test.beforeEach(async ({ loggedIn, customerForm }) => {
@@ -27,9 +27,9 @@ test.describe('เพิ่มลูกค้าใหม่ - Validation (Data-
         await customerForm.expectMobileError();
       } else {
         // INFO: บันทึกพฤติกรรมจริงไว้ดู ไม่ fail เทส
-        await shot(page, `${c.id}_info-behavior`);
+        await shot(page, `customer/${c.id}_info-behavior`);
       }
-      await shot(page, `${c.id}_${c.expect}`);
+      await shot(page, `customer/${c.id}_${c.expect}`);
     });
   }
 
@@ -45,7 +45,7 @@ test.describe('เพิ่มลูกค้าใหม่ - Validation (Data-
         const stillForm = await customerForm.mobileField.isVisible().catch(() => false);
         expect(stillForm).toBeTruthy(); // ยังไม่บันทึกเพราะอีเมลผิด
       }
-      await shot(page, `${c.id}_${c.expect}`);
+      await shot(page, `customer/${c.id}_${c.expect}`);
     });
   }
 
@@ -60,7 +60,7 @@ test.describe('เพิ่มลูกค้าใหม่ - Validation (Data-
       page.on('dialog', async d => { dialogFired = true; await d.dismiss(); });
       await page.waitForTimeout(1000);
       expect(dialogFired).toBeFalsy();
-      await shot(page, `${p.id}_${p.title}`);
+      await shot(page, `customer/${p.id}_${p.title}`);
     });
   }
 });

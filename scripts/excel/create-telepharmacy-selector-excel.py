@@ -1113,7 +1113,7 @@ ws7.freeze_panes = "A4"
 
 
 # ── Save ─────────────────────────────────────────────────────────────────────
-OUTPUT = "telepharmacy-selector-discovery/Telepharmacy_CMS_Selectors.xlsx"
+OUTPUT = "docs/telepharmacy-selector-discovery/Telepharmacy_CMS_Selectors.xlsx"
 wb.save(OUTPUT)
 import sys
 out = sys.stdout.buffer if hasattr(sys.stdout, 'buffer') else None

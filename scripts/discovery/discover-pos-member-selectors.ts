@@ -20,7 +20,7 @@ const BRANCH       = 'arincare';
 const EMPLOYEE_ID  = 'watcharin.arincare@gmail.com';
 const EMPLOYEE_PASS = '01072024';
 
-const OUTPUT_DIR    = 'pos-selector-discovery';
+const OUTPUT_DIR    = 'docs/pos-selector-discovery';
 const SCREENSHOT_DIR = path.join(OUTPUT_DIR, 'screenshots');
 
 /* ─── Selector record ────────────────────────────────────────────────────── */

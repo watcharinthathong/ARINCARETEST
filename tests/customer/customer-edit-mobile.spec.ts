@@ -17,8 +17,8 @@
  */
 
 import { test, expect } from './fixtures.js';
-import { shot } from '../utils/helpers.js';
-import { uniqueMobile } from '../data/customer.testdata.js';
+import { shot } from '../../utils/helpers.js';
+import { uniqueMobile } from '../../data/customer.testdata.js';
 
 test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Search & Duplicate Creation', () => {
   test.beforeEach(async ({ loggedIn, customerForm }) => {
@@ -40,16 +40,16 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
     await customerForm.fillGeneral({ mobile: mobileA, firstName: 'EditTest' });
     await customerForm.save();
     await customerForm.expectSaveSuccess();
-    await shot(page, 'EDIT-001_01_created-with-A');
+    await shot(page, 'customer/EDIT-001_01_created-with-A');
 
     // 2. แก้ไขเบอร์ A → B
     await customerForm.editMobile(mobileA, mobileB);
-    await shot(page, 'EDIT-001_02_edited-to-B');
+    await shot(page, 'customer/EDIT-001_02_edited-to-B');
 
     // 3. ค้นหาด้วยเบอร์เก่า A — ต้องไม่พบรายการใดๆ
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileA);
-    await shot(page, 'EDIT-001_03_search-old-A');
+    await shot(page, 'customer/EDIT-001_03_search-old-A');
     await customerForm.expectCustomerNotInList();
   });
 
@@ -66,12 +66,12 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
     await customerForm.expectSaveSuccess();
 
     await customerForm.editMobile(mobileA, mobileB);
-    await shot(page, 'EDIT-002_01_edited-to-B');
+    await shot(page, 'customer/EDIT-002_01_edited-to-B');
 
     // ค้นหาด้วยเบอร์ใหม่ B — ต้องพบ
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileB);
-    await shot(page, 'EDIT-002_02_search-new-B');
+    await shot(page, 'customer/EDIT-002_02_search-new-B');
     await customerForm.expectCustomerInList(mobileB);
   });
 
@@ -88,20 +88,20 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
     await customerForm.fillGeneral({ mobile: mobileA, firstName: 'C1Customer' });
     await customerForm.save();
     await customerForm.expectSaveSuccess();
-    await shot(page, 'EDIT-003_01_c1-created');
+    await shot(page, 'customer/EDIT-003_01_c1-created');
 
     // 2. แก้ C1 เบอร์ A → B (A ถูก free ออก)
     await customerForm.editMobile(mobileA, mobileB);
-    await shot(page, 'EDIT-003_02_c1-edited-A-to-B');
+    await shot(page, 'customer/EDIT-003_02_c1-edited-A-to-B');
 
     // 3. สร้าง C2 ด้วยเบอร์ A — ต้องสำเร็จ เพราะ A ไม่ได้ใช้งานแล้ว
     await customerForm.openCustomerList();
     await customerForm.openNewCustomerForm();
     await customerForm.fillGeneral({ mobile: mobileA, firstName: 'C2Customer' });
     await customerForm.save();
-    await shot(page, 'EDIT-003_03_c2-save-attempt');
+    await shot(page, 'customer/EDIT-003_03_c2-save-attempt');
     await customerForm.expectSaveSuccess();
-    await shot(page, 'EDIT-003_04_c2-created-ok');
+    await shot(page, 'customer/EDIT-003_04_c2-created-ok');
   });
 
   // ══════════════════════════════════════════════════════════════════════════════
@@ -130,7 +130,7 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
     // ── Search A: ต้องพบ C2 (ไม่ใช่ C1) ──────────────────────────────────────
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileA);
-    await shot(page, 'EDIT-004_01_search-A');
+    await shot(page, 'customer/EDIT-004_01_search-A');
     await customerForm.expectCustomerInList(mobileA);
     // ตรวจว่า C2Customer อยู่ในผลลัพธ์
     await expect.soft(
@@ -144,7 +144,7 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
     // ── Search B: ต้องพบ C1 ──────────────────────────────────────────────────
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileB);
-    await shot(page, 'EDIT-004_02_search-B');
+    await shot(page, 'customer/EDIT-004_02_search-B');
     await customerForm.expectCustomerInList(mobileB);
     await expect.soft(
       page.getByText('C1Customer', { exact: false }).first()
@@ -173,24 +173,24 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
 
     // แก้ B → C
     await customerForm.editMobile(mobileB, mobileC);
-    await shot(page, 'EDIT-005_01_after-double-edit');
+    await shot(page, 'customer/EDIT-005_01_after-double-edit');
 
     // ค้นหา A → ต้องไม่พบ
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileA);
-    await shot(page, 'EDIT-005_02_search-A');
+    await shot(page, 'customer/EDIT-005_02_search-A');
     await customerForm.expectCustomerNotInList();
 
     // ค้นหา B (intermediate) → ต้องไม่พบ
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileB);
-    await shot(page, 'EDIT-005_03_search-B');
+    await shot(page, 'customer/EDIT-005_03_search-B');
     await customerForm.expectCustomerNotInList();
 
     // ค้นหา C (ปัจจุบัน) → ต้องพบ
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileC);
-    await shot(page, 'EDIT-005_04_search-C');
+    await shot(page, 'customer/EDIT-005_04_search-C');
     await customerForm.expectCustomerInList(mobileC);
   });
 
@@ -214,18 +214,18 @@ test.describe('แก้ไขเบอร์มือถือ - Bug: Stale Sea
 
     // แก้กลับ B → A
     await customerForm.editMobile(mobileB, mobileA);
-    await shot(page, 'EDIT-006_01_restored-to-A');
+    await shot(page, 'customer/EDIT-006_01_restored-to-A');
 
     // ค้นหา A → ต้องพบ (คืนกลับมาแล้ว)
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileA);
-    await shot(page, 'EDIT-006_02_search-A');
+    await shot(page, 'customer/EDIT-006_02_search-A');
     await customerForm.expectCustomerInList(mobileA);
 
     // ค้นหา B → ต้องไม่พบ
     await customerForm.openCustomerList();
     await customerForm.searchCustomer(mobileB);
-    await shot(page, 'EDIT-006_03_search-B');
+    await shot(page, 'customer/EDIT-006_03_search-B');
     await customerForm.expectCustomerNotInList();
   });
 });

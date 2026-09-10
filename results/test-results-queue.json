@@ -163,7 +163,7 @@
     "id": "TC-QUE-011",
     "scenario": "สี Status Badge ถูกต้องตามสถานะ",
     "status": "FAIL",
-    "actualResult": "{\"ACTIVE\":{\"found\":true,\"color\":\"oklch(0.962 0.044 156.743)\",\"correct\":false},\"WAITING\":{\"found\":false,\"color\":\"\",\"correct\":false},\"PAUSED\":{\"found\":false,\"color\":\"\",\"correct\":false},\"CLOSED\":{\"found\":true,\"color\":\"oklch(0.971 0.013 17.38)\",\"correct\":false}}",
+    "actualResult": "{\"ACTIVE\":{\"found\":true,\"color\":\"rgba(0, 0, 0, 0)\",\"correct\":false},\"WAITING\":{\"found\":false,\"color\":\"\",\"correct\":false},\"PAUSED\":{\"found\":false,\"color\":\"\",\"correct\":false},\"CLOSED\":{\"found\":true,\"color\":\"oklch(0.971 0.013 17.38)\",\"correct\":false}}",
     "remark": "สีถูก 0/2 — ตรวจ screenshot",
     "screenshots": [
       "QUE-011_01_login.png",
@@ -312,8 +312,13 @@
     "id": "TC-QUE-019",
     "scenario": "Footer Summary Bar",
     "status": "PASS",
+<<<<<<< Updated upstream
     "actualResult": "footerFound=true, hasSummary=true, text=\"รวม 6\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin TestTest\nสำนักงานใหญ่\nLogout\"",
     "remark": "Footer Summary Bar แสดงถูกต้อง: \"รวม 6\nActive 1\nw\nwatcharintest arincare\nOPERATOR\nWatcharin T\"",
+=======
+    "actualResult": "footerFound=true, hasSummary=true, text=\"รวม 4\nActive 0\nw\nwatcharintest arincare\nOPERATOR\nWatcharin TestTest\nสำนักงานใหญ่\nLogout\"",
+    "remark": "Footer Summary Bar แสดงถูกต้อง: \"รวม 4\nActive 0\nw\nwatcharintest arincare\nOPERATOR\nWatcharin T\"",
+>>>>>>> Stashed changes
     "screenshots": [
       "QUE-019_01_login.png",
       "QUE-019_02_after-login.png",
@@ -343,9 +348,9 @@
   {
     "id": "TC-QUE-021",
     "scenario": "Status transition ACTIVE→PAUSED (OPERATOR) / Resume ต้อง PHARMACIST",
-    "status": "PASS",
-    "actualResult": "hasActive=true, setup=false, cardClicked=true, pausedOk=true, resumedOk=false",
-    "remark": "OPERATOR: ACTIVE→PAUSED สำเร็จ | Resume ต้องใช้ PHARMACIST account — ไม่มีปุ่ม Resume ใน OPERATOR UI",
+    "status": "SKIP",
+    "actualResult": "hasActive=false, setup=false, cardClicked=false, pausedOk=false, resumedOk=false",
+    "remark": "SKIP: ไม่มี ACTIVE card และไม่มี WAITING card ที่ assign ได้",
     "screenshots": [
       "QUE-021_01_login.png",
       "QUE-021_02_after-login.png",
@@ -353,8 +358,6 @@
       "QUE-021_branch.png",
       "QUE-021_supervisor.png",
       "QUE-021_03_queue.png",
-      "QUE-021_card-clicked.png",
-      "QUE-021_after-pause.png",
       "QUE-021_result.png"
     ]
   },
@@ -377,9 +380,9 @@
   {
     "id": "TC-QUE-023",
     "scenario": "สถานะ PAUSED คงอยู่หลัง Page Refresh (State Persistence)",
-    "status": "FAIL",
-    "actualResult": "hasActive=true, setup=false, pausedBefore=true, pausedAfter=false",
-    "remark": "BUG: สถานะ PAUSED หายหลัง refresh — ข้อมูลไม่ถูก persist ลง server",
+    "status": "SKIP",
+    "actualResult": "hasActive=false, setup=false, pausedBefore=false, pausedAfter=false",
+    "remark": "SKIP: ไม่มี ACTIVE card — ต้องมีผู้ป่วยในคิวก่อน",
     "screenshots": [
       "QUE-023_01_login.png",
       "QUE-023_02_after-login.png",
@@ -387,8 +390,6 @@
       "QUE-023_branch.png",
       "QUE-023_supervisor.png",
       "QUE-023_03_queue.png",
-      "QUE-023_after-pause.png",
-      "QUE-023_after-refresh.png",
       "QUE-023_result.png"
     ]
   }

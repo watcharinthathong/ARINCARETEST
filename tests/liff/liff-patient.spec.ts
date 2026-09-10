@@ -16,6 +16,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import * as dotenv from 'dotenv';
+import { LIFF_BASE as LIFF_BASE_URL, LIFF_SESSION, makeScreenshotter, newLiffMobileContext } from './helpers.js';
 
 dotenv.config();
 
@@ -23,12 +24,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
 const LIFF_CHAT      = process.env.LIFF_CHAT      || 'https://liff.line.me/2010469964-fi8ZhQ7k/chat?provider_code=rms1aidkll_btch00001';
-const LIFF_BASE_URL  = 'https://telepharmacy-liff.vercel.app';
-const LIFF_SESSION   = path.join(__dirname, '../liff-session.json');
-const SS_DIR         = path.join(__dirname, '../screenshots/liff-patient');
+const SS_DIR         = path.join(__dirname, '../../screenshots/liff/patient');
 const FIXTURES_DIR   = path.join(__dirname, '../fixtures');
-
-if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
 
 // ── ใช้ iPhone 13 device emulation ────────────────────────────────────────────
 // ไม่ใส่ "Line/" ใน UA เพราะ session เก็บเป็น type:external อยู่แล้ว
@@ -39,12 +36,7 @@ test.use({
   timezoneId: 'Asia/Bangkok',
 });
 
-async function ss(page: any, name: string): Promise<string> {
-  const file = path.join(SS_DIR, `${name}.png`);
-  await page.screenshot({ path: file, fullPage: false });
-  console.log(`  📸 ${name}.png`);
-  return file;
-}
+const ss = makeScreenshotter(SS_DIR);
 
 // ── Helper: รอ element ปรากฏ (ลอง multiple selectors) ──────────────────────────
 async function waitForAny(
@@ -136,12 +128,7 @@ test('TC-LIFF-PAT-002 – หา e-KYC Flex message และกด KYC link', a
     return;
   }
 
-  const context = await browser.newContext({
-    ...devices['iPhone 13'],
-    locale: 'th-TH',
-    timezoneId: 'Asia/Bangkok',
-    storageState: LIFF_SESSION,
-  });
+  const context = await newLiffMobileContext(browser);
 
   const page = await context.newPage();
   await page.goto(
@@ -226,13 +213,7 @@ test('TC-LIFF-PAT-003 – Submit e-KYC (selfie + ID card) ผ่าน LIFF prof
     ? process.env.LIFF_PROFILE.replace('liff.line.me/2010469964-fi8ZhQ7k', 'telepharmacy-liff.vercel.app')
     : `${LIFF_BASE_URL}/profile?provider_code=rms1aidkll_btch00001`;
 
-  const context = await browser.newContext({
-    ...devices['iPhone 13'],
-    locale: 'th-TH',
-    timezoneId: 'Asia/Bangkok',
-    storageState: LIFF_SESSION,
-    permissions: ['camera', 'geolocation'],
-  });
+  const context = await newLiffMobileContext(browser, { withCamera: true });
 
   const page = await context.newPage();
 
@@ -652,13 +633,7 @@ test('TC-LIFF-PAT-004 – Intercept KYC LIFF URL แล้วเปิดใน�
 
   console.log(`\nเปิด KYC LIFF ในมือถือ: ${kycLiffUrl}`);
 
-  const mobileContext = await browser.newContext({
-    ...devices['iPhone 13'],
-    locale: 'th-TH',
-    timezoneId: 'Asia/Bangkok',
-    storageState: LIFF_SESSION,
-    permissions: ['camera', 'geolocation'],
-  });
+  const mobileContext = await newLiffMobileContext(browser, { withCamera: true });
   const mobilePage = await mobileContext.newPage();
 
   await mobilePage.goto(kycLiffUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
@@ -706,13 +681,7 @@ test('TC-LIFF-PAT-005 – BUG: ปุ่ม "ยืนยันและส่�
     ? process.env.LIFF_PROFILE.replace('liff.line.me/2010469964-fi8ZhQ7k', 'telepharmacy-liff.vercel.app')
     : `${LIFF_BASE_URL}/profile?provider_code=rms1aidkll_btch00001`;
 
-  const context = await browser.newContext({
-    ...devices['iPhone 13'],
-    locale: 'th-TH',
-    timezoneId: 'Asia/Bangkok',
-    storageState: LIFF_SESSION,
-    permissions: ['camera', 'geolocation'],
-  });
+  const context = await newLiffMobileContext(browser, { withCamera: true });
   const page = await context.newPage();
 
   // ── Helper: capture ด้วย fake camera (w-16 center button) ──────────────────

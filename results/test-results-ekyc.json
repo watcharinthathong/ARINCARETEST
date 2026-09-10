@@ -1,0 +1,37 @@
+{
+  "TC-EKYC-001": {
+    "status": "SKIP",
+    "actual": "ไม่มี liff-session.json",
+    "note": "ต้อง login LINE ก่อน"
+  },
+  "TC-EKYC-002": {
+    "status": "SKIP",
+    "actual": "session ไม่พร้อม",
+    "note": ""
+  },
+  "TC-EKYC-003": {
+    "status": "SKIP",
+    "actual": "session ไม่พร้อม",
+    "note": ""
+  },
+  "TC-EKYC-004": {
+    "status": "SKIP",
+    "actual": "session ไม่พร้อม",
+    "note": ""
+  },
+  "TC-EKYC-005": {
+    "status": "SKIP",
+    "actual": "session ไม่พร้อม",
+    "note": ""
+  },
+  "TC-EKYC-006": {
+    "status": "SKIP",
+    "actual": "session ไม่พร้อม",
+    "note": ""
+  },
+  "TC-EKYC-007": {
+    "status": "SKIP",
+    "actual": "session ไม่พร้อม",
+    "note": ""
+  }
+}

@@ -13,27 +13,24 @@
  * TC-EKYC-007  ยืนยันและส่งข้อมูล → หน้า pending/success
  */
 
-import { test, expect, devices, Browser, BrowserContext, Page } from '@playwright/test';
+import { test, expect, Browser, BrowserContext, Page } from '@playwright/test';
 import * as path from 'path';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import * as dotenv from 'dotenv';
+import { LIFF_BASE, LIFF_SESSION, makeScreenshotter, newLiffMobileContext } from './helpers.js';
 
 dotenv.config();
 
 const __filename  = fileURLToPath(import.meta.url);
 const __dirname   = path.dirname(__filename);
 
-const LIFF_BASE   = 'https://telepharmacy-liff.vercel.app';
-const LIFF_SESSION = path.join(__dirname, '../liff-session.json');
-const SS_DIR      = path.join(__dirname, '../screenshots/ekyc');
-const RESULTS_FILE = path.join(__dirname, '../test-results-ekyc.json');
+const SS_DIR      = path.join(__dirname, '../../screenshots/liff/ekyc');
+const RESULTS_FILE = path.join(__dirname, '../../results/test-results-ekyc.json');
 
 const PROFILE_URL = process.env.LIFF_PROFILE
   ? process.env.LIFF_PROFILE.replace('liff.line.me/2010469964-fi8ZhQ7k', LIFF_BASE.replace('https://', ''))
   : `${LIFF_BASE}/profile?provider_code=rms1aidkll_btch00001`;
-
-if (!fs.existsSync(SS_DIR)) fs.mkdirSync(SS_DIR, { recursive: true });
 
 // ── ผลรวม (เขียนลง JSON หลัง suite เสร็จ) ────────────────────────────────────
 const RESULTS: Record<string, { status: string; actual: string; note: string }> = {};
@@ -42,11 +39,7 @@ function saveResults() {
   fs.writeFileSync(RESULTS_FILE, JSON.stringify(RESULTS, null, 2), 'utf-8');
 }
 
-async function ss(page: Page, name: string): Promise<void> {
-  const file = path.join(SS_DIR, `${name}.png`);
-  await page.screenshot({ path: file, fullPage: false });
-  console.log(`  📸 ${name}.png`);
-}
+const ss = makeScreenshotter(SS_DIR);
 
 // ── helper: tap capture button (w-16 center, fallback center btn) ─────────────
 async function tapCapture(page: Page, label: string): Promise<boolean> {
@@ -117,13 +110,7 @@ test.describe.serial('TC-EKYC – e-KYC Patient Flow (Step-by-step)', () => {
       console.log('⚠️  ไม่มี liff-session.json — skip ทุก TC-EKYC');
       return;
     }
-    context = await browser.newContext({
-      ...devices['iPhone 13'],
-      locale:       'th-TH',
-      timezoneId:   'Asia/Bangkok',
-      storageState: LIFF_SESSION,
-      permissions:  ['camera', 'geolocation'],
-    });
+    context = await newLiffMobileContext(browser, { withCamera: true });
     page = await context.newPage();
   });
 
